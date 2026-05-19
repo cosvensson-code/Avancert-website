@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 436">
+  <!-- bottom band -->
+  <rect x="40" y="320" width="440" height="60" fill="#6f7780" rx="4"/>
+  <!-- main circle -->
+  <circle cx="260" cy="180" r="155" fill="white" stroke="#6f7780" stroke-width="10"/>
+  <!-- top inner colored bar with CERTIFIED label -->
+  <path d="M120 130 L400 130 L400 175 L120 175 Z" fill="#6f7780"/>
+  <text x="260" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="white" font-weight="700" letter-spacing="2">CERTIFIED</text>
+  <!-- ISO label -->
+  <text x="260" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#6f7780" font-weight="800">ISO 13485</text>
+  <!-- AVANCERT bottom-mid -->
+  <text x="260" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#6f7780" font-weight="700">AVANCERT</text>
+  <!-- footer text in bottom band -->
+  <text x="260" y="358" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="white" font-weight="700" letter-spacing="3">CERTIFIED</text>
+</svg>
