@@ -3,6 +3,14 @@
 <!-- Avancert hjemmeside - ren HTML/CSS/JS version til lokal test og videre redigering -->
 <html lang="da">
 <head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XHBJ6EW77V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XHBJ6EW77V');
+</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta name="theme-color" content="#01506d"/>
@@ -2841,6 +2849,11 @@ Ring 36 16 36 16
     e.preventDefault();
     var fd = new FormData(form);
     var standards = fd.getAll('standard').join(', ') || 'Ikke valgt';
+    gtag('event', 'tilbud_formular_indsendt', {
+      'virksomhed_størrelse': fd.get('size') || '',
+      'standarder': standards,
+      'status': fd.get('status') || ''
+    });
     var subject = encodeURIComponent('Tilbudsforespørgsel: ' + (fd.get('company') || fd.get('name') || ''));
     var body = encodeURIComponent(
       'OM JER\n' +
