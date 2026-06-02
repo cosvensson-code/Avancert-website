@@ -3,21 +3,29 @@
 <!-- Avancert hjemmeside - ren HTML/CSS/JS version til lokal test og videre redigering -->
 <html lang="da">
 <head>
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "x0pd5it1ek");
-</script>
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XHBJ6EW77V"></script>
+<!-- Analytics: kun indlæst efter cookie-samtykke -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XHBJ6EW77V');
+  function avancertLoadAnalytics() {
+    // Microsoft Clarity
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x0pd5it1ek");
+    // Google Analytics 4
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=G-XHBJ6EW77V";
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-XHBJ6EW77V');
+  }
+  if (localStorage.getItem('avancert_cookies') === 'accepted') {
+    avancertLoadAnalytics();
+  }
 </script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -3360,6 +3368,31 @@ if (complaintForm) {
     window.location.href = 'mailto:info@avancert.dk?subject=' + subject + '&body=' + body;
   });
 }
+</script>
+
+<!-- COOKIE BANNER -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0c1e28;color:#fff;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;box-shadow:0 -2px 16px rgba(0,0,0,0.2);">
+  <p style="margin:0;font-size:0.85rem;line-height:1.5;flex:1;min-width:200px;">Vi bruger cookies til at analysere trafikken og forbedre oplevelsen på siden. <a href="#tillid" style="color:#fe6a3f;text-decoration:underline;" onclick="document.getElementById('cookieBanner').style.display='none'">Læs mere</a></p>
+  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+    <button onclick="avancertDeclineCookies()" style="background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;padding:0.5rem 1rem;border-radius:6px;cursor:pointer;font-size:0.85rem;">Kun nødvendige</button>
+    <button onclick="avancertAcceptCookies()" style="background:#fe6a3f;border:none;color:#fff;padding:0.5rem 1.25rem;border-radius:6px;cursor:pointer;font-size:0.85rem;font-weight:700;">Accepter alle</button>
+  </div>
+</div>
+<script>
+  (function(){
+    if (!localStorage.getItem('avancert_cookies')) {
+      document.getElementById('cookieBanner').style.display = 'flex';
+    }
+  })();
+  function avancertAcceptCookies() {
+    localStorage.setItem('avancert_cookies', 'accepted');
+    document.getElementById('cookieBanner').style.display = 'none';
+    avancertLoadAnalytics();
+  }
+  function avancertDeclineCookies() {
+    localStorage.setItem('avancert_cookies', 'declined');
+    document.getElementById('cookieBanner').style.display = 'none';
+  }
 </script>
 </body>
 </html>
