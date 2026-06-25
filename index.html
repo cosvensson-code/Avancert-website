@@ -1797,15 +1797,14 @@ main, section, header, footer {
 
 .quote-callback {
   margin-top: 1.5rem;
-  padding: 1.1rem 1.25rem;
-  background: linear-gradient(180deg, var(--blue-lt), #fff);
-  border: 1px solid rgba(1,80,109,.12);
+  padding: 1.25rem 1.5rem;
+  background: var(--blue);
   border-radius: 1rem;
 }
 
 .quote-callback-label {
   font-size: .82rem !important;
-  color: var(--muted) !important;
+  color: rgba(255,255,255,0.72) !important;
   margin-bottom: .35rem !important;
   font-weight: 600;
 }
@@ -1814,9 +1813,9 @@ main, section, header, footer {
   display: inline-flex;
   align-items: center;
   gap: .5rem;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 800;
-  color: var(--blue);
+  color: #fff;
   text-decoration: none;
   letter-spacing: -0.01em;
   transition: color .2s ease;
@@ -1829,6 +1828,25 @@ main, section, header, footer {
 .quote-callback-link svg {
   color: var(--orange);
 }
+
+.std-tiles {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1rem;
+}
+.std-tile {
+  border: 1.5px solid var(--line); border-radius: 0.75rem;
+  padding: 0.65rem 0.9rem; cursor: pointer;
+  transition: border-color 0.18s, background 0.18s;
+  display: flex; flex-direction: column; gap: 0.1rem;
+  user-select: none; background: var(--bg);
+}
+.std-tile:hover { border-color: var(--orange); }
+.std-tile input[type="checkbox"] { display: none; }
+.std-tile.selected { border-color: var(--orange); background: var(--orange-lt); }
+.std-tile-code { font-size: 0.72rem; font-weight: 800; color: var(--blue); }
+.std-tile-name { font-size: 0.78rem; color: var(--ink); line-height: 1.3; }
+.certified-radios { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.35rem; }
+.certified-radios label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.83rem; cursor: pointer; }
+.certified-radios input[type="radio"] { accent-color: var(--orange); width: 15px; height: 15px; }
 
 @media (max-width: 560px) {
   .form-step-label { display: none; }
@@ -2705,7 +2723,7 @@ cursor:pointer;
 <div class="quote-intro">
 <p class="eyebrow">Tilbud</p>
 <h2>Få et uforpligtende tilbud</h2>
-<p>Vælg virksomhedsstørrelse, relevante standarder og et par praktiske oplysninger. Så vender vi tilbage med et kvalificeret og konkurrencedygtigt tilbud inden for 24 timer på hverdage.</p>
+<p>Vælg de standarder I er interesserede i, fortæl os lidt om jer selv og giv os dine kontaktoplysninger. Så vender vi tilbage med et konkurrencedygtigt tilbud inden for 24 timer på hverdage.</p>
 <div class="price-factors">
 <h3>Hvad påvirker prisen?</h3>
 <ul>
@@ -2726,60 +2744,54 @@ Ring 36 16 36 16
 <form class="quote-form" id="quoteForm" novalidate="">
 <!-- Step indicator -->
 <div aria-hidden="true" class="form-steps">
-<div class="form-step-item active" data-step="1"><span class="form-step-num">1</span><span class="form-step-label">Om jer</span></div>
+<div class="form-step-item active" data-step="1"><span class="form-step-num">1</span><span class="form-step-label">Standarder</span></div>
 <div class="form-step-divider"></div>
-<div class="form-step-item" data-step="2"><span class="form-step-num">2</span><span class="form-step-label">Certificering</span></div>
+<div class="form-step-item" data-step="2"><span class="form-step-num">2</span><span class="form-step-label">Virksomhed</span></div>
 <div class="form-step-divider"></div>
 <div class="form-step-item" data-step="3"><span class="form-step-num">3</span><span class="form-step-label">Kontakt</span></div>
 </div>
-<!-- STEP 1: About company -->
+<!-- STEP 1: Standards -->
 <div class="form-step" data-step-panel="1">
-<div class="form-field">
-<label for="size">Virksomhedsstørrelse</label>
-<select id="size" name="size" required="">
-<option disabled="" selected="" value="">Vælg størrelse…</option>
-<option>1–10 medarbejdere</option>
-<option>11–50 medarbejdere</option>
-<option>51–250 medarbejdere</option>
-<option>250+ medarbejdere</option>
-</select>
-</div>
-<div class="form-row">
-<div class="form-field"><label for="locations">Antal lokationer</label><input id="locations" min="1" name="locations" placeholder="Fx 1" required="" type="number"/></div>
-<div class="form-field"><label for="industry">Branche</label><input id="industry" name="industry" placeholder="Fx produktion, IT…" type="text"/></div>
+<div class="std-tiles" role="group" aria-label="Vælg standarder">
+<label class="std-tile"><input name="standard" type="checkbox" value="ISO 9001"/><span class="std-tile-code">ISO 9001</span><span class="std-tile-name">Kvalitetsledelse</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="ISO 14001"/><span class="std-tile-code">ISO 14001</span><span class="std-tile-name">Miljøledelse</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="ISO 45001"/><span class="std-tile-code">ISO 45001</span><span class="std-tile-name">Arbejdsmiljø</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="ISO/IEC 27001"/><span class="std-tile-code">ISO/IEC 27001</span><span class="std-tile-name">Informationssikkerhed</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="ISO 13485"/><span class="std-tile-code">ISO 13485</span><span class="std-tile-name">Medicinsk udstyr</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="ISO 3834"/><span class="std-tile-code">ISO 3834</span><span class="std-tile-name">Svejsekvalitet</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="DS 49001"/><span class="std-tile-code">DS 49001</span><span class="std-tile-name">Samfundsansvar</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="DS 21001"/><span class="std-tile-code">DS 21001</span><span class="std-tile-name">Jernbanesikkerhed</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="EN 1090-1"/><span class="std-tile-code">EN 1090-1</span><span class="std-tile-name">Stålkonstruktioner</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="Anden standard"/><span class="std-tile-code">Anden</span><span class="std-tile-name">Ved ikke endnu</span></label>
 </div>
 <div class="form-nav">
 <span></span>
 <button class="btn primary form-next" data-next="2" type="button">Næste →</button>
 </div>
 </div>
-<!-- STEP 2: Standards -->
+<!-- STEP 2: Company -->
 <div class="form-step" data-step-panel="2" hidden="">
-<fieldset class="cert-checks">
-<legend>Hvilke standarder er I interesseret i?</legend>
-<div class="checks-grid">
-<label><input name="standard" type="checkbox" value="ISO 9001"/> ISO 9001 – Kvalitet</label>
-<label><input name="standard" type="checkbox" value="ISO 14001"/> ISO 14001 – Miljø</label>
-<label><input name="standard" type="checkbox" value="ISO 45001"/> ISO 45001 – Arbejdsmiljø</label>
-<label><input name="standard" type="checkbox" value="ISO/IEC 27001"/> ISO/IEC 27001 – Info-sikkerhed</label>
-<label><input name="standard" type="checkbox" value="ISO 13485"/> ISO 13485 – Medicinsk udstyr</label>
-<label><input name="standard" type="checkbox" value="DS 49001"/> DS 49001 – Samfundsansvar</label>
-<label><input name="standard" type="checkbox" value="DS 21001"/> DS 21001 – Jernbanesikkerhed</label>
-<label><input name="standard" type="checkbox" value="ISO 3834"/> ISO 3834 – Svejsekvalitet</label>
-<label><input name="standard" type="checkbox" value="EN 1090-1"/> EN 1090-1 – Stålkonstruktioner</label>
-<label><input name="standard" type="checkbox" value="Anden standard"/> Anden / ved ikke endnu</label>
-</div>
-</fieldset>
 <div class="form-field">
-<label for="status">Hvor langt er I i processen?</label>
-<select id="status" name="status">
-<option selected="" value="">Vælg…</option>
-<option>Vi overvejer certificering for første gang</option>
-<option>Vi er i gang med at opbygge ledelsessystem</option>
-<option>Vi er klar til certificering</option>
-<option>Vi skifter fra et andet certificeringsorgan</option>
-<option>Vi skal recertificeres</option>
+<label for="company">Firmanavn</label>
+<input id="company" name="company" placeholder="Fx Nordtech A/S" required="" type="text"/>
+</div>
+<div class="form-field">
+<label for="size">Antal medarbejdere</label>
+<select id="size" name="size" required="">
+<option disabled="" selected="" value="">Vælg…</option>
+<option>1–10 medarbejdere</option>
+<option>11–50 medarbejdere</option>
+<option>51–250 medarbejdere</option>
+<option>250+ medarbejdere</option>
 </select>
+</div>
+<div class="form-field">
+<label>Er virksomheden allerede certificeret?</label>
+<div class="certified-radios">
+<label><input name="certified" type="radio" value="Nej"/> Nej</label>
+<label><input name="certified" type="radio" value="Ja, vi skifter certborg"/> Ja, vi skifter</label>
+<label><input name="certified" type="radio" value="Ja, recertificering"/> Ja, recertificering</label>
+</div>
 </div>
 <div class="form-nav">
 <button class="btn secondary form-prev" data-prev="1" type="button">← Tilbage</button>
@@ -2788,15 +2800,11 @@ Ring 36 16 36 16
 </div>
 <!-- STEP 3: Contact -->
 <div class="form-step" data-step-panel="3" hidden="">
-<div class="form-row">
 <div class="form-field"><label for="name">Navn</label><input id="name" name="name" required="" type="text"/></div>
-<div class="form-field"><label for="company">Virksomhed</label><input id="company" name="company" type="text"/></div>
-</div>
 <div class="form-row">
-<div class="form-field"><label for="email">Email</label><input id="email" name="email" required="" type="email"/></div>
 <div class="form-field"><label for="phone">Telefon</label><input id="phone" name="phone" type="tel"/></div>
+<div class="form-field"><label for="email">Email</label><input id="email" name="email" required="" type="email"/></div>
 </div>
-<div class="form-field"><label for="message">Kommentar (valgfrit)</label><textarea id="message" name="message" placeholder="Fortæl kort om særlige ønsker eller tidshorisont" rows="3"></textarea></div>
 <div class="form-nav">
 <button class="btn secondary form-prev" data-prev="2" type="button">← Tilbage</button>
 <button class="btn primary" type="submit">Send forespørgsel</button>
@@ -2860,30 +2868,33 @@ Ring 36 16 36 16
     });
   });
 
+  // Tile visual selection
+  form.querySelectorAll('.std-tile input[type="checkbox"]').forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      cb.closest('.std-tile').classList.toggle('selected', cb.checked);
+    });
+  });
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var fd = new FormData(form);
     var standards = fd.getAll('standard').join(', ') || 'Ikke valgt';
     gtag('event', 'tilbud_formular_indsendt', {
       'virksomhed_størrelse': fd.get('size') || '',
-      'standarder': standards,
-      'status': fd.get('status') || ''
+      'standarder': standards
     });
     var subject = encodeURIComponent('Tilbudsforespørgsel: ' + (fd.get('company') || fd.get('name') || ''));
     var body = encodeURIComponent(
-      'OM JER\n' +
-      'Virksomhed: ' + (fd.get('company') || '') + '\n' +
-      'Størrelse: ' + (fd.get('size') || '') + '\n' +
-      'Antal lokationer: ' + (fd.get('locations') || '') + '\n' +
-      'Branche: ' + (fd.get('industry') || '') + '\n\n' +
-      'CERTIFICERING\n' +
-      'Standarder: ' + standards + '\n' +
-      'Status: ' + (fd.get('status') || '') + '\n\n' +
+      'STANDARDER\n' +
+      'Ønskede standarder: ' + standards + '\n\n' +
+      'VIRKSOMHED\n' +
+      'Firmanavn: ' + (fd.get('company') || '') + '\n' +
+      'Antal medarbejdere: ' + (fd.get('size') || '') + '\n' +
+      'Allerede certificeret: ' + (fd.get('certified') || '') + '\n\n' +
       'KONTAKT\n' +
       'Navn: ' + (fd.get('name') || '') + '\n' +
-      'Email: ' + (fd.get('email') || '') + '\n' +
-      'Telefon: ' + (fd.get('phone') || '') + '\n\n' +
-      'KOMMENTAR\n' + (fd.get('message') || '')
+      'Telefon: ' + (fd.get('phone') || '') + '\n' +
+      'Email: ' + (fd.get('email') || '')
     );
     window.location.href = 'mailto:info@avancert.dk?subject=' + subject + '&body=' + body;
   });

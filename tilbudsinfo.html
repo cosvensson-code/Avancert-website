@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tilbudsinfo – Avancert</title>
+<meta name="robots" content="noindex, nofollow"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue: #01506d;
+    --blue-lt: #e8f4f8;
+    --orange: #FF6A3F;
+    --orange-lt: #fff2ed;
+    --ink: #1a2332;
+    --muted: #6b7a8d;
+    --bg: #f7f9fb;
+    --line: #dde4ec;
+    --radius: 0.875rem;
+  }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg); color: var(--ink);
+    line-height: 1.6; font-size: 16px;
+  }
+  header {
+    background: var(--blue);
+    padding: 1.25rem clamp(1.25rem, 5vw, 3rem);
+    display: flex; align-items: center; gap: 1rem;
+  }
+  header img { height: 36px; }
+  header span {
+    color: rgba(255,255,255,0.55); font-size: 0.85rem; border-left: 1px solid rgba(255,255,255,0.2);
+    padding-left: 1rem; margin-left: 0.25rem;
+  }
+  .page {
+    max-width: 680px; margin: 0 auto;
+    padding: 2.5rem clamp(1.25rem, 4vw, 2rem) 4rem;
+  }
+  .intro {
+    background: var(--blue); color: #fff;
+    border-radius: var(--radius); padding: 1.5rem 1.75rem; margin-bottom: 2rem;
+  }
+  .intro h1 { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .intro p { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.65; }
+  .card {
+    background: #fff; border: 1.5px solid var(--line);
+    border-radius: var(--radius); padding: 1.5rem 1.75rem; margin-bottom: 1.25rem;
+    box-shadow: 0 4px 20px rgba(1,80,109,0.05);
+  }
+  .card-title {
+    font-size: 0.72rem; font-weight: 800; color: var(--blue);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 1rem; padding-bottom: 0.6rem;
+    border-bottom: 1.5px solid var(--line);
+  }
+  .form-field { display: grid; gap: 0.35rem; margin-bottom: 0.85rem; }
+  .form-field:last-child { margin-bottom: 0; }
+  .form-field label { font-size: 0.78rem; font-weight: 700; color: var(--blue); }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    font-family: inherit; font-size: 0.9rem;
+    border: 1.5px solid var(--line); border-radius: 0.65rem;
+    padding: 0.65rem 0.85rem; background: var(--bg);
+    color: var(--ink); width: 100%; outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,106,63,0.13);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .checks-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; margin-top: 0.1rem;
+  }
+  .checks-grid label {
+    display: flex; align-items: center; gap: 0.45rem;
+    font-size: 0.83rem; cursor: pointer;
+  }
+  .checks-grid input[type="checkbox"] {
+    accent-color: var(--orange); width: 15px; height: 15px; flex-shrink: 0;
+  }
+  .radio-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.25rem; }
+  .radio-group label {
+    display: flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; cursor: pointer;
+  }
+  .radio-group input[type="radio"] { accent-color: var(--orange); width: 15px; height: 15px; }
+  .helper { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; }
+  .submit-area { margin-top: 1.75rem; text-align: center; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 0.5rem; padding: 0.875rem 2.25rem;
+    font-family: inherit; font-size: 0.95rem; font-weight: 700;
+    border-radius: 999px; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    background: var(--orange); color: #fff; text-decoration: none;
+  }
+  .btn:hover { background: #e0532e; transform: translateY(-1px); }
+  .submit-note {
+    font-size: 0.78rem; color: var(--muted); margin-top: 0.85rem; line-height: 1.5;
+  }
+  @media (max-width: 520px) {
+    .form-row, .checks-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <img alt="Avancert" src="images/avancert-logo-white.svg"/>
+  <span>Tilbudsinfo</span>
+</header>
+
+<div class="page">
+
+  <div class="intro">
+    <h1>Tilbudsinfo</h1>
+    <p>For at give jer et præcist og konkurrencedygtigt tilbud beder vi om nedenstående oplysninger. Siden er privat og deles kun med jer personligt.</p>
+  </div>
+
+  <form id="intakeForm" novalidate="">
+
+    <!-- VIRKSOMHEDSOPLYSNINGER -->
+    <div class="card">
+      <p class="card-title">Virksomhedsoplysninger</p>
+      <div class="form-row">
+        <div class="form-field"><label for="firmanavn">Firmanavn *</label><input id="firmanavn" name="firmanavn" required="" type="text"/></div>
+        <div class="form-field"><label for="cvr">CVR. Nr.</label><input id="cvr" name="cvr" placeholder="Fx 12345678" type="text"/></div>
+      </div>
+      <div class="form-field"><label for="kontakt">Kontaktperson *</label><input id="kontakt" name="kontakt" required="" type="text"/></div>
+      <div class="form-row">
+        <div class="form-field"><label for="telefon">Telefonnummer *</label><input id="telefon" name="telefon" required="" type="tel"/></div>
+        <div class="form-field"><label for="email">E-mail *</label><input id="email" name="email" required="" type="email"/></div>
+      </div>
+      <div class="form-field"><label for="vejnavn">Vejnavn og nr.</label><input id="vejnavn" name="vejnavn" type="text"/></div>
+      <div class="form-row">
+        <div class="form-field"><label for="postnr">Postnummer</label><input id="postnr" name="postnr" type="text"/></div>
+        <div class="form-field"><label for="by">By</label><input id="by" name="by" type="text"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label for="website">Hjemmeside</label><input id="website" name="website" placeholder="www.virksomhed.dk" type="text"/></div>
+        <div class="form-field"><label for="medarbejdere">Antal medarbejdere (total)</label><input id="medarbejdere" name="medarbejdere" placeholder="Fx 45" type="text"/></div>
+      </div>
+    </div>
+
+    <!-- STANDARDER -->
+    <div class="card">
+      <p class="card-title">Ønskede standarder</p>
+      <div class="checks-grid">
+        <label><input name="standard" type="checkbox" value="ISO 9001"/> ISO 9001 – Kvalitet</label>
+        <label><input name="standard" type="checkbox" value="ISO 14001"/> ISO 14001 – Miljø</label>
+        <label><input name="standard" type="checkbox" value="ISO 45001"/> ISO 45001 – Arbejdsmiljø</label>
+        <label><input name="standard" type="checkbox" value="ISO 13485"/> ISO 13485 – Medicinsk udstyr</label>
+        <label><input name="standard" type="checkbox" value="ISO/IEC 27001"/> ISO/IEC 27001 – IT-sikkerhed</label>
+        <label><input name="standard" type="checkbox" value="ISO 3834"/> ISO 3834 – Svejse</label>
+        <label><input name="standard" type="checkbox" value="DS 21001"/> DS 21001 – Jernbanesikkerhed</label>
+        <label><input name="standard" type="checkbox" value="DS 49001"/> DS 49001 – CSR</label>
+        <label><input name="standard" type="checkbox" value="EN 1090-1"/> EN 1090-1</label>
+      </div>
+      <div class="form-field" style="margin-top:0.85rem;">
+        <label for="andre_std">Andre standarder / bemærkninger</label>
+        <input id="andre_std" name="andre_std" placeholder="Angiv evt. andre standarder" type="text"/>
+      </div>
+    </div>
+
+    <!-- EKSTRA LOKATIONER -->
+    <div class="card">
+      <p class="card-title">Ekstra lokationer</p>
+      <div class="form-field">
+        <label for="lokationer">Har virksomheden lokationer udover hovedkontoret?</label>
+        <textarea id="lokationer" name="lokationer" placeholder="Adresse, antal medarbejdere, evt. antal skift — én linje per lokation" rows="4"></textarea>
+        <p class="helper">Skriv ikke hovedkontoret her. Eks: Fabriksvej 10, 8000 Aarhus — 20 medarbejdere</p>
+      </div>
+    </div>
+
+    <!-- NUVÆRENDE CERTIFICERING -->
+    <div class="card">
+      <p class="card-title">Nuværende certificering</p>
+      <div class="form-field">
+        <label>Er virksomheden allerede certificeret?</label>
+        <div class="radio-group">
+          <label><input name="allerede_cert" type="radio" value="Ja"/> Ja</label>
+          <label><input name="allerede_cert" type="radio" value="Nej"/> Nej</label>
+          <label><input name="allerede_cert" type="radio" value="Ved ikke"/> Ved ikke</label>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="nuv_standarder">Hvis ja — angiv standarder, udløbsdato og om I ønsker overdragelse til Avancert</label>
+        <textarea id="nuv_standarder" name="nuv_standarder" placeholder="Fx: ISO 9001, udløber 01-03-2027, ønsker overdragelse" rows="3"></textarea>
+      </div>
+      <div class="form-field">
+        <label for="konsulent">Bruger I en konsulentvirksomhed til opbygning af ledelsessystemet?</label>
+        <input id="konsulent" name="konsulent" placeholder="Angiv navn på konsulentvirksomhed, hvis relevant" type="text"/>
+      </div>
+    </div>
+
+    <!-- OM VIRKSOMHEDEN -->
+    <div class="card">
+      <p class="card-title">Om virksomheden</p>
+      <div class="form-field">
+        <label for="hvad_laver">Hvad laver virksomheden?</label>
+        <textarea id="hvad_laver" name="hvad_laver" placeholder="Beskriv kort virksomhedens aktiviteter og produkter/ydelser" rows="4"></textarea>
+      </div>
+      <div class="form-field">
+        <label for="funktioner">Medarbejdere fordelt på funktioner</label>
+        <textarea id="funktioner" name="funktioner" placeholder="Eks: CEO 1, Økonomi 3, Produktion 20, Lærlinge 8 — I alt 32" rows="4"></textarea>
+      </div>
+      <div class="form-field">
+        <label for="outsourcing">Outsourcede processer</label>
+        <textarea id="outsourcing" name="outsourcing" placeholder="Beskriv evt. outsourcede processer, fx overfladebehandling, svejsning o.l." rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="submit-area">
+      <button class="btn" type="submit">Send oplysninger til Avancert</button>
+      <p class="submit-note">Formularen åbner dit e-mailprogram med alle oplysningerne klar til afsendelse.<br/>Dine oplysninger behandles fortroligt og gemmes i overensstemmelse med gældende lovgivning.</p>
+    </div>
+
+  </form>
+</div>
+
+<script>
+(function(){
+  var form = document.getElementById('intakeForm');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var fd = new FormData(form);
+    var standards = fd.getAll('standard').join(', ') || 'Ingen markeret';
+
+    var subject = encodeURIComponent('Tilbudsinfo: ' + (fd.get('firmanavn') || ''));
+    var body = encodeURIComponent(
+      '=== VIRKSOMHEDSOPLYSNINGER ===\n' +
+      'Firmanavn: ' + (fd.get('firmanavn') || '') + '\n' +
+      'CVR. Nr.: ' + (fd.get('cvr') || '') + '\n' +
+      'Kontaktperson: ' + (fd.get('kontakt') || '') + '\n' +
+      'Telefon: ' + (fd.get('telefon') || '') + '\n' +
+      'E-mail: ' + (fd.get('email') || '') + '\n' +
+      'Adresse: ' + (fd.get('vejnavn') || '') + ', ' + (fd.get('postnr') || '') + ' ' + (fd.get('by') || '') + '\n' +
+      'Hjemmeside: ' + (fd.get('website') || '') + '\n' +
+      'Antal medarbejdere: ' + (fd.get('medarbejdere') || '') + '\n\n' +
+      '=== ØNSKEDE STANDARDER ===\n' +
+      standards + '\n' +
+      (fd.get('andre_std') ? 'Andre: ' + fd.get('andre_std') + '\n' : '') + '\n' +
+      '=== EKSTRA LOKATIONER ===\n' +
+      (fd.get('lokationer') || 'Ingen') + '\n\n' +
+      '=== NUVÆRENDE CERTIFICERING ===\n' +
+      'Allerede certificeret: ' + (fd.get('allerede_cert') || '') + '\n' +
+      'Nuværende standarder/udløb/overdragelse: ' + (fd.get('nuv_standarder') || '') + '\n' +
+      'Konsulentvirksomhed: ' + (fd.get('konsulent') || '') + '\n\n' +
+      '=== OM VIRKSOMHEDEN ===\n' +
+      'Hvad laver virksomheden:\n' + (fd.get('hvad_laver') || '') + '\n\n' +
+      'Medarbejdere fordelt på funktioner:\n' + (fd.get('funktioner') || '') + '\n\n' +
+      'Outsourcede processer:\n' + (fd.get('outsourcing') || '')
+    );
+
+    window.location.href = 'mailto:info@avancert.dk?subject=' + subject + '&body=' + body;
+  });
+})();
+</script>
+</body>
+</html>
