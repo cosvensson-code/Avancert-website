@@ -2733,44 +2733,18 @@ cursor:pointer;
 <li>Kompleksitet og branchekrav</li>
 </ul>
 </div>
-<div class="quote-callback">
-<p class="quote-callback-label">Foretrækker du at tale med en auditor direkte?</p>
-<a class="quote-callback-link" href="tel:+4536163616">
-<svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-Ring 36 16 36 16
-</a>
-</div>
 </div>
 <form class="quote-form" id="quoteForm" novalidate="">
 <!-- Step indicator -->
 <div aria-hidden="true" class="form-steps">
-<div class="form-step-item active" data-step="1"><span class="form-step-num">1</span><span class="form-step-label">Standarder</span></div>
+<div class="form-step-item active" data-step="1"><span class="form-step-num">1</span><span class="form-step-label">Virksomhed</span></div>
 <div class="form-step-divider"></div>
-<div class="form-step-item" data-step="2"><span class="form-step-num">2</span><span class="form-step-label">Virksomhed</span></div>
+<div class="form-step-item" data-step="2"><span class="form-step-num">2</span><span class="form-step-label">Standarder</span></div>
 <div class="form-step-divider"></div>
 <div class="form-step-item" data-step="3"><span class="form-step-num">3</span><span class="form-step-label">Kontakt</span></div>
 </div>
-<!-- STEP 1: Standards -->
+<!-- STEP 1: Company -->
 <div class="form-step" data-step-panel="1">
-<div class="std-tiles" role="group" aria-label="Vælg standarder">
-<label class="std-tile"><input name="standard" type="checkbox" value="ISO 9001"/><span class="std-tile-code">ISO 9001</span><span class="std-tile-name">Kvalitetsledelse</span></label>
-<label class="std-tile"><input name="standard" type="checkbox" value="ISO 14001"/><span class="std-tile-code">ISO 14001</span><span class="std-tile-name">Miljøledelse</span></label>
-<label class="std-tile"><input name="standard" type="checkbox" value="ISO 45001"/><span class="std-tile-code">ISO 45001</span><span class="std-tile-name">Arbejdsmiljø</span></label>
-<label class="std-tile"><input name="standard" type="checkbox" value="ISO/IEC 27001"/><span class="std-tile-code">ISO/IEC 27001</span><span class="std-tile-name">Informationssikkerhed</span></label>
-<label class="std-tile"><input name="standard" type="checkbox" value="ISO 13485"/><span class="std-tile-code">ISO 13485</span><span class="std-tile-name">Medicinsk udstyr</span></label>
-<label class="std-tile"><input name="standard" type="checkbox" value="ISO 3834"/><span class="std-tile-code">ISO 3834</span><span class="std-tile-name">Svejsekvalitet</span></label>
-<label class="std-tile"><input name="standard" type="checkbox" value="DS 49001"/><span class="std-tile-code">DS 49001</span><span class="std-tile-name">Samfundsansvar</span></label>
-<label class="std-tile"><input name="standard" type="checkbox" value="DS 21001"/><span class="std-tile-code">DS 21001</span><span class="std-tile-name">Jernbanesikkerhed</span></label>
-<label class="std-tile"><input name="standard" type="checkbox" value="EN 1090-1"/><span class="std-tile-code">EN 1090-1</span><span class="std-tile-name">Stålkonstruktioner</span></label>
-<label class="std-tile"><input name="standard" type="checkbox" value="Anden standard"/><span class="std-tile-code">Anden</span><span class="std-tile-name">Ved ikke endnu</span></label>
-</div>
-<div class="form-nav">
-<span></span>
-<button class="btn primary form-next" data-next="2" type="button">Næste →</button>
-</div>
-</div>
-<!-- STEP 2: Company -->
-<div class="form-step" data-step-panel="2" hidden="">
 <div class="form-field">
 <label for="company">Firmanavn</label>
 <input id="company" name="company" placeholder="Fx Nordtech A/S" required="" type="text"/>
@@ -2794,6 +2768,25 @@ Ring 36 16 36 16
 </div>
 </div>
 <div class="form-nav">
+<span></span>
+<button class="btn primary form-next" data-next="2" type="button">Næste →</button>
+</div>
+</div>
+<!-- STEP 2: Standards -->
+<div class="form-step" data-step-panel="2" hidden="">
+<div class="std-tiles" role="group" aria-label="Vælg standarder">
+<label class="std-tile"><input name="standard" type="checkbox" value="ISO 9001"/><span class="std-tile-code">ISO 9001</span><span class="std-tile-name">Kvalitetsledelse</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="ISO 14001"/><span class="std-tile-code">ISO 14001</span><span class="std-tile-name">Miljøledelse</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="ISO 45001"/><span class="std-tile-code">ISO 45001</span><span class="std-tile-name">Arbejdsmiljø</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="ISO/IEC 27001"/><span class="std-tile-code">ISO/IEC 27001</span><span class="std-tile-name">Informationssikkerhed</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="ISO 13485"/><span class="std-tile-code">ISO 13485</span><span class="std-tile-name">Medicinsk udstyr</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="ISO 3834"/><span class="std-tile-code">ISO 3834</span><span class="std-tile-name">Svejsekvalitet</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="DS 49001"/><span class="std-tile-code">DS 49001</span><span class="std-tile-name">Samfundsansvar</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="DS 21001"/><span class="std-tile-code">DS 21001</span><span class="std-tile-name">Jernbanesikkerhed</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="EN 1090-1"/><span class="std-tile-code">EN 1090-1</span><span class="std-tile-name">Stålkonstruktioner</span></label>
+<label class="std-tile"><input name="standard" type="checkbox" value="Anden standard"/><span class="std-tile-code">Anden</span><span class="std-tile-name">Ved ikke endnu</span></label>
+</div>
+<div class="form-nav">
 <button class="btn secondary form-prev" data-prev="1" type="button">← Tilbage</button>
 <button class="btn primary form-next" data-next="3" type="button">Næste →</button>
 </div>
@@ -2812,6 +2805,13 @@ Ring 36 16 36 16
 <p class="form-note">Vi vender tilbage inden for 24 timer på hverdage. Dine oplysninger behandles fortroligt.</p>
 </div>
 </form>
+<div class="quote-callback" style="grid-column: 1 / -1; margin-top: 1.5rem;">
+<p class="quote-callback-label">Foretrækker du at tale med en auditor direkte?</p>
+<a class="quote-callback-link" href="tel:+4536163616">
+<svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+Ring 36 16 36 16
+</a>
+</div>
 </div>
 </section>
 <script>
@@ -3084,6 +3084,7 @@ Ring 36 16 36 16
 <p>Indsamlede personoplysninger fra kunder og partnere kan indeholde navn, telefonnummer og e-mailadresse. Såfremt der er krav i certificeringsgrundlaget, kan fødselsdato være registreret.</p>
 <p>Oplysninger, der sendes til os ved ønske om tilbud, gemmes i overensstemmelse med akkrediteringskrav og lovmæssige krav.</p>
 <p>Oplysninger videregives ikke til tredjeparter, medmindre det er et akkrediterings- eller myndighedskrav.</p>
+<p>Interesserede parter kan til enhver tid rette henvendelse til Avancert for at få oplyst certificeringsstatus for en virksomhed, der er eller har været certificeret af Avancert. Kontakt os på <a href="mailto:info@avancert.dk" style="color:var(--orange);">info@avancert.dk</a> eller ring 36 16 36 16.</p>
 <p><strong>Ved at benytte formularer på hjemmesiden giver du dit samtykke til disse vilkår.</strong></p>
 </div>
 </div>
