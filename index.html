@@ -2248,28 +2248,42 @@ main, section, header, footer {
     .cert-logo-card, .team-card.avancert-popup-trigger { cursor: pointer; }
 
     /* ─── STAT BAR ─── */
-    .stat-bar-wrap { background: var(--blue); }
+    .stat-bar-wrap {
+      background: #fff;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
     .stat-bar {
       max-width: 1300px; margin: 0 auto;
-      padding: 1.25rem clamp(1.25rem, 5vw, 4.5rem);
+      padding: 0 clamp(1.25rem, 5vw, 4.5rem);
       display: grid; grid-template-columns: repeat(4, 1fr);
     }
     .stat-bar-item {
-      text-align: center; padding: 1.1rem 1rem;
-      border-right: 1px solid rgba(255,255,255,0.1);
+      text-align: center; padding: 0.85rem 1rem;
+      border-right: 1px solid var(--line);
     }
     .stat-bar-item:last-child { border-right: none; }
     .stat-bar-num {
-      display: block; font-size: clamp(1.4rem, 2vw, 1.85rem);
-      font-weight: 800; color: #fff; letter-spacing: -0.04em; line-height: 1;
-      margin-bottom: 0.3rem;
+      display: block; font-size: clamp(1.1rem, 1.5vw, 1.45rem);
+      font-weight: 800; color: var(--blue); letter-spacing: -0.03em; line-height: 1;
+      margin-bottom: 0.25rem;
     }
-    .stat-bar-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); line-height: 1.45; }
+    .stat-bar-label { font-size: 0.7rem; color: var(--muted); line-height: 1.4; }
+    .stat-bar-cta {
+      display: block; font-size: clamp(0.85rem, 1.1vw, 1rem);
+      font-weight: 800; color: var(--orange); letter-spacing: -0.02em; line-height: 1;
+      text-decoration: none; margin-bottom: 0.25rem;
+      transition: color 0.2s;
+    }
+    .stat-bar-cta:hover { color: var(--orange-dk); }
 
-    /* ─── HERO TIMELINE ─── */
+    /* ─── HERO CHECKLIST ─── */
+    .hero-checklist {
+      display: flex; flex-direction: column; gap: 0.45rem;
+      margin-bottom: 1.75rem;
+    }
     .hero-timeline {
       font-size: 0.875rem; color: var(--muted);
-      margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.45rem;
+      display: flex; align-items: center; gap: 0.45rem; margin-bottom: 0;
     }
     .hero-tl-check { color: var(--orange); font-weight: 900; flex-shrink: 0; font-size: 1rem; }
 
@@ -2442,22 +2456,26 @@ cursor:pointer;
 <div class="hero-left">
 <h1>Certificering<br/><span class="hl">gjort enkelt.</span></h1>
 <p class="hero-copy">Avancert er et familieejet certificeringsselskab der leverer professionelle, uvildige og værdiskabende audits. Vi arbejder udelukkende med certificering og tilbyder hverken rådgivning eller undervisning. Det sikrer en uafhængig proces med fokus på faglighed, tillid og tæt dialog gennem hele forløbet.</p>
-<p class="hero-timeline"><span class="hero-tl-check">✓</span> De fleste virksomheder er certificeret inden for 3–6 måneder</p>
+<div class="hero-checklist">
+              <p class="hero-timeline"><span class="hero-tl-check">✓</span> Nemt og overskueligt — vi guider jer hele vejen</p>
+              <p class="hero-timeline"><span class="hero-tl-check">✓</span> Uforpligtende tilbud inden for én hverdag</p>
+              <p class="hero-timeline"><span class="hero-tl-check">✓</span> De fleste virksomheder er certificeret inden for 3–6 måneder</p>
+            </div>
 <div class="hero-actions">
 <a class="btn primary" href="#tilbud">Tag en uforpligtende snak med en af vores auditorer</a>
 <a class="btn secondary" href="mailto:info@avancert.dk">Skriv til os</a>
 </div>
 </div>
 <div class="hero-panel">
-<div><span class="stat">2.000+</span><span class="label">Audits gennemført på tværs af alle vores standarder og brancher</span></div>
-<div><span class="stat text-stat">Uvildig certificering</span><span class="label">Professionel certificering med forståelse for jeres virksomhed</span></div>
-<div><span class="stat text-stat">Praktisk tilgang</span><span class="label">Effektive audits uden unødigt bureaukrati</span></div>
+<div><span class="stat">2.000+</span><span class="label">Audits gennemført på tværs af alle vores standarder og brancher.</span></div>
+<div><span class="stat text-stat">Uvildig certificering</span><span class="label">Professionel certificering med forståelse for jeres virksomhed.</span></div>
+<div><span class="stat text-stat">Praktisk tilgang</span><span class="label">Effektive audits uden unødigt bureaukrati.</span></div>
 </div>
 </section>
 <!-- STAT BAR -->
 <div class="stat-bar-wrap">
 <div class="stat-bar">
-<div class="stat-bar-item"><span class="stat-bar-num">24t</span><span class="stat-bar-label">Tilbud inden for én hverdag</span></div>
+<div class="stat-bar-item"><a href="#tilbud" class="stat-bar-cta">Få et uforpligtende tilbud →</a><span class="stat-bar-label">Svar inden for én hverdag.</span></div>
 <div class="stat-bar-item"><span class="stat-bar-num">8+</span><span class="stat-bar-label">Lande med gennemførte audits</span></div>
 <div class="stat-bar-item"><span class="stat-bar-num">100%</span><span class="stat-bar-label">Uvildig — ingen rådgivning eller undervisning</span></div>
 <div class="stat-bar-item"><span class="stat-bar-num">SWEDAC</span><span class="stat-bar-label">Akkrediteret certificeringsorgan via A3Cert</span></div>
