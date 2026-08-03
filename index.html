@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <!-- Avancert hjemmeside - ren HTML/CSS/JS version til lokal test og videre redigering -->
 <html lang="da">
@@ -2246,6 +2246,87 @@ main, section, header, footer {
 
 
     .cert-logo-card, .team-card.avancert-popup-trigger { cursor: pointer; }
+
+    /* ─── STAT BAR ─── */
+    .stat-bar-wrap { background: var(--blue); }
+    .stat-bar {
+      max-width: 1300px; margin: 0 auto;
+      padding: 1.25rem clamp(1.25rem, 5vw, 4.5rem);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-bar-item {
+      text-align: center; padding: 1.1rem 1rem;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-bar-item:last-child { border-right: none; }
+    .stat-bar-num {
+      display: block; font-size: clamp(1.4rem, 2vw, 1.85rem);
+      font-weight: 800; color: #fff; letter-spacing: -0.04em; line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-bar-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); line-height: 1.45; }
+
+    /* ─── HERO TIMELINE ─── */
+    .hero-timeline {
+      font-size: 0.875rem; color: var(--muted);
+      margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.45rem;
+    }
+    .hero-tl-check { color: var(--orange); font-weight: 900; flex-shrink: 0; font-size: 1rem; }
+
+    /* ─── TESTIMONIAL CARDS ─── */
+    .section-bg-blue { background: var(--blue); }
+    .section-bg-white { background: #fff; }
+    .testimonials-section {
+      max-width: 1300px; margin: 0 auto;
+      padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 5vw, 4.5rem);
+    }
+    .section-bg-blue .eyebrow { color: rgba(255,255,255,0.55); }
+    .section-bg-blue .eyebrow::before { background: rgba(255,255,255,0.35); }
+    .testimonials-section h2 { color: #fff; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.11);
+      border-radius: 1.5rem; padding: 1.75rem;
+      display: flex; flex-direction: column;
+    }
+    .testimonial-quote {
+      font-size: clamp(0.88rem, 1.05vw, 0.97rem); font-style: italic;
+      color: rgba(255,255,255,0.88); line-height: 1.7; flex: 1; margin-bottom: 1.25rem;
+    }
+    .testimonial-footer {
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: auto;
+    }
+    .testimonial-name { font-size: 0.875rem; font-weight: 700; color: #fff; margin-bottom: 0.15rem; }
+    .testimonial-role { font-size: 0.72rem; color: rgba(255,255,255,0.5); }
+
+    /* ─── STICKY CTA ─── */
+    .sticky-cta {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200;
+      background: var(--orange); color: #fff;
+      padding: 0.875rem 1.75rem; border-radius: 999px;
+      font-family: inherit; font-size: 0.95rem; font-weight: 700;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem;
+      box-shadow: 0 8px 28px rgba(254,106,63,0.4);
+      opacity: 0; transform: translateY(0.75rem); pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+    }
+    .sticky-cta.visible { opacity: 1; transform: none; pointer-events: auto; }
+    .sticky-cta:hover { background: var(--orange-dk); }
+
+    @media (max-width: 640px) {
+      .stat-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat-bar-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .stat-bar-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.1); }
+      .stat-bar-item:last-child, .stat-bar-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .sticky-cta { bottom: 1rem; right: 1rem; padding: 0.75rem 1.25rem; font-size: 0.875rem; }
+    }
+    @media (min-width: 641px) and (max-width: 960px) {
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    }
 </style>
 <style>
 .modal-overlay{
@@ -2361,6 +2442,7 @@ cursor:pointer;
 <div class="hero-left">
 <h1>Certificering<br/><span class="hl">gjort enkelt.</span></h1>
 <p class="hero-copy">Avancert er et familieejet certificeringsselskab der leverer professionelle, uvildige og værdiskabende audits. Vi arbejder udelukkende med certificering og tilbyder hverken rådgivning eller undervisning. Det sikrer en uafhængig proces med fokus på faglighed, tillid og tæt dialog gennem hele forløbet.</p>
+<p class="hero-timeline"><span class="hero-tl-check">✓</span> De fleste virksomheder er certificeret inden for 3–6 måneder</p>
 <div class="hero-actions">
 <a class="btn primary" href="#tilbud">Tag en uforpligtende snak med en af vores auditorer</a>
 <a class="btn secondary" href="mailto:info@avancert.dk">Skriv til os</a>
@@ -2372,59 +2454,47 @@ cursor:pointer;
 <div><span class="stat text-stat">Praktisk tilgang</span><span class="label">Effektive audits uden unødigt bureaukrati</span></div>
 </div>
 </section>
+<!-- STAT BAR -->
+<div class="stat-bar-wrap">
+<div class="stat-bar">
+<div class="stat-bar-item"><span class="stat-bar-num">24t</span><span class="stat-bar-label">Tilbud inden for én hverdag</span></div>
+<div class="stat-bar-item"><span class="stat-bar-num">8+</span><span class="stat-bar-label">Lande med gennemførte audits</span></div>
+<div class="stat-bar-item"><span class="stat-bar-num">100%</span><span class="stat-bar-label">Uvildig — ingen rådgivning eller undervisning</span></div>
+<div class="stat-bar-item"><span class="stat-bar-num">SWEDAC</span><span class="stat-bar-label">Akkrediteret certificeringsorgan via A3Cert</span></div>
+</div>
+</div>
 <!-- TESTIMONIALS -->
-<section class="section testimonials-section">
+<div class="section-bg-blue">
+<section class="testimonials-section">
 <p class="eyebrow">Kunderne siger</p>
-<div class="t-band">
-<p id="testimonialText"></p>
-<span id="testimonialMeta"></span>
-<div class="t-dots" id="tDots"></div>
+<h2>Hvad vores kunder siger</h2>
+<div class="testimonials-grid">
+<div class="testimonial-card">
+<p class="testimonial-quote">&ldquo;Det var en positiv oplevelse at blive auditeret for første gang. Vi havde en god og konstruktiv dialog med Avancert om vores system.&rdquo;</p>
+<div class="testimonial-footer">
+<p class="testimonial-name">Jan Rønnebech Jørgensen</p>
+<p class="testimonial-role">CEO, Nordtech Vetec</p>
+</div>
+</div>
+<div class="testimonial-card">
+<p class="testimonial-quote">&ldquo;Avancert er en professionel og pålidelig partner, der arbejder effektivt og med en rigtig god kommunikation på alle niveauer.&rdquo;</p>
+<div class="testimonial-footer">
+<p class="testimonial-name">Carsten Christensen</p>
+<p class="testimonial-role">Produktionschef, Dansk Scanning</p>
+</div>
+</div>
+<div class="testimonial-card">
+<p class="testimonial-quote">&ldquo;Avancert bidrager ikke kun med selve auditprocessen, men også med værdifuld sparring og indsigt, som styrker vores arbejde med kvalitetsledelse.&rdquo;</p>
+<div class="testimonial-footer">
+<p class="testimonial-name">CeramicSpeed</p>
+<p class="testimonial-role">Kunder siden 2022</p>
+</div>
+</div>
 </div>
 </section>
-<script>
-(function(){
-  var quotes = [
-    { text: "Det var en positiv oplevelse at blive auditeret for første gang. Vi havde en god og konstruktiv dialog med Avancert om vores system.", name: "— Jan Rønnebech Jørgensen", role: "CEO, Nordtech Vetec" },
-    { text: "Avancert er en professionel og pålidelig partner, der arbejder effektivt og med en rigtig god kommunikation på alle niveauer.", name: "— Carsten Christensen", role: "Produktionschef, Dansk Scanning" },
-    { text: "Vi har i Albertslund Kommune haft fornøjelsen af både en trin 1-audit og en certificeringsaudit med Avancert.", name: "— Andreas Hedeby Jensen", role: "Projektleder, Albertslund Kommune" },
-    { text: "Avancert bidrager ikke kun med selve auditprocessen, men også med værdifuld sparring og indsigt, som styrker vores arbejde med kvalitetsledelse.", name: "— CeramicSpeed", role: "" }
-  ];
-  var current = 0;
-  var textEl = document.getElementById('testimonialText');
-  var metaEl = document.getElementById('testimonialMeta');
-  var dotsEl = document.getElementById('tDots');
-
-  function buildDots() {
-    dotsEl.innerHTML = '';
-    quotes.forEach(function(_, i) {
-      var d = document.createElement('span');
-      d.className = 't-dot' + (i === 0 ? ' active' : '');
-      d.addEventListener('click', function(){ show(i); });
-      dotsEl.appendChild(d);
-    });
-  }
-
-  function show(idx) {
-    textEl.style.opacity = '0';
-    metaEl.style.opacity = '0';
-    setTimeout(function(){
-      current = idx;
-      textEl.innerText = '\u201C' + quotes[idx].text + '\u201D';
-      metaEl.innerHTML = '<span style="opacity:0.55;font-size:0.85em;">' + quotes[idx].name + '</span>' + (quotes[idx].role ? '<br><strong>' + quotes[idx].role + '</strong>' : '');
-      textEl.style.opacity = '1';
-      metaEl.style.opacity = '1';
-      dotsEl.querySelectorAll('.t-dot').forEach(function(d, i){ d.classList.toggle('active', i === idx); });
-    }, 280);
-  }
-
-  textEl.style.transition = 'opacity 0.28s ease';
-  metaEl.style.transition = 'opacity 0.28s ease';
-  buildDots();
-  show(0);
-  setInterval(function(){ show((current + 1) % quotes.length); }, 7000);
-})();
-</script>
+</div>
 <!-- KUNDER -->
+<div class="section-bg-white">
 <section class="section logo-section" id="kunder">
 <p class="eyebrow">Erfaring</p>
 <h2>Et udvalg af virksomheder vi har auditeret</h2>
@@ -2455,6 +2525,7 @@ cursor:pointer;
 </div>
 </div>
 </section>
+</div>
 <!-- CERTIFICERINGER -->
 <section class="section" id="certificeringer">
 <p class="eyebrow">Standarder</p>
@@ -3418,6 +3489,19 @@ if (complaintForm) {
     localStorage.setItem('avancert_cookies', 'declined');
     document.getElementById('cookieBanner').style.display = 'none';
   }
+</script>
+<!-- STICKY CTA -->
+<a class="sticky-cta" href="#tilbud" id="stickyCta">Få et tilbud →</a>
+<script>
+(function(){
+  var hero = document.querySelector('.hero');
+  var btn = document.getElementById('stickyCta');
+  if (!hero || !btn) return;
+  var io = new IntersectionObserver(function(entries){
+    btn.classList.toggle('visible', !entries[0].isIntersecting);
+  }, { threshold: 0 });
+  io.observe(hero);
+})();
 </script>
 </body>
 </html>
