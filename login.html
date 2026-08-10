@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log ind — Avancert</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#f5f3ee;display:flex;align-items:center;justify-content:center;min-height:100vh}
+.card{background:#fff;border-radius:18px;padding:2.5rem;width:100%;max-width:380px;box-shadow:0 4px 28px rgba(1,80,109,.1)}
+.logo{color:#01506d;font-size:1.4rem;font-weight:800;letter-spacing:-.02em;margin-bottom:1.75rem}
+h1{font-size:1.1rem;color:#0c1e28;margin-bottom:1.5rem;font-weight:600}
+label{display:block;font-size:.82rem;font-weight:700;color:#5a7a8a;margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.04em}
+input{width:100%;padding:.75rem 1rem;border:1.5px solid #dde5e9;border-radius:9px;font-size:1rem;margin-bottom:1rem;transition:border-color .2s}
+input:focus{outline:none;border-color:#01506d}
+button{width:100%;padding:.9rem;background:#fe6a3f;color:#fff;border:none;border-radius:9px;font-size:1rem;font-weight:700;cursor:pointer;transition:background .2s}
+button:hover{background:#e5532a}
+button:disabled{background:#aaa;cursor:default}
+.error{color:#c0392b;font-size:.85rem;margin-top:.75rem;display:none;padding:.6rem .9rem;background:#fdf0ef;border-radius:6px}
+.back{display:block;text-align:center;margin-top:1.25rem;font-size:.85rem;color:#5a7a8a;text-decoration:none}
+.back:hover{color:#01506d}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">AVANCERT</div>
+  <h1>Log ind for at redigere siden</h1>
+  <form id="loginForm">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required autocomplete="email" placeholder="din@email.dk">
+    <label for="password">Adgangskode</label>
+    <input type="password" id="password" name="password" required autocomplete="current-password">
+    <button type="submit" id="submitBtn">Log ind</button>
+    <p class="error" id="errorMsg"></p>
+  </form>
+  <a href="/" class="back">← Tilbage til forsiden</a>
+</div>
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var btn = document.getElementById('submitBtn');
+  var err = document.getElementById('errorMsg');
+  btn.textContent = 'Logger ind…';
+  btn.disabled = true;
+  err.style.display = 'none';
+
+  fetch('/api/login',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      email: document.getElementById('email').value,
+      password: document.getElementById('password').value
+    })
+  })
+  .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+  .then(function(res){
+    if(res.ok){
+      var redirect = new URLSearchParams(location.search).get('next') || '/';
+      location.href = redirect;
+    } else {
+      err.textContent = res.d.error || 'Forkert email eller adgangskode';
+      err.style.display = 'block';
+      btn.textContent = 'Log ind';
+      btn.disabled = false;
+    }
+  })
+  .catch(function(){
+    err.textContent = 'Ingen forbindelse — prøv igen';
+    err.style.display = 'block';
+    btn.textContent = 'Log ind';
+    btn.disabled = false;
+  });
+});
+</script>
+</body>
+</html>
