@@ -62,16 +62,26 @@ module.exports = async (req, res) => {
   const sha = get.data.sha;
   let html = Buffer.from(get.data.content, 'base64').toString('utf-8');
 
-  // Apply each change: find data-key element and replace its text content
+  // Apply each change
   for (const [key, newText] of Object.entries(changes)) {
     const ek = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    // Matches: opening tag with data-key → text content (no child tags) → closing tag
-    const rx = new RegExp(`(<[^>]+data-key="${ek}"[^>]*>)([^<]*)(</[a-zA-Z0-9]+>)`, 'g');
+
+    // Try text content replacement first (for span, p, div, h1-h6, li etc.)
+    const textRx = new RegExp(`(<[^>]+data-key="${ek}"[^>]*>)([^<]*)(</[a-zA-Z0-9]+>)`, 'g');
     const safe = String(newText)
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
-    html = html.replace(rx, `$1${safe}$3`);
+    const before = html;
+    html = html.replace(textRx, `$1${safe}$3`);
+
+    // If nothing changed, try img src replacement
+    if (html === before) {
+      const imgRx = new RegExp(`(<img\\b[^>]*\\bdata-key="${ek}"[^>]*>)`, 'g');
+      html = html.replace(imgRx, match =>
+        match.replace(/\bsrc="[^"]*"/, `src="${String(newText).replace(/"/g, '&quot;')}"`)
+      );
+    }
   }
 
   // Commit

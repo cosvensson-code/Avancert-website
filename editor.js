@@ -155,6 +155,98 @@
         .finally(function () { location.reload(); });
     });
 
+    // Billedredigering: klik på foto for at skifte det ud
+    var imgStyle = document.createElement('style');
+    imgStyle.textContent =
+      '.av-img-wrap{position:relative;display:block}' +
+      '.av-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,.52);color:#fff;' +
+        'display:flex;align-items:center;justify-content:center;cursor:pointer;' +
+        'font-size:.78rem;font-weight:700;letter-spacing:.02em;opacity:0;' +
+        'transition:opacity .2s;border-radius:inherit;gap:.35rem}' +
+      '.av-img-wrap:hover .av-img-overlay{opacity:1}' +
+      '.av-img-overlay.uploading{opacity:1;background:rgba(0,0,0,.7)}';
+    document.head.appendChild(imgStyle);
+
+    document.querySelectorAll('[data-editable-img]').forEach(function (img) {
+      var key = img.getAttribute('data-key');
+      if (!key) return;
+
+      // Wrap img in a relative container
+      var parent = img.parentElement;
+      var wrap = document.createElement('span');
+      wrap.className = 'av-img-wrap';
+      parent.insertBefore(wrap, img);
+      wrap.appendChild(img);
+
+      var overlay = document.createElement('span');
+      overlay.className = 'av-img-overlay';
+      overlay.innerHTML = '&#128247; Skift billede';
+      wrap.appendChild(overlay);
+
+      overlay.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.onchange = function () {
+          var file = input.files[0];
+          if (!file) return;
+          overlay.classList.add('uploading');
+          overlay.textContent = 'Behandler…';
+
+          // Resize via canvas (max 1400px, JPEG 88%)
+          var reader = new FileReader();
+          reader.onload = function (ev) {
+            var tmpImg = new Image();
+            tmpImg.onload = function () {
+              var MAX = 1400;
+              var w = tmpImg.width, h = tmpImg.height;
+              if (w > MAX || h > MAX) {
+                if (w >= h) { h = Math.round(h * MAX / w); w = MAX; }
+                else        { w = Math.round(w * MAX / h); h = MAX; }
+              }
+              var canvas = document.createElement('canvas');
+              canvas.width = w; canvas.height = h;
+              canvas.getContext('2d').drawImage(tmpImg, 0, 0, w, h);
+              var b64 = canvas.toDataURL('image/jpeg', 0.88).split(',')[1];
+              var ext = file.name.split('.').pop().toLowerCase();
+              var safeName = file.name.replace(/\.[^.]+$/, '') + '.jpg';
+
+              overlay.textContent = 'Uploader…';
+              fetch('/api/upload', {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ filename: safeName, data: b64 })
+              })
+              .then(function (r) { return r.json(); })
+              .then(function (d) {
+                if (d.ok) {
+                  img.src = d.path;
+                  changes[key] = d.path;
+                  hasUnsaved = true;
+                  updateBar();
+                  setStatus('Billede klar — tryk Gem for at publicere');
+                } else {
+                  setStatus('Upload fejlede: ' + (d.error || 'ukendt'));
+                }
+                overlay.classList.remove('uploading');
+                overlay.innerHTML = '&#128247; Skift billede';
+              })
+              .catch(function () {
+                setStatus('Upload fejlede — tjek forbindelsen');
+                overlay.classList.remove('uploading');
+                overlay.innerHTML = '&#128247; Skift billede';
+              });
+            };
+            tmpImg.src = ev.target.result;
+          };
+          reader.readAsDataURL(file);
+        };
+        input.click();
+      });
+    });
+
     // Advar ved ugemte ændringer
     window.addEventListener('beforeunload', function (e) {
       if (hasUnsaved) { e.preventDefault(); e.returnValue = ''; }
