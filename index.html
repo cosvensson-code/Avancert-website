@@ -89,11 +89,15 @@
     /* ─── HEADER ─── */
     .site-header {
       position: sticky; top: 0; z-index: 200;
-      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
-      padding: 1rem clamp(1.25rem, 5vw, 4.5rem);
+      padding: 0;
       background: rgba(245,243,238,0.9);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(1,80,109,0.1);
+    }
+    .site-header-inner {
+      max-width: 1300px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+      padding: 1rem clamp(1.25rem, 5vw, 4.5rem);
     }
 
     .nav { display: flex; gap: 2rem; font-size: 0.875rem; font-weight: 600; color: var(--muted); }
@@ -2461,6 +2465,7 @@ cursor:pointer;
 <body>
 <!-- HEADER -->
 <header class="site-header">
+<div class="site-header-inner">
 <a aria-label="Avancert forside" href="#top" style="display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;">
 <svg fill="none" style="height:70px;width:auto;display:block" viewbox="0 0 883 155" xmlns="http://www.w3.org/2000/svg">
 <path d="M159.637 96.4411L190.413 1.67334H213.536L169.951 122.801H149.571L106.123 1.67334H129.164L159.61 96.4411H159.637Z" fill="#00506D"></path>
@@ -2482,6 +2487,7 @@ cursor:pointer;
 <a href="#kontakt">Kontakt</a>
 </nav>
 <a class="header-cta" href="tel:+4536163616">36 16 36 16</a>
+</div>
 </header>
 <main id="top">
 <!-- HERO -->
