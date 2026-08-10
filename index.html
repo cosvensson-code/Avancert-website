@@ -2471,6 +2471,22 @@ cursor:pointer;
     padding-bottom: 2.5rem;
   }
 }
+/* Popup store — only shown in editor mode */
+#av-popup-store{display:none}
+body.av-edit #av-popup-store{
+  display:block;background:#f5f3ee;border-top:3px solid #fe6a3f;
+  padding:2.5rem clamp(1.25rem,5vw,4.5rem);
+}
+.av-ps-heading{font-size:.75rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;color:#5a7a8a;margin-bottom:1.5rem}
+.av-ps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1.25rem}
+.av-ps-item{background:#fff;border:1px solid #dde5e9;border-radius:.75rem;padding:1rem 1.25rem}
+.av-ps-name{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:#5a7a8a;margin-bottom:.75rem}
+.av-ps-lbl{font-size:.7rem;font-weight:600;color:#5a7a8a;margin:.6rem 0 .2rem}
+.av-ps-title,.av-ps-sub{font-size:.92rem;display:block;padding:.2rem .3rem;border-radius:3px}
+.av-ps-body{font-size:.82rem;line-height:1.6;display:block;padding:.2rem .3rem;
+  border-radius:3px;white-space:pre-wrap;min-height:40px}
 </style>
 </head>
 <body>
@@ -3419,26 +3435,38 @@ window.__AVANCERT_MODAL_DATA__ = {
 };
 
 function avancertPopupOpen(key) {
-  var data = window.__AVANCERT_MODAL_DATA__[key];
-  if (!data) return;
-
   var modal = document.getElementById('avancertPopup');
-  var title = document.getElementById('avancertPopupTitle');
-  var body = document.getElementById('avancertPopupBody');
+  var titleEl = document.getElementById('avancertPopupTitle');
+  var bodyEl = document.getElementById('avancertPopupBody');
+  if (!modal || !titleEl || !bodyEl) return;
 
-  if (!modal || !title || !body) return;
-
-  title.innerText = data.title;
-
-  var html = '';
-  if (data.subtitle) {
-    html += '<p style="font-size:0.9rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange);font-weight:700;margin-bottom:1rem;">' + data.subtitle + '</p>';
+  // Try DOM store first (allows editor changes to be reflected immediately)
+  var storeItem = document.querySelector('#av-popup-store .av-ps-item[data-store-key="' + key + '"]');
+  var displayTitle, displaySub, displayBody;
+  if (storeItem) {
+    var tEl = storeItem.querySelector('.av-ps-title');
+    var sEl = storeItem.querySelector('.av-ps-sub');
+    var bEl = storeItem.querySelector('.av-ps-body');
+    displayTitle = tEl ? tEl.textContent.trim() : key;
+    displaySub   = sEl ? sEl.textContent.trim() : '';
+    displayBody  = bEl ? bEl.textContent.trim() : '';
+  } else {
+    var js = window.__AVANCERT_MODAL_DATA__[key];
+    if (!js) return;
+    displayTitle = js.title;
+    displaySub   = js.subtitle || '';
+    displayBody  = js.body || '';
   }
-  data.body.split(/\n\n/).forEach(function(p){
-    html += '<p>' + p + '</p>';
-  });
 
-  body.innerHTML = html;
+  titleEl.innerText = displayTitle;
+  var html = '';
+  if (displaySub) {
+    html += '<p style="font-size:0.9rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange);font-weight:700;margin-bottom:1rem;">' + displaySub + '</p>';
+  }
+  displayBody.split(/\n\n/).forEach(function(p){
+    if (p.trim()) html += '<p>' + p.trim() + '</p>';
+  });
+  bodyEl.innerHTML = html;
   modal.classList.add('open');
 }
 
@@ -3607,6 +3635,191 @@ if (complaintForm) {
   document.querySelectorAll('.fade-in-up').forEach(function(el) { io.observe(el); });
 })();
 </script>
+<div id="av-popup-store" aria-hidden="true">
+<p class="av-ps-heading">&#9998; Rediger profiltekster — &aelig;ndringer gemmes med knappen ovenfor</p>
+<div class="av-ps-grid">
+<div class="av-ps-item" data-store-key="Lars Ole M&oslash;ller">
+<div class="av-ps-name">Lars Ole M&oslash;ller</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-lars-title">Lars Ole M&oslash;ller</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-lars-sub">Ejerleder &amp; Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-lars-body" data-multiline>Lars Ole M&oslash;ller er ejerleder og erfaren Lead Auditor indenfor ISO 9001, ISO 14001, ISO 45001, ISO 13485, DS 49001, DS 21001, ISO 3834 og EN 1090-1, og har stor erfaring med certificering og akkreditering fra ans&aelig;ttelser p&aring; ledelsesniveau hos f.eks. DS Certificering og Intertek.
+
+Med et utal af gennemf&oslash;rte audits i en bred palette af brancher har Lars omfattende erfaring med certificering i b&aring;de danske og internationale virksomheder over hele verden.
+
+Som Lead Auditor og ejerleder i Avancert arbejder Lars m&aring;lrettet med at sikre, at virksomhederne lever op til kravene i standarderne, som danner grundlag for virksomhedernes l&oslash;bende forbedring og udvikling. Der er fokus p&aring; relationer, tillid og en professionel, menneskelig tilgang til certificering.
+
+Tidligere har Lars ogs&aring; &ldquo;siddet p&aring; den anden side af skrivebordet&rdquo; og arbejdet med ledelsessystemer hos Haldor Tops&oslash;e, Foss, Br&uuml;el &amp; Kj&aelig;r og Fritz Hansen.
+
+Kontakt: lom@avancert.dk</div>
+</div>
+<div class="av-ps-item" data-store-key="Janne Aurore Lantz Andersson">
+<div class="av-ps-name">Janne Aurore Lantz Andersson</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-janne-title">Janne Aurore Lantz Andersson</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-janne-sub">Lead Auditor Trainee</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-janne-body" data-multiline>Janne er Lead Auditor Trainee i ISO 9001 og ISO 14001.
+
+Derudover har hun ansvar for strategi, administration, fundraising og uddannelse af ansatte, hvor hun bidrager til at drive virksomhedens udvikling og sikre sammenh&aelig;ng p&aring; tv&aelig;rs af organisationen.
+
+Hun varetager fortsat den overordnede kreative retning og visuelle identitet og sikrer klar og professionel formidling af vores arbejde p&aring; LinkedIn, hjemmeside og events.
+
+Janne har en cand.comm. og supplerende uddannelse inden for ISO-standarder og forandringsledelse.
+
+Kontakt: janne@avancert.dk</div>
+</div>
+<div class="av-ps-item" data-store-key="John Kj&aelig;rsgaard">
+<div class="av-ps-name">John Kj&aelig;rsgaard</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-john-title">John Kj&aelig;rsgaard</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-john-sub">Programme Manager &amp; Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-john-body" data-multiline>John Kj&aelig;rsgaard er Programme Manager og Lead Auditor med speciale i audits af bilsynshaller.
+
+John arbejder med planl&aelig;gning, koordinering og gennemf&oslash;relse af audits inden for bilsynsomr&aring;det og sikrer, at processer og krav h&aring;ndteres struktureret og professionelt. Hans rolle som Programme Manager betyder, at han har overblik over b&aring;de drift, kvalitet og sammenh&aelig;ng i auditforl&oslash;bene.
+
+Med sin erfaring som Lead Auditor har John et solidt kendskab til branchens krav og praksis og arbejder m&aring;lrettet med at sikre ensartede, grundige og v&aelig;rdiskabende audits.
+
+Som Programme Manager og Lead Auditor bidrager John med struktur, faglighed og overblik, der underst&oslash;tter b&aring;de kvaliteten i audits og en effektiv gennemf&oslash;relse for kunder og organisation.
+
+Kontakt: jk@avancert.dk</div>
+</div>
+<div class="av-ps-item" data-store-key="Signe Lantz Svensson">
+<div class="av-ps-name">Signe Lantz Svensson</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-signe-title">Signe Lantz Svensson</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-signe-sub">Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-signe-body" data-multiline>Signe Lantz Svensson er Lead Auditor med specialisering i ISO 9001.
+
+Signe har ansvar for strategi og HR, hvor hun kombinerer sin erfaring med ledelsessystemer med indsigt i organisatoriske processer. Derudover har hun ogs&aring; ansvar for bogholderiet, hvilket giver hende et ekstra overblik over virksomhedens drift.
+
+Signe er uddannet inden for erh&oslash;vs&oslash;konomi og psykologi og har flere &aring;rs erfaring inden for HR i st&oslash;rre virksomheder. Den kombination af menneskeforst&aring;else og struktur sikrer, at hun kan finde l&oslash;sninger og skabe orden i komplekse processer.
+
+Som Lead Auditor arbejder Signe m&aring;lrettet med at anvende standarder som aktive redskaber til forbedring og kvalitetssikring, samtidig med at hun bidrager til et teampr&aelig;get og tillidsfuldt arbejdsmilj&oslash;.
+
+Kontakt: slm@avancert.dk</div>
+</div>
+<div class="av-ps-item" data-store-key="Carl-Oscar Lantz Svensson">
+<div class="av-ps-name">Carl-Oscar Lantz Svensson</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-carl-title">Carl-Oscar Lantz Svensson</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-carl-sub">Lead Auditor Trainee &amp; digital udvikling</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-carl-body" data-multiline>Carl-Oscar Lantz Svensson er Lead Auditor Trainee i ISO 9001 og ISO/IEC 27001 samt ansvarlig for IT, AI og digital udvikling hos Avancert.
+
+Carl-Oscar arbejder med virksomhedens hjemmeside, IT-systemer, AI-l&oslash;sninger og digitale tilstedev&aelig;relse. Han bidrager til at udvikle effektive og moderne l&oslash;sninger, der underst&oslash;tter b&aring;de interne processer og kundeoplevelsen.
+
+Med baggrund som tekstforfatter i reklame- og mediebranchen kombinerer Carl-Oscar kreativ kommunikation med teknologisk forst&aring;else og et st&aelig;rkt fokus p&aring; struktur, brugervenlighed og formidling.
+
+Som Lead Auditor Trainee arbejder Carl-Oscar med ledelsessystemer inden for kvalitet og informationssikkerhed og bidrager til Avancerts forts&aelig;tte udvikling af digitale v&aelig;rkt&oslash;jer og moderne auditprocesser.
+
+Kontakt: carl@avancert.dk</div>
+</div>
+<div class="av-ps-item" data-store-key="Ida Lantz M&oslash;ller">
+<div class="av-ps-name">Ida Lantz M&oslash;ller</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-ida-title">Ida Lantz M&oslash;ller</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-ida-sub">Lead Auditor Trainee</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-ida-body" data-multiline>Ida Lantz M&oslash;ller er Auditor Trainee i ISO 9001, ISO 14001 og ISO/IEC 27001.
+
+Ida har en cand.public og har ansvar for tilbud, planl&aelig;gning og vores interne systemer, hvor hun sikrer h&oslash;j pr&aelig;cision og struktur i alle opgaver. Hun har det faglige overblik p&aring; kontoret og hj&aelig;lper med at sikre, at virksomheden lever op til standardernes krav.
+
+Som Auditor Trainee arbejder Ida m&aring;lrettet med at anvende standarder som aktive redskaber til forbedring og kvalitetssikring.
+
+Kontakt: ida@avancert.dk</div>
+</div>
+<div class="av-ps-item" data-store-key="Fargol Monazam">
+<div class="av-ps-name">Fargol Monazam</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-fargol-title">Fargol Monazam</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-fargol-sub">Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-fargol-body" data-multiline>Fargol Monazam er Auditor Trainee i ISO 9001 og ISO 14001 samt ansvarlig for Avancerts bogholderi.
+
+Med sin kombination af teknisk auditerfaring og ansvar for den finansielle drift bidrager Fargol til b&aring;de den faglige kvalitet i certificeringsprocessen og til en velfungerende og struktureret organisation.
+
+Kontakt: fargol@avancert.dk &middot; 22 80 34 31</div>
+</div>
+<div class="av-ps-item" data-store-key="Kristian J&oslash;rgensen">
+<div class="av-ps-name">Kristian J&oslash;rgensen</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-kristian-title">Kristian J&oslash;rgensen</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-kristian-sub">Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-kristian-body" data-multiline>Kristian J&oslash;rgensen er Lead Auditor i ISO 9001.
+
+Derudover bidrager Kristian til virksomheden med arbejde inden for ESG-verifikation samt udvikling og kortl&aelig;gning af krav til ledelsessystemer. Hans opgaver sikrer, at organisationen arbejder struktureret med b&aring;de compliance og forbedring af processer.
+
+Kristian har en cand.mag. i filosofi og videnskabsteori fra RUC, hvilket giver ham et solidt analytisk fundament og evnen til at arbejde systematisk med komplekse problemstillinger.
+
+Kristian bidrager med disciplin, pr&aelig;cision og analytisk skarphed, der underst&oslash;tter b&aring;de teamets arbejde og organisationens overordnede m&aring;l.
+
+Kontakt: kristian@avancert.dk</div>
+</div>
+<div class="av-ps-item" data-store-key="Rikke Andersson">
+<div class="av-ps-name">Rikke Andersson</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-rikke-title">Rikke Andersson</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-rikke-sub">Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-rikke-body" data-multiline>Rikke Andersson er erfaren Lead Auditor med specialisering i ISO 9001, ISO 14001, ISO 45001 og ISO 13485.
+
+Med en baggrund som kemotekniker har Rikke en st&aelig;rk teknisk forst&aring;else og en struktureret tilgang til sit arbejde. Hun er kendt for sin grundighed og sit fokus p&aring; at l&oslash;se opgaver korrekt og konsekvent, hvilket skaber h&oslash;j kvalitet i de audits og opgaver, hun gennemf&oslash;rer.
+
+Rikke har opbygget sin erfaring gennem arbejde i st&oslash;rre, komplekse organisationer som Radiometer, Novo Nordisk og Topsoe, hvor hun har arbejdet med kvalitets- og ledelsessystemer i praksis. Denne erfaring giver hende et solidt fundament for at forst&aring; b&aring;de tekniske processer og organisatoriske sammenh&aelig;nge.
+
+Som Lead Auditor bidrager Rikke med h&oslash;j faglighed, struktur og engagement og er en vigtig del af teamet i arbejdet med at sikre professionelle, v&aelig;rdiskabende og tillidsfulde certificeringsprocesser.
+
+Kontakt: ra@avancert.dk</div>
+</div>
+<div class="av-ps-item" data-store-key="Sven Beck">
+<div class="av-ps-name">Sven Beck</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-sven-title">Sven Beck</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-sven-sub">Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-sven-body" data-multiline>Sven Beck er Lead Auditor med specialisering i ISO 9001, ISO 14001, ISO 45001 og DS 49001 samt audits af bilsynshaller.
+
+Med en bred faglig profil og solid erfaring inden for b&aring;de ledelsessystemer og myndighedsregulerede omr&aring;der, bidrager Sven med en grundig og struktureret tilgang til auditarbejdet. Hans kombination af generelle ISO-kompetencer og specialviden om bilsynsomr&aring;det g&oslash;r ham til en alsidig auditor p&aring; tv&aelig;rs af brancher.
+
+Som Lead Auditor er Sven kendt for sin professionelle og rolige dialog med kunderne, sit fokus p&aring; faglighed og sin evne til at give konstruktiv feedback, der skaber reel v&aelig;rdi i virksomhederne.
+
+Kontakt: sb@avancert.dk</div>
+</div>
+<div class="av-ps-item" data-store-key="Henrik Rudolf">
+<div class="av-ps-name">Henrik Rudolf</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-henrik-r-title">Henrik Rudolf</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-henrik-r-sub">Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-henrik-r-body" data-multiline>Henrik Rudolf er Lead Auditor tilknyttet Avancert med specialisering i ISO 9001, ISO 14001 og ISO 45001.
+
+Kontakt: henrik@rudolf-freelance.dk &middot; +45 20 40 51 50</div>
+</div>
+<div class="av-ps-item" data-store-key="Henrik Olesen">
+<div class="av-ps-name">Henrik Olesen</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-henrik-o-title">Henrik Olesen</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-henrik-o-sub">Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-henrik-o-body" data-multiline>Henrik Olesen er Lead Auditor tilknyttet Avancert med specialisering i ISO 9001, ISO 14001 og ISO 45001.
+
+Kontakt: henrik.olesen@rudolf-freelance.dk &middot; +45 52 13 23 36</div>
+</div>
+<div class="av-ps-item" data-store-key="Mikkel Immergut">
+<div class="av-ps-name">Mikkel Immergut</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-mikkel-title">Mikkel Immergut</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-mikkel-sub">Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-mikkel-body" data-multiline>Mikkel Immergut er Lead Auditor tilknyttet Avancert med specialisering i ISO 9001, ISO 14001 og ISO 45001.
+
+Kontakt: mikkel.immergut@rudolf-freelance.dk &middot; +45 61 10 40 99</div>
+</div>
+<div class="av-ps-item" data-store-key="Erik Morten Lund">
+<div class="av-ps-name">Erik Morten Lund</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-eml-title">Erik Morten Lund</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-eml-sub">Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-eml-body" data-multiline>Erik Morten Lund er Lead Auditor hos Avancert med specialisering i ISO 3834 og EN 1090-1.
+
+Kontakt: eml@avancert.dk &middot; +45 24 2001 24</div>
+</div>
+<div class="av-ps-item" data-store-key="Preben Hansen">
+<div class="av-ps-name">Preben Hansen</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-preben-title">Preben Hansen</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-preben-sub">Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-preben-body" data-multiline>Preben Hansen er Lead Auditor hos Avancert med specialisering i ISO 9001, ISO 14001 og ISO 45001.
+
+Kontakt: ph@avancert.dk &middot; +45 20 91 67 63</div>
+</div>
+<div class="av-ps-item" data-store-key="Kurt S&oslash;ndergaard">
+<div class="av-ps-name">Kurt S&oslash;ndergaard</div>
+<div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-kurt-title">Kurt S&oslash;ndergaard</span>
+<div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-kurt-sub">Lead Auditor</span>
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-kurt-body" data-multiline>Kurt S&oslash;ndergaard er Lead Auditor tilknyttet Avancert med specialisering i ISO 9001, ISO 14001, ISO 45001 og ISO/IEC 27001.
+
+Kontakt: ks@a3cert.com</div>
+</div>
+</div>
+</div>
 <script src="/editor.js"></script>
 </body>
 </html>

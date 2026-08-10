@@ -31,8 +31,9 @@
       '#av-status{font-size:11px;color:rgba(255,255,255,.65);min-width:200px;text-align:right}';
     document.head.appendChild(style);
 
-    // Giv plads til bjælken
+    // Giv plads til bjælken og markér editor-tilstand på body
     document.body.style.paddingTop = '44px';
+    document.body.classList.add('av-edit');
 
     // Byg bjælken
     var bar = document.createElement('div');
@@ -62,7 +63,8 @@
     document.querySelectorAll('[data-editable]').forEach(function (el) {
       var key = el.getAttribute('data-key');
       if (!key) return;
-      originals[key] = el.textContent;
+      var isMulti = el.hasAttribute('data-multiline');
+      originals[key] = isMulti ? el.textContent.trim() : el.textContent;
       el.contentEditable = 'true';
       el.spellcheck = true;
 
@@ -73,14 +75,14 @@
         document.execCommand('insertText', false, text);
       });
 
-      // Ingen Enter-linjeskift (Hold teksten på én "linje" semantisk)
+      // Enter tillades kun i multiline-felter
       el.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') e.preventDefault();
+        if (e.key === 'Enter' && !isMulti) e.preventDefault();
       });
 
       // Spor ændringer
       el.addEventListener('input', function () {
-        var val = el.textContent.trim();
+        var val = isMulti ? el.innerText.trim() : el.textContent.trim();
         if (val !== originals[key]) {
           changes[key] = val;
           hasUnsaved = true;
@@ -133,7 +135,13 @@
       if (!confirm('Fortryd alle ugemte ændringer?')) return;
       document.querySelectorAll('[data-editable]').forEach(function (el) {
         var key = el.getAttribute('data-key');
-        if (key && originals[key] !== undefined) el.textContent = originals[key];
+        if (key && originals[key] !== undefined) {
+          if (el.hasAttribute('data-multiline')) {
+            el.innerText = originals[key];
+          } else {
+            el.textContent = originals[key];
+          }
+        }
       });
       changes = {};
       hasUnsaved = false;
