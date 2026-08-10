@@ -195,53 +195,48 @@
           overlay.textContent = 'Behandler…';
 
           // Resize via canvas (max 1400px, JPEG 88%)
-          var reader = new FileReader();
-          reader.onload = function (ev) {
-            var tmpImg = new Image();
-            tmpImg.onload = function () {
-              var MAX = 1400;
-              var w = tmpImg.width, h = tmpImg.height;
-              if (w > MAX || h > MAX) {
-                if (w >= h) { h = Math.round(h * MAX / w); w = MAX; }
-                else        { w = Math.round(w * MAX / h); h = MAX; }
-              }
-              var canvas = document.createElement('canvas');
-              canvas.width = w; canvas.height = h;
-              canvas.getContext('2d').drawImage(tmpImg, 0, 0, w, h);
-              var b64 = canvas.toDataURL('image/jpeg', 0.88).split(',')[1];
-              var ext = file.name.split('.').pop().toLowerCase();
-              var safeName = file.name.replace(/\.[^.]+$/, '') + '.jpg';
+          // createImageBitmap med imageOrientation:'from-image' retter EXIF-rotation
+          var safeName = file.name.replace(/\.[^.]+$/, '') + '.jpg';
+          // createImageBitmap med imageOrientation:'from-image' retter EXIF-rotation automatisk
+          createImageBitmap(file, { imageOrientation: 'from-image' })
+          .then(function (bitmap) {
+            var MAX = 1400;
+            var w = bitmap.width, h = bitmap.height;
+            if (w > MAX || h > MAX) {
+              if (w >= h) { h = Math.round(h * MAX / w); w = MAX; }
+              else        { w = Math.round(w * MAX / h); h = MAX; }
+            }
+            var canvas = document.createElement('canvas');
+            canvas.width = w; canvas.height = h;
+            canvas.getContext('2d').drawImage(bitmap, 0, 0, w, h);
+            var b64 = canvas.toDataURL('image/jpeg', 0.88).split(',')[1];
 
-              overlay.textContent = 'Uploader…';
-              fetch('/api/upload', {
-                method: 'POST',
-                credentials: 'include',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ filename: safeName, data: b64 })
-              })
-              .then(function (r) { return r.json(); })
-              .then(function (d) {
-                if (d.ok) {
-                  img.src = d.path;
-                  changes[key] = d.path;
-                  hasUnsaved = true;
-                  updateBar();
-                  setStatus('Billede klar — tryk Gem for at publicere');
-                } else {
-                  setStatus('Upload fejlede: ' + (d.error || 'ukendt'));
-                }
-                overlay.classList.remove('uploading');
-                overlay.innerHTML = '&#128247; Skift billede';
-              })
-              .catch(function () {
-                setStatus('Upload fejlede — tjek forbindelsen');
-                overlay.classList.remove('uploading');
-                overlay.innerHTML = '&#128247; Skift billede';
-              });
-            };
-            tmpImg.src = ev.target.result;
-          };
-          reader.readAsDataURL(file);
+            overlay.textContent = 'Uploader…';
+            return fetch('/api/upload', {
+              method: 'POST',
+              credentials: 'include',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ filename: safeName, data: b64 })
+            }).then(function (r) { return r.json(); });
+          })
+          .then(function (d) {
+            if (d && d.ok) {
+              img.src = d.path;
+              changes[key] = d.path;
+              hasUnsaved = true;
+              updateBar();
+              setStatus('Billede klar — tryk Gem for at publicere');
+            } else {
+              setStatus('Upload fejlede: ' + (d && d.error ? d.error : 'ukendt'));
+            }
+            overlay.classList.remove('uploading');
+            overlay.innerHTML = '&#128247; Skift billede';
+          })
+          .catch(function () {
+            setStatus('Upload fejlede — tjek forbindelsen');
+            overlay.classList.remove('uploading');
+            overlay.innerHTML = '&#128247; Skift billede';
+          });
         };
         input.click();
       });
