@@ -108,7 +108,9 @@
 
     .nav-toggle {
       display: none; flex-direction: column; justify-content: center; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 0.4rem 0.5rem; margin-left: 0.5rem;
+      background: none; border: none; cursor: pointer;
+      padding: 0; margin-left: 0.5rem;
+      width: 44px; height: 44px; align-items: center;
     }
     .nav-toggle span {
       display: block; width: 22px; height: 2px; background: var(--blue);
@@ -118,6 +120,8 @@
     .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
     .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .nav-mobile-phone { display: none; }
+    .header-cta-icon { display: none; }
+    body.menu-open { overflow: hidden; touch-action: none; }
 
     .header-cta {
       font-size: 0.875rem; font-weight: 700;
@@ -1194,10 +1198,24 @@
         display: none; position: absolute; top: 100%; left: 0; right: 0;
         flex-direction: column; gap: 0; background: rgba(245,243,238,.97);
         backdrop-filter: blur(20px); border-bottom: 1px solid rgba(1,80,109,.12);
-        padding: .5rem 0 1.25rem; box-shadow: 0 8px 24px rgba(0,0,0,.08); z-index: 199;
+        padding: .5rem 0 1.5rem; box-shadow: 0 8px 24px rgba(0,0,0,.08); z-index: 199;
       }
       .nav.is-open { display: flex; }
-      .nav a { padding: .75rem clamp(1.25rem,5vw,3rem); border-bottom: 1px solid rgba(1,80,109,.06); width: 100%; box-sizing: border-box; }
+      .nav a {
+        padding: .875rem clamp(1.25rem,5vw,3rem);
+        border-bottom: 1px solid rgba(1,80,109,.06);
+        width: 100%; box-sizing: border-box;
+        min-height: 48px; display: flex; align-items: center;
+      }
+      .nav a.nav-mobile-cta {
+        margin: 0.75rem clamp(1.25rem,5vw,3rem) 0;
+        padding: 0.875rem 1.5rem;
+        background: var(--orange); color: #fff !important;
+        text-align: center; justify-content: center;
+        border-radius: 999px; font-weight: 700;
+        border-bottom: none; width: auto; box-sizing: border-box;
+      }
+      .nav a.nav-mobile-cta:hover { background: #e55a30; }
       .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 3rem; }
       .hero-panel { display: grid; grid-template-columns: repeat(3,1fr); }
       .hero-panel > div { border-bottom: none; padding: 1.1rem 1rem; border-right: 1px solid rgba(255,255,255,0.12); }
@@ -1213,8 +1231,10 @@
       .cert-logo-card { min-height: 200px; }
       .wordmark { min-width: 160px; padding: 1.25rem 1.5rem; font-size: 1rem; }
       .wordmark-track { animation-duration: 28s; }
-      .header-cta { display: none; }
-      .nav-mobile-phone { display: block; font-weight: 700; color: var(--blue); padding: .75rem clamp(1.25rem,5vw,3rem); border-bottom: 1px solid rgba(1,80,109,.06); }
+      .header-cta { padding: 0.55rem 0.7rem; }
+      .header-cta-icon { display: block; }
+      .header-cta span[data-key="header-cta"] { display: none; }
+      .nav-mobile-phone { display: block; font-weight: 700; color: var(--blue); padding: .875rem clamp(1.25rem,5vw,3rem); border-bottom: 1px solid rgba(1,80,109,.06); min-height: 48px; display: flex; align-items: center; }
       .site-header { padding: 1rem 1.25rem; }
       h1 { font-size: 3rem; }
       .cert-grid { grid-template-columns: 1fr 1fr; }
@@ -2590,9 +2610,13 @@ body.av-edit #av-popup-store{
 <a href="#tilbud"><span data-editable data-key="nav-offer">Få tilbud</span></a>
 <a href="#kontakt"><span data-editable data-key="nav-contact">Kontakt</span></a>
 <a class="nav-mobile-phone" href="tel:+4536163616">📞 36 16 36 16</a>
+<a class="nav-mobile-cta" href="#tilbud">Få et tilbud</a>
 </nav>
-<a class="header-cta" href="tel:+4536163616"><span data-editable data-key="header-cta">36 16 36 16</span></a>
-<button aria-expanded="false" aria-label="Åbn menu" class="nav-toggle" id="navToggle" type="button">
+<a aria-label="Ring til os: 36 16 36 16" class="header-cta" href="tel:+4536163616">
+<svg aria-hidden="true" class="header-cta-icon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.5 10.5 19.79 19.79 0 01.5 1.84 2 2 0 012.49 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.56a16 16 0 006.29 6.29l.87-.87a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+<span data-editable data-key="header-cta">36 16 36 16</span>
+</a>
+<button aria-controls="mainNav" aria-expanded="false" aria-label="Åbn menu" class="nav-toggle" id="navToggle" type="button">
 <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
 </button>
 </div>
@@ -3713,20 +3737,37 @@ function avancertSkiftTilbud() {
   var toggle = document.getElementById('navToggle');
   var nav = document.getElementById('mainNav');
   if (!toggle || !nav) return;
+
+  function openMenu() {
+    nav.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+  }
+
+  function closeMenu() {
+    nav.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+  }
+
   toggle.addEventListener('click', function(){
-    var open = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', open);
+    nav.classList.contains('is-open') ? closeMenu() : openMenu();
   });
+
   nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      nav.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
+    a.addEventListener('click', closeMenu);
   });
+
   document.addEventListener('click', function(e){
     if (!nav.contains(e.target) && !toggle.contains(e.target)){
-      nav.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+      closeMenu();
+      toggle.focus();
     }
   });
 })();
