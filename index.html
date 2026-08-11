@@ -376,9 +376,12 @@
     .t-dot.active { background: var(--orange); width: 20px; }
 
     /* ─── FORM ─── */
-    .quote-layout { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; align-items: start; }
-    .quote-intro h2 { max-width: 420px; }
-    .quote-intro p { font-size: 1rem; color: #3a5a6a; line-height: 1.7; margin-bottom: .75rem; }
+    .tilbud-intro { margin-bottom: 2.5rem; }
+    .tilbud-intro h2 { margin-bottom: .5rem; }
+    .tilbud-intro-p { max-width: 640px; font-size: 1rem; color: #3a5a6a; line-height: 1.7; }
+    .quote-layout { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; align-items: stretch; }
+    .quote-left-col { display: flex; flex-direction: column; }
+    .pris-kort { flex: 1; }
 
     .quote-form {
       background: #fff; border: 1.5px solid var(--line); border-radius: 2rem;
@@ -437,6 +440,20 @@
       border-color: rgba(254,106,63,0.18);
     }
     .process-step p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── PROCESS på blå baggrund ─── */
+    .section-bg-blue .proces-section h2 { color: #fff; }
+    .section-bg-blue .proces-section .process-intro { color: rgba(255,255,255,0.80); }
+    .section-bg-blue .proces-section .process-num {
+      background: rgba(254,106,63,0.18);
+      color: var(--orange);
+      border-color: rgba(254,106,63,0.28);
+    }
+    .section-bg-blue .proces-section .process-step:first-child .process-num {
+      background: rgba(254,106,63,0.18);
+      color: var(--orange);
+      border-color: rgba(254,106,63,0.28);
+    }
 
     /* ─── FINAL CTA ─── */
     .cta-wrap {
@@ -667,7 +684,6 @@
     }
 
     .pris-kort {
-      margin-top: 1.5rem;
       background: #fff;
       border: 1px solid var(--line);
       border-radius: .875rem;
@@ -776,14 +792,15 @@
       background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
       box-shadow: 0 18px 54px rgba(1,80,109,0.045);
       /* Fade-mask i siderne så logoer glider blødt ind/ud */
-      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
-              mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+              mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
     }
 
     .wordmark-track {
       display: flex;
       width: max-content;
       animation: wordmark-scroll 38s linear infinite;
+      padding: 0 2rem;
     }
 
     .wordmark-marquee:hover .wordmark-track {
@@ -1251,6 +1268,8 @@
       .hero-panel > div:last-child { border-right: none; }
       .cert-grid, .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .about-grid, .quote-layout, .founder-layout { grid-template-columns: 1fr; }
+      .quote-right-col { order: -1; }
+      .pris-kort { height: auto !important; }
       .logo-grid { grid-template-columns: repeat(2, 1fr); }
       .footer { grid-template-columns: 1fr; }
     }
@@ -2054,9 +2073,12 @@ main, section, header, footer {
 .skift-boks {
   background: var(--blue);
   border-radius: 1.25rem;
-  max-width: 880px;
-  padding: 2.5rem 3rem;
+  padding: 2.5rem 0;
   margin-top: 2.25rem;
+}
+.skift-boks-inner {
+  max-width: 880px;
+  padding: 0 3rem;
 }
 
 .skift-boks .eyebrow {
@@ -2080,8 +2102,11 @@ main, section, header, footer {
 
 @media (max-width: 680px) {
   .skift-boks {
-    padding: 1.75rem 1.5rem;
+    padding: 1.75rem 0;
     border-radius: 1rem;
+  }
+  .skift-boks-inner {
+    padding: 0 1.5rem;
   }
   .skift-boks .btn {
     width: 100%;
@@ -2710,21 +2735,23 @@ body.av-edit #av-popup-store{
 <p class="kunder-intro" data-editable data-key="kunder-intro">Der findes ikke én slags certificeringskunde. Store som små, og på tværs af mange forskellige brancher. Vi har gennemført over 2.000 audits, og ingen virksomheder har været ens. Det elsker vi. Se et lille udvalg herunder.</p>
 <div aria-label="Et udvalg af kunder vi har auditeret" class="wordmark-marquee">
 <div class="wordmark-track">
-<a aria-label="Naviair" class="wordmark" href="https://www.naviair.dk" rel="noopener" target="_blank"><img alt="Naviair" height="101" loading="lazy" src="images/naviair.webp" width="606"/ decoding="async"></a>
-<a aria-label="Bryde &amp; Sønner" class="wordmark" href="https://www.brydeogsonner.dk" rel="noopener" target="_blank"><img alt="Bryde &amp; Sønner" height="160" loading="lazy" src="images/bryde.webp" width="288"/ decoding="async"></a>
-<a aria-label="Albertslund Kommune" class="wordmark" href="https://www.albertslund.dk" rel="noopener" target="_blank"><img alt="Albertslund Kommune" height="160" loading="lazy" src="images/albertslund-kommune.webp" width="785"/ decoding="async"></a>
-<a aria-label="Nordtech Vetec" class="wordmark" href="https://www.nordtech.dk" rel="noopener" target="_blank"><img alt="Nordtech Vetec" height="102" loading="lazy" src="images/nordtech-vetec.webp" width="216"/ decoding="async"></a>
-<a aria-label="Carmi Logistics" class="wordmark" href="https://www.carmi.dk" rel="noopener" target="_blank"><img alt="Carmi Logistics" height="160" loading="lazy" src="images/carmi.webp" width="498"/ decoding="async"></a>
-<a aria-label="Brunsgaard" class="wordmark" href="https://www.brunsgaard.dk" rel="noopener" target="_blank"><img alt="Brunsgaard" height="50" loading="lazy" src="images/brunsgaard.webp" width="210"/ decoding="async"></a>
-<a aria-label="Grenaa Havn" class="wordmark" href="https://www.grenaahavn.dk" rel="noopener" target="_blank"><img alt="Grenaa Havn" height="160" loading="lazy" src="images/grenaa-havn.webp" width="559"/ decoding="async"></a>
+<a aria-label="Naviair" class="wordmark" href="https://www.naviair.dk" rel="noopener" target="_blank"><img alt="Naviair" loading="lazy" src="images/naviair.webp" decoding="async"></a>
+<a aria-label="Bryde &amp; Sønner" class="wordmark" href="https://www.brydeogsonner.dk" rel="noopener" target="_blank"><img alt="Bryde &amp; Sønner" loading="lazy" src="images/bryde.webp" style="height:60px" decoding="async"></a>
+<a aria-label="Albertslund Kommune" class="wordmark" href="https://www.albertslund.dk" rel="noopener" target="_blank"><img alt="Albertslund Kommune" loading="lazy" src="images/albertslund-kommune.webp" decoding="async"></a>
+<a aria-label="Banedanmark" class="wordmark" href="https://www.bane.dk" rel="noopener" target="_blank"><img alt="Banedanmark" loading="lazy" src="images/banedanmark.webp" decoding="async"></a>
+<a aria-label="Nordtech Vetec" class="wordmark" href="https://www.nordtech.dk" rel="noopener" target="_blank"><img alt="Nordtech Vetec" loading="lazy" src="images/nordtech-vetec.webp" decoding="async"></a>
+<a aria-label="Carmi Logistics" class="wordmark" href="https://www.carmi.dk" rel="noopener" target="_blank"><img alt="Carmi Logistics" loading="lazy" src="images/carmi.webp" decoding="async"></a>
+<a aria-label="Brunsgaard" class="wordmark" href="https://www.brunsgaard.dk" rel="noopener" target="_blank"><img alt="Brunsgaard" loading="lazy" src="images/brunsgaard.webp" decoding="async"></a>
+<a aria-label="Grenaa Havn" class="wordmark" href="https://www.grenaahavn.dk" rel="noopener" target="_blank"><img alt="Grenaa Havn" loading="lazy" src="images/grenaa-havn.webp" decoding="async"></a>
 <!-- Duplikat sæt for sømløs uendelig loop -->
-<a aria-hidden="true" class="wordmark" href="https://www.naviair.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" height="101" loading="lazy" src="images/naviair.webp" width="606"/ decoding="async"></a>
-<a aria-hidden="true" class="wordmark" href="https://www.brydeogsonner.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" height="160" loading="lazy" src="images/bryde.webp" width="288"/ decoding="async"></a>
-<a aria-hidden="true" class="wordmark" href="https://www.albertslund.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" height="160" loading="lazy" src="images/albertslund-kommune.webp" width="785"/ decoding="async"></a>
-<a aria-hidden="true" class="wordmark" href="https://www.nordtech.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" height="102" loading="lazy" src="images/nordtech-vetec.webp" width="216"/ decoding="async"></a>
-<a aria-hidden="true" class="wordmark" href="https://www.carmi.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" height="160" loading="lazy" src="images/carmi.webp" width="498"/ decoding="async"></a>
-<a aria-hidden="true" class="wordmark" href="https://www.brunsgaard.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" height="50" loading="lazy" src="images/brunsgaard.webp" width="210"/ decoding="async"></a>
-<a aria-hidden="true" class="wordmark" href="https://www.grenaahavn.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" height="160" loading="lazy" src="images/grenaa-havn.webp" width="559"/ decoding="async"></a>
+<a aria-hidden="true" class="wordmark" href="https://www.naviair.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" loading="lazy" src="images/naviair.webp" decoding="async"></a>
+<a aria-hidden="true" class="wordmark" href="https://www.brydeogsonner.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" loading="lazy" src="images/bryde.webp" style="height:60px" decoding="async"></a>
+<a aria-hidden="true" class="wordmark" href="https://www.albertslund.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" loading="lazy" src="images/albertslund-kommune.webp" decoding="async"></a>
+<a aria-hidden="true" class="wordmark" href="https://www.bane.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" loading="lazy" src="images/banedanmark.webp" decoding="async"></a>
+<a aria-hidden="true" class="wordmark" href="https://www.nordtech.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" loading="lazy" src="images/nordtech-vetec.webp" decoding="async"></a>
+<a aria-hidden="true" class="wordmark" href="https://www.carmi.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" loading="lazy" src="images/carmi.webp" decoding="async"></a>
+<a aria-hidden="true" class="wordmark" href="https://www.brunsgaard.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" loading="lazy" src="images/brunsgaard.webp" decoding="async"></a>
+<a aria-hidden="true" class="wordmark" href="https://www.grenaahavn.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" loading="lazy" src="images/grenaa-havn.webp" decoding="async"></a>
 </div>
 </div>
 <div aria-label="Akkrediteringsinformation" class="trust-strip" role="complementary">
@@ -2735,11 +2762,13 @@ body.av-edit #av-popup-store{
 <span data-editable data-key="akkreditering-tekst">Certifikaterne udstedes gennem vores partner AAA Certification AB, akkrediteret af SWEDAC. Både SWEDAC og DANAK er medlemmer af International Accreditation Forum — derfor er certifikaterne internationalt gyldige, og derfor kan et forløb overdrages mellem organer.</span>
 </div>
 <div class="skift-boks">
+<div class="skift-boks-inner">
 <p class="eyebrow" data-editable data-key="skift-eyebrow">TÆNKER I PÅ AT SKIFTE?</p>
 <h2 class="skift-h2" data-editable data-key="skift-h2">Benytter I et andet certificeringsorgan?</h2>
 <p class="skift-brodtekst" data-editable data-key="skift-brodtekst-1">Et akkrediteret certifikat kan overdrages til et andet organ — også imellem audits.</p>
 <p class="skift-brodtekst" data-editable data-key="skift-brodtekst-2">Vi gennemgår jeres auditrapporter og certifikater, og udsteder nye certifikater uden beregning.</p>
 <button class="btn primary" onclick="avancertSkiftTilbud()" style="margin-top:1.5rem;" type="button">Få et tilbud fra os</button>
+</div>
 </div>
 </section>
 </div>
@@ -2825,14 +2854,14 @@ body.av-edit #av-popup-store{
 <p class="eyebrow" data-editable data-key="om-eyebrow">Om Avancert</p>
 <div class="about-grid">
 <article class="about-card">
-<h2 data-editable data-key="om-h2">Gode grunde til at vælge os</h2><p data-editable data-key="om-p1">Hos AVANCERT møder du erfarne auditorer med praktisk forståelse for virksomheder, drift og ledelsessystemer. Vi arbejder med tæt dialog og en effektiv proces fra start til slut.</p><p data-editable data-key="om-p2">AVANCERT arbejder udelukkende med certificering og tilbyder hverken rådgivning eller undervisning. Det sikrer en uvildig og troværdig certificeringsproces.</p>
+<h2 data-editable data-key="om-h2">Uvildig, fordi vi ikke laver andet</h2><p data-editable data-key="om-p1">Hos AVANCERT møder du erfarne auditorer med praktisk forståelse for virksomheder, drift og ledelsessystemer. Vi arbejder med tæt dialog og en effektiv proces fra start til slut.</p><p data-editable data-key="om-p2">AVANCERT arbejder udelukkende med certificering og tilbyder hverken rådgivning eller undervisning. Det sikrer en uvildig og troværdig certificeringsproces.</p>
 <div class="usp-rows">
 <div class="usp-row">
 <span aria-hidden="true" class="usp-row-icon">
 <svg fill="none" viewbox="0 0 20 20"><path d="M3 10.5L8 15L17 5.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg>
 </span>
 <div class="usp-row-content">
-<h3 data-editable data-key="usp1-h3">Uvildig certificering</h3>
+<h3 data-editable data-key="usp1-h3">Rene linjer</h3>
 <p data-editable data-key="usp1-p">Vi auditerer — det er alt, vi gør. Vi rådgiver aldrig, konsulterer aldrig og har ingen bindinger. Det giver jer en 100% uvildig certificering, hver gang.</p>
 </div>
 </div>
@@ -2954,7 +2983,11 @@ body.av-edit #av-popup-store{
 </div>
 </article>
 </div>
-<h2 style="margin-top:3rem;margin-bottom:0.5rem;">Eksterne auditorer</h2>
+<div style="text-align:center;margin-top:3rem;">
+<button aria-controls="eks-auditorer" aria-expanded="false" class="btn secondary" id="eks-toggle" onclick="avancertToggleEks()" type="button">Se alle vores faste eksterne auditorer</button>
+</div>
+<div hidden id="eks-auditorer">
+<h2 style="margin-top:2.5rem;margin-bottom:0.5rem;">Eksterne auditorer</h2>
 <p style="color:var(--muted);font-size:0.95rem;margin-bottom:2rem;">Erfarne freelance-auditorer tilknyttet Avancert.</p>
 <div class="team-grid team-grid-secondary">
 <article class="team-card avancert-popup-trigger" data-popup-key="Sven Beck" onclick="avancertPopupOpen('Sven Beck')" role="button" tabindex="0">
@@ -3027,16 +3060,32 @@ body.av-edit #av-popup-store{
 </div>
 </article>
 </div>
+</div>
 </section>
 <div class="divider"></div>
+<!-- PROCES -->
+<div class="section-bg-blue">
+<section class="section proces-section" id="proces">
+<p class="eyebrow">Proces</p>
+<h2>Sådan foregår et typisk certificeringsforløb</h2><p class="section-intro process-intro">Certificering behøver ikke være kompliceret. Vi guider jer gennem processen med tæt dialog, klare forventninger og en auditproces, der giver mening i praksis.</p>
+<div class="process-grid">
+<article class="process-step"><div class="process-num">01</div><h3>Indledende dialog</h3><p>Vi afklarer jeres behov, standarder, organisation og tidshorisont.</p></article>
+<article class="process-step"><div class="process-num">02</div><h3>Tilbud og planlægning</h3><p>I får et tydeligt oplæg og en plan, der passer til jeres virksomhed.</p></article>
+<article class="process-step"><div class="process-num">03</div><h3>Audit</h3><p>Vi gennemfører audit professionelt, effektivt og med tydelig kommunikation.</p></article>
+<article class="process-step"><div class="process-num">04</div><h3>Certificering</h3><p>Certifikatet udstedes af vores samarbejdspartner AAA Certification AB i Sverige, som er SWEDAC-akkrediteret, når kravene er opfyldt.</p></article>
+</div>
+</section>
+</div>
 <!-- TILBUD -->
 <section class="section" id="tilbud">
-<div class="quote-layout">
-<div class="quote-intro">
+<div class="tilbud-intro">
 <p class="eyebrow" data-editable data-key="tilbud-eyebrow">Tilbud</p>
-<h2 data-editable data-key="tilbud-h2">Få et uforpligtende tilbud</h2>
-<p data-editable data-key="tilbud-p">Vælg de standarder I er interesserede i, fortæl os lidt om jer selv og giv os dine kontaktoplysninger. Vi vender tilbage med et konkurrencedygtigt tilbud hurtigst muligt.</p>
-<div class="pris-kort">
+<h2 data-editable data-key="tilbud-h2">Få et tilbud</h2>
+<p class="tilbud-intro-p" data-editable data-key="tilbud-p">Vi giver jer et uforpligtende tilbud. Vælg de standarder I er interesserede i, fortæl os lidt om jer selv og giv os dine kontaktoplysninger — vi vender tilbage hurtigst muligt.</p>
+</div>
+<div class="quote-layout">
+<div class="quote-left-col">
+<div class="pris-kort" style="height:100%;margin-top:0;box-sizing:border-box;">
   <div class="pris-afsnit">
     <div class="pris-etiket">Sådan sætter vi prisen</div>
     <p class="pris-tekst" data-editable data-key="pris-metode">Antal revisionsdage gange vores dagspris. Antal dage bestemmer vi ikke selv — det følger en international tabel efter jeres størrelse, lokationer, standarder og kompleksitet, og den er den samme hos alle akkrediterede organer. I får ét samlet tilbud for hele det treårige forløb.</p>
@@ -3243,17 +3292,6 @@ Ring 36 16 36 16
   });
 })();
 </script>
-<!-- PROCES -->
-<section class="section" id="proces">
-<p class="eyebrow">Proces</p>
-<h2>Sådan foregår et typisk certificeringsforløb</h2><p class="section-intro process-intro">Certificering behøver ikke være kompliceret. Vi guider jer gennem processen med tæt dialog, klare forventninger og en auditproces, der giver mening i praksis.</p>
-<div class="process-grid">
-<article class="process-step"><div class="process-num">01</div><h3>Indledende dialog</h3><p>Vi afklarer jeres behov, standarder, organisation og tidshorisont.</p></article>
-<article class="process-step"><div class="process-num">02</div><h3>Tilbud og planlægning</h3><p>I får et tydeligt oplæg og en plan, der passer til jeres virksomhed.</p></article>
-<article class="process-step"><div class="process-num">03</div><h3>Audit</h3><p>Vi gennemfører audit professionelt, effektivt og med tydelig kommunikation.</p></article>
-<article class="process-step"><div class="process-num">04</div><h3>Certificering</h3><p>Certifikatet udstedes af vores samarbejdspartner AAA Certification AB i Sverige, som er SWEDAC-akkrediteret, når kravene er opfyldt.</p></article>
-</div>
-</section>
 <!-- FAQ -->
 <section class="section faq-section" id="faq">
 <p class="eyebrow" data-editable data-key="faq-eyebrow">FAQ</p>
@@ -3769,6 +3807,16 @@ if (complaintForm) {
 }
 
 // Skift-knap: præudfyld certified=Ja og scroll til tilbudsformular
+function avancertToggleEks() {
+  var panel = document.getElementById('eks-auditorer');
+  var btn   = document.getElementById('eks-toggle');
+  if (!panel || !btn) return;
+  var open = !panel.hidden;
+  panel.hidden = open;
+  btn.setAttribute('aria-expanded', String(!open));
+  btn.textContent = open ? 'Se alle vores faste eksterne auditorer' : 'Skjul eksterne auditorer';
+}
+
 function avancertSkiftTilbud() {
   var r = document.querySelector('#quoteForm input[name="certified"][value="Ja"]');
   if (r) r.checked = true;
