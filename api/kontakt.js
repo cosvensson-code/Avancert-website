@@ -117,7 +117,7 @@ module.exports = async (req, res) => {
           `Hej ${clean(b.name)},`,
           '',
           isOffer
-            ? 'Tak for din forespørgsel. Vi vender tilbage inden for 24 timer på hverdage med et konkret tilbud.'
+            ? 'Tak for din forespørgsel. Vi vender tilbage hurtigst muligt med et konkret tilbud.'
             : 'Tak for din henvendelse. Vi behandler den hurtigst muligt.',
           '',
           'Har du spørgsmål undervejs, er du altid velkommen til at ringe på 36 16 36 16.',
