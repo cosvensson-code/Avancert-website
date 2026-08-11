@@ -779,9 +779,8 @@
 
     .wordmark img {
       max-width: 100%;
-      max-height: 60px;
+      height: 48px;
       width: auto;
-      height: auto;
       object-fit: contain;
       filter: grayscale(1);
       opacity: 0.55;
@@ -2002,29 +2001,79 @@ main, section, header, footer {
   }
 }
 
-/* ─── V78 TRUST STRIP (in kunder section) ─── */
+/* ─── SKIFTE-BOKS ─── */
+.skift-boks {
+  background: var(--blue);
+  border-radius: 1.25rem;
+  max-width: 880px;
+  padding: 2.5rem 3rem;
+  margin-top: 2.25rem;
+}
+
+.skift-boks .eyebrow {
+  color: var(--orange);
+  margin-bottom: 0.75rem;
+}
+
+.skift-h2 {
+  color: #fff;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-weight: 800;
+  margin: 0 0 1rem;
+}
+
+.skift-brodtekst {
+  color: rgba(255,255,255,0.72);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 0 0 0.4rem;
+}
+
+@media (max-width: 680px) {
+  .skift-boks {
+    padding: 1.75rem 1.5rem;
+    border-radius: 1rem;
+  }
+  .skift-boks .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ─── KUNDER INTRO ─── */
+.kunder-intro {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+/* ─── TRUST STRIP (info-boks under marquee) ─── */
 .trust-strip {
   display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  flex-wrap: wrap;
-  margin-top: -0.5rem;
-  margin-bottom: 1.75rem;
-  font-size: 0.86rem;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--orange);
+  border-radius: 0.5rem;
+  max-width: 920px;
+  font-size: 0.88rem;
   color: var(--muted);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .trust-strip-icon {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
   color: var(--orange);
-}
-
-.trust-strip strong {
-  color: var(--blue);
-  font-weight: 800;
+  margin-top: 0.1em;
 }
 
 .trust-strip a {
@@ -2041,7 +2090,8 @@ main, section, header, footer {
 
 @media (max-width: 560px) {
   .trust-strip {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
+    padding: 0.875rem 1rem;
   }
 }
 
@@ -2602,15 +2652,9 @@ body.av-edit #av-popup-store{
 <!-- KUNDER -->
 <div class="section-bg-white">
 <section class="section logo-section" id="kunder">
-<p class="eyebrow" data-editable data-key="kunder-eyebrow">Erfaring</p>
-<h2 data-editable data-key="kunder-h2">Et udvalg af vores kunder</h2>
-<div aria-label="Akkrediteringsinformation" class="trust-strip" role="complementary">
-<svg aria-hidden="true" class="trust-strip-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24">
-<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-<path d="m9 12 2 2 4-4"></path>
-</svg>
-<span>Certifikater udstedes af vores samarbejdspartner <a href="https://www.a3cert.com/sv-SE" rel="noopener" style="text-decoration:none;font-weight:700;" target="_blank">AAA Certification AB</a> i Sverige, akkrediteret af <a href="https://www.swedac.se" rel="noopener" style="text-decoration:none;font-weight:700;" target="_blank">SWEDAC</a>. Både SWEDAC og DANAK er medlemmer af <strong>International Accreditation Forum (IAF)</strong> — certifikaterne er internationalt gyldige.</span>
-</div>
+<p class="eyebrow" data-editable data-key="kunder-eyebrow">KUNDER</p>
+<h2 data-editable data-key="kunder-h2">Fra kommuner til kritisk infrastruktur</h2>
+<p class="kunder-intro" data-editable data-key="kunder-intro">Der findes ikke én slags certificeringskunde. Store som små, og på tværs af mange forskellige brancher. Vi har gennemført over 2.000 audits, og ingen virksomheder har været ens. Det elsker vi. Se et lille udvalg herunder.</p>
 <div aria-label="Et udvalg af kunder vi har auditeret" class="wordmark-marquee">
 <div class="wordmark-track">
 <a aria-label="Naviair" class="wordmark" href="https://www.naviair.dk" rel="noopener" target="_blank"><img alt="Naviair" height="101" loading="lazy" src="images/naviair.webp" width="606"/ decoding="async"></a>
@@ -2629,6 +2673,20 @@ body.av-edit #av-popup-store{
 <a aria-hidden="true" class="wordmark" href="https://www.brunsgaard.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" height="50" loading="lazy" src="images/brunsgaard.webp" width="210"/ decoding="async"></a>
 <a aria-hidden="true" class="wordmark" href="https://www.grenaahavn.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" height="160" loading="lazy" src="images/grenaa-havn.webp" width="559"/ decoding="async"></a>
 </div>
+</div>
+<div aria-label="Akkrediteringsinformation" class="trust-strip" role="complementary">
+<svg aria-hidden="true" class="trust-strip-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+<path d="m9 12 2 2 4-4"></path>
+</svg>
+<span data-editable data-key="akkreditering-tekst">Certifikaterne udstedes gennem vores partner AAA Certification AB, akkrediteret af SWEDAC. Både SWEDAC og DANAK er medlemmer af International Accreditation Forum — derfor er certifikaterne internationalt gyldige, og derfor kan et forløb overdrages mellem organer.</span>
+</div>
+<div class="skift-boks">
+<p class="eyebrow" data-editable data-key="skift-eyebrow">TÆNKER I PÅ AT SKIFTE?</p>
+<h2 class="skift-h2" data-editable data-key="skift-h2">Benytter I et andet certificeringsorgan?</h2>
+<p class="skift-brodtekst" data-editable data-key="skift-brodtekst-1">Et akkrediteret certifikat kan overdrages til et andet organ — også imellem audits.</p>
+<p class="skift-brodtekst" data-editable data-key="skift-brodtekst-2">Vi gennemgår jeres auditrapporter og certifikater, og udsteder nye certifikater uden beregning.</p>
+<button class="btn primary" onclick="avancertSkiftTilbud()" style="margin-top:1.5rem;" type="button">Få et tilbud fra os</button>
 </div>
 </section>
 </div>
@@ -3631,6 +3689,14 @@ if (complaintForm) {
       alert('Ingen forbindelse. Ring til os på 36 16 36 16.');
     });
   });
+}
+
+// Skift-knap: præudfyld certified=Ja og scroll til tilbudsformular
+function avancertSkiftTilbud() {
+  var r = document.querySelector('#quoteForm input[name="certified"][value="Ja"]');
+  if (r) r.checked = true;
+  var el = document.getElementById('tilbud');
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // Initialiser spam-timestamps ved sideload
