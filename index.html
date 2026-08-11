@@ -2929,6 +2929,9 @@ body.av-edit #av-popup-store{
 </div>
 <div class="quote-right-col">
 <form class="quote-form" id="quoteForm" novalidate="">
+<!-- Spambeskyttelse: honeypot + timestamp -->
+<input aria-hidden="true" autocomplete="off" name="_hp" style="display:none" tabindex="-1" type="text"/>
+<input id="quoteFormT" name="_t" type="hidden"/>
 <!-- Step indicator -->
 <div aria-hidden="true" class="form-steps">
 <div class="form-step-item active" data-step="1"><span class="form-step-num">1</span><span class="form-step-label">Virksomhed</span></div>
@@ -3084,6 +3087,8 @@ Ring 36 16 36 16
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         formType: 'tilbud',
+        _hp: fd.get('_hp') || '',
+        _t: fd.get('_t') || '',
         company: fd.get('company') || '',
         size: fd.get('size') || '',
         certified: fd.get('certified') || '',
@@ -3281,6 +3286,8 @@ Ring 36 16 36 16
 <label>Beskrivelse
     <textarea name="message" placeholder="Beskriv kort hvad henvendelsen handler om" required="" rows="6"></textarea>
 </label>
+<input id="complaintFormT" name="_t" type="hidden"/>
+<input aria-hidden="true" autocomplete="off" name="_hp" style="display:none" tabindex="-1" type="text"/>
 <button class="btn primary" type="submit">Send henvendelse</button>
 </form>
 </div>
@@ -3601,6 +3608,8 @@ if (complaintForm) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         formType: 'klage',
+        _hp: fd.get('_hp') || '',
+        _t: fd.get('_t') || '',
         type: fd.get('type') || '',
         name: fd.get('name') || '',
         email: fd.get('email') || '',
@@ -3623,6 +3632,15 @@ if (complaintForm) {
     });
   });
 }
+
+// Initialiser spam-timestamps ved sideload
+(function(){
+  var qt = document.getElementById('quoteFormT');
+  var ct = document.getElementById('complaintFormT');
+  var t = String(Date.now());
+  if (qt) qt.value = t;
+  if (ct) ct.value = t;
+})();
 
 // Hamburger menu
 (function(){
