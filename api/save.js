@@ -66,8 +66,8 @@ module.exports = async (req, res) => {
   for (const [key, newText] of Object.entries(changes)) {
     const ek = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-    // Try text content replacement first (for span, p, div, h1-h6, li etc.)
-    const textRx = new RegExp(`(<[^>]+data-key="${ek}"[^>]*>)([^<]*)(</[a-zA-Z0-9]+>)`, 'g');
+    // Try text content replacement (non-self-closing tags only — excludes <img />)
+    const textRx = new RegExp(`(<[^>]+data-key="${ek}"[^>]*(?<!/)>)([^<]*)(</[a-zA-Z0-9]+>)`, 'g');
     const safe = String(newText)
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
