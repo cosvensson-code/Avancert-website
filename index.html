@@ -666,24 +666,53 @@
       line-height: 1.75;
     }
 
-    .price-factors {
-      margin-top: 1.25rem;
+    .pris-kort {
+      margin-top: 1.5rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: .875rem;
+      box-shadow: 0 2px 12px rgba(1,80,109,.06);
+      overflow: hidden;
     }
-    .price-factors h3 {
-      font-size: .78rem;
+    .pris-afsnit {
+      padding: 1.25rem 1.6rem;
+    }
+    .pris-afsnit + .pris-afsnit {
+      border-top: 1px solid var(--line);
+    }
+    .pris-etiket {
+      font-size: .68rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: .07em;
-      color: var(--muted);
-      margin-bottom: .5rem;
+      letter-spacing: .1em;
+      color: var(--blue);
+      margin-bottom: .55rem;
     }
-    .price-factors ul {
-      padding-left: 1.1rem;
+    .pris-tekst {
+      font-size: .88rem;
       color: var(--muted);
-      font-size: .92rem;
+      line-height: 1.6;
     }
-    .price-factors li {
-      margin-bottom: .35rem;
+    .pris-piller {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .1rem;
+    }
+    .pris-pille {
+      background: #f7fafb;
+      border: 1px solid #e6eef1;
+      border-radius: 999px;
+      padding: .36rem .78rem;
+      font-size: .82rem;
+      font-weight: 400;
+      color: #42606e;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .pris-pille svg {
+      flex-shrink: 0;
     }
 
     .logo-section {
@@ -2628,7 +2657,7 @@ body.av-edit #av-popup-store{
 <h1><span data-editable data-key="hero-h1">Certificering</span><br/><span class="hl" data-editable data-key="hero-h1-hl">gjort enkelt.</span></h1>
 <p class="hero-copy" data-editable data-key="hero-copy">Avancert er et familieejet certificeringsselskab der leverer professionelle, uvildige og værdiskabende audits. Vi arbejder udelukkende med certificering og tilbyder hverken rådgivning eller undervisning. Det sikrer en uafhængig proces med fokus på faglighed, tillid og tæt dialog gennem hele forløbet.</p>
 <div class="hero-checklist">
-              <p class="hero-timeline"><span class="hero-tl-check">✓</span><span data-editable data-key="hero-check-1"> Klare priser — ingen skjulte gebyrer</span></p>
+              <p class="hero-timeline"><span class="hero-tl-check">✓</span><span data-editable data-key="hero-tjek-pris"> Én samlet pris for hele forløbet</span></p>
               <p class="hero-timeline"><span class="hero-tl-check">✓</span><span data-editable data-key="hero-check-2"> Få et uforpligtende tilbud</span></p>
               <p class="hero-timeline"><span class="hero-tl-check">✓</span><span data-editable data-key="hero-check-3"> De fleste virksomheder er certificeret inden for 1–3 måneder</span></p>
             </div>
@@ -3007,14 +3036,24 @@ body.av-edit #av-popup-store{
 <p class="eyebrow" data-editable data-key="tilbud-eyebrow">Tilbud</p>
 <h2 data-editable data-key="tilbud-h2">Få et uforpligtende tilbud</h2>
 <p data-editable data-key="tilbud-p">Vælg de standarder I er interesserede i, fortæl os lidt om jer selv og giv os dine kontaktoplysninger. Så vender vi tilbage med et konkurrencedygtigt tilbud inden for 24 timer på hverdage.</p>
-<div class="price-factors">
-<h3 data-editable data-key="tilbud-pf-h3">Hvad påvirker prisen?</h3>
-<ul>
-<li data-editable data-key="tilbud-pf-1">Virksomhedens størrelse</li>
-<li data-editable data-key="tilbud-pf-2">Antal lokationer</li>
-<li data-editable data-key="tilbud-pf-3">Valg af standarder</li>
-<li data-editable data-key="tilbud-pf-4">Kompleksitet og branchekrav</li>
-</ul>
+<div class="pris-kort">
+  <div class="pris-afsnit">
+    <div class="pris-etiket">Sådan sætter vi prisen</div>
+    <p class="pris-tekst" data-editable data-key="pris-metode">Antal revisionsdage gange vores dagspris. Antal dage bestemmer vi ikke selv — det følger en international tabel efter jeres størrelse, lokationer, standarder og kompleksitet, og den er den samme hos alle akkrediterede organer. I får ét samlet tilbud for hele det treårige forløb.</p>
+  </div>
+  <div class="pris-afsnit">
+    <div class="pris-etiket">Inkluderet i prisen</div>
+    <div class="pris-piller">
+      <span class="pris-pille"><svg aria-hidden="true" fill="none" height="11" stroke="#fe6a3f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 12 10" width="11"><polyline points="1,5 4,9 11,1"/></svg><span data-editable data-key="pris-inkluderet-1">Mindre afvigelser</span></span>
+      <span class="pris-pille"><svg aria-hidden="true" fill="none" height="11" stroke="#fe6a3f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 12 10" width="11"><polyline points="1,5 4,9 11,1"/></svg><span data-editable data-key="pris-inkluderet-2">Spørgsmål mellem audits</span></span>
+      <span class="pris-pille"><svg aria-hidden="true" fill="none" height="11" stroke="#fe6a3f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 12 10" width="11"><polyline points="1,5 4,9 11,1"/></svg><span data-editable data-key="pris-inkluderet-3">Certifikatudstedelse</span></span>
+      <span class="pris-pille"><svg aria-hidden="true" fill="none" height="11" stroke="#fe6a3f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 12 10" width="11"><polyline points="1,5 4,9 11,1"/></svg><span data-editable data-key="pris-inkluderet-4">Brug af certificeringsmærket</span></span>
+    </div>
+  </div>
+  <div class="pris-afsnit">
+    <div class="pris-etiket">Det ville ændre prisen</div>
+    <p class="pris-tekst" data-editable data-key="pris-aendrer">Nye lokationer · Flere standarder · Væsentlig vækst i antal medarbejdere</p>
+  </div>
 </div>
 </div>
 <div class="quote-right-col">
@@ -3240,7 +3279,8 @@ Ring 36 16 36 16
 </details>
 <details>
 <summary>Hvad påvirker prisen på en certificering?</summary>
-<p>Prisen afhænger især af antal medarbejdere, lokationer, standarder, branche og kompleksitet. Derfor beder vi om få oplysninger, før vi giver et realistisk og konkurrencedygtigt tilbud. Vores tilgang er effektiv og praktisk, så certificeringsprocessen bliver overskuelig uden unødigt bureaukrati.</p>
+<p data-editable data-key="faq-pris-svar">Prisen er antal revisionsdage gange vores dagspris. Antal dage bestemmer vi ikke selv — det følger en international tabel efter antal medarbejdere, lokationer, standarder, branche og kompleksitet, og den er den samme hos alle akkrediterede organer. Derfor beder vi om nogle få oplysninger, før vi giver et konkret tilbud.</p>
+<p data-editable data-key="faq-pris-svar-2">I får ét samlet tilbud for hele det treårige forløb. Mindre afvigelser, spørgsmål mellem audits og selve certifikatudstedelsen koster ikke ekstra.</p>
 </details>
 <details>
 <summary>Tilbyder Avancert certificering i hele verden?</summary>
