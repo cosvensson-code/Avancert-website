@@ -106,6 +106,19 @@
     .nav { display: flex; gap: 2rem; font-size: 0.875rem; font-weight: 600; color: var(--muted); }
     .nav a:hover { color: var(--blue); transition: color 0.2s; }
 
+    .nav-toggle {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 0.4rem 0.5rem; margin-left: 0.5rem;
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 2px; background: var(--blue);
+      border-radius: 2px; transition: transform .22s, opacity .22s;
+    }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile-phone { display: none; }
+
     .header-cta {
       font-size: 0.875rem; font-weight: 700;
       padding: 0.6rem 1.25rem; border-radius: 999px;
@@ -1177,7 +1190,15 @@
       .team-card-featured { grid-column: span 1; grid-template-columns: 1fr; }
       .cert-logo-grid { grid-template-columns: repeat(3, 1fr); }
       .wordmark { min-width: 180px; padding: 1.4rem 1.75rem; }
-      .nav { display: none; }
+      .nav-toggle { display: flex; }
+      .nav {
+        display: none; position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; gap: 0; background: rgba(245,243,238,.97);
+        backdrop-filter: blur(20px); border-bottom: 1px solid rgba(1,80,109,.12);
+        padding: .5rem 0 1.25rem; box-shadow: 0 8px 24px rgba(0,0,0,.08); z-index: 199;
+      }
+      .nav.is-open { display: flex; }
+      .nav a { padding: .75rem clamp(1.25rem,5vw,3rem); border-bottom: 1px solid rgba(1,80,109,.06); width: 100%; box-sizing: border-box; }
       .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 3rem; }
       .hero-panel { display: grid; grid-template-columns: repeat(3,1fr); }
       .hero-panel > div { border-bottom: none; padding: 1.1rem 1rem; border-right: 1px solid rgba(255,255,255,0.12); }
@@ -1194,6 +1215,7 @@
       .wordmark { min-width: 160px; padding: 1.25rem 1.5rem; font-size: 1rem; }
       .wordmark-track { animation-duration: 28s; }
       .header-cta { display: none; }
+      .nav-mobile-phone { display: block; font-weight: 700; color: var(--blue); padding: .75rem clamp(1.25rem,5vw,3rem); border-bottom: 1px solid rgba(1,80,109,.06); }
       .site-header { padding: 1rem 1.25rem; }
       h1 { font-size: 3rem; }
       .cert-grid { grid-template-columns: 1fr 1fr; }
@@ -1662,6 +1684,11 @@ main, section, header, footer {
 
 [data-popup-key="Fargol Monazam"] .team-photo img {
   transform: scale(1.3) translateY(12%) !important;
+  transform-origin: center center !important;
+}
+
+[data-popup-key="Thomas Engelbrektsson"] .team-photo img {
+  transform: scale(1.15) translateY(-10%) !important;
   transform-origin: center center !important;
 }
 
@@ -2505,14 +2532,18 @@ body.av-edit #av-popup-store{
 <path d="M5.62402 82.5848L18.4436 74.0883C26.9723 81.5392 31.8141 86.1088 40.9883 97.342C67.2256 64.2894 80.7686 55.2111 118 47C78.3871 63.6102 38.9055 122.221 38.778 123.726C38.6506 125.231 6.60237 82.7461 5.62402 82.5848Z" fill="#FF6A3F"></path>
 </svg>
 </a>
-<nav class="nav">
+<nav class="nav" id="mainNav">
 <a href="#certificeringer"><span data-editable data-key="nav-cert">Certificeringer</span></a>
 <a href="#om"><span data-editable data-key="nav-about">Om os</span></a>
 <a href="#team"><span data-editable data-key="nav-team">Team</span></a>
 <a href="#tilbud"><span data-editable data-key="nav-offer">Få tilbud</span></a>
 <a href="#kontakt"><span data-editable data-key="nav-contact">Kontakt</span></a>
+<a class="nav-mobile-phone" href="tel:+4536163616">📞 36 16 36 16</a>
 </nav>
 <a class="header-cta" href="tel:+4536163616"><span data-editable data-key="header-cta">36 16 36 16</span></a>
+<button aria-expanded="false" aria-label="Åbn menu" class="nav-toggle" id="navToggle" type="button">
+<span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+</button>
 </div>
 </header>
 <main id="top">
@@ -3045,20 +3076,35 @@ Ring 36 16 36 16
       'virksomhed_størrelse': fd.get('size') || '',
       'standarder': standards
     });
-    var subject = encodeURIComponent('Tilbudsforespørgsel: ' + (fd.get('company') || fd.get('name') || ''));
-    var body = encodeURIComponent(
-      'STANDARDER\n' +
-      'Ønskede standarder: ' + standards + '\n\n' +
-      'VIRKSOMHED\n' +
-      'Firmanavn: ' + (fd.get('company') || '') + '\n' +
-      'Antal medarbejdere: ' + (fd.get('size') || '') + '\n' +
-      'Allerede certificeret: ' + (fd.get('certified') || '') + '\n\n' +
-      'KONTAKT\n' +
-      'Navn: ' + (fd.get('name') || '') + '\n' +
-      'Telefon: ' + (fd.get('phone') || '') + '\n' +
-      'Email: ' + (fd.get('email') || '')
-    );
-    window.location.href = 'mailto:info@avancert.dk?subject=' + subject + '&body=' + body;
+    var submitBtn = form.querySelector('[type="submit"]');
+    submitBtn.disabled = true; submitBtn.textContent = 'Sender…';
+    fetch('/api/kontakt', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        formType: 'tilbud',
+        company: fd.get('company') || '',
+        size: fd.get('size') || '',
+        certified: fd.get('certified') || '',
+        standards: standards,
+        name: fd.get('name') || '',
+        phone: fd.get('phone') || '',
+        email: fd.get('email') || ''
+      })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d.ok) {
+        form.innerHTML = '<div style="text-align:center;padding:2rem 0"><p style="font-size:1.5rem">✓</p><h3 style="color:var(--blue);margin:.5rem 0">Tak for din forespørgsel!</h3><p>Vi vender tilbage inden for 24 timer på hverdage.</p></div>';
+      } else {
+        submitBtn.disabled = false; submitBtn.textContent = 'Send forespørgsel';
+        alert('Noget gik galt. Ring til os på 36 16 36 16.');
+      }
+    })
+    .catch(function(){
+      submitBtn.disabled = false; submitBtn.textContent = 'Send forespørgsel';
+      alert('Ingen forbindelse. Ring til os på 36 16 36 16.');
+    });
   });
 })();
 </script>
@@ -3541,23 +3587,64 @@ document.addEventListener('keydown', function(e){
   if (e.key === 'Escape') closeAllModals();
 });
 
-// Complaint form basic handler
+// Complaint form
 var complaintForm = document.getElementById('complaintForm');
 if (complaintForm) {
   complaintForm.addEventListener('submit', function(e){
     e.preventDefault();
+    var btn = complaintForm.querySelector('[type="submit"]');
     var fd = new FormData(complaintForm);
-    var subject = encodeURIComponent('Henvendelse: ' + (fd.get('type') || 'Klage'));
-    var body = encodeURIComponent(
-      'Type: ' + (fd.get('type') || '') + '\n' +
-      'Navn: ' + (fd.get('name') || '') + '\n' +
-      'Email: ' + (fd.get('email') || '') + '\n' +
-      'Virksomhed: ' + (fd.get('company') || '') + '\n\n' +
-      'Beskrivelse:\n' + (fd.get('message') || '')
-    );
-    window.location.href = 'mailto:info@avancert.dk?subject=' + subject + '&body=' + body;
+    btn.disabled = true; btn.textContent = 'Sender…';
+    fetch('/api/kontakt', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        formType: 'klage',
+        type: fd.get('type') || '',
+        name: fd.get('name') || '',
+        email: fd.get('email') || '',
+        company: fd.get('company') || '',
+        message: fd.get('message') || ''
+      })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d.ok) {
+        complaintForm.innerHTML = '<p style="color:var(--blue);font-weight:700;padding:1rem 0;">✓ Tak — vi vender tilbage hurtigst muligt.</p>';
+      } else {
+        btn.disabled = false; btn.textContent = 'Send henvendelse';
+        alert('Noget gik galt. Ring til os på 36 16 36 16.');
+      }
+    })
+    .catch(function(){
+      btn.disabled = false; btn.textContent = 'Send henvendelse';
+      alert('Ingen forbindelse. Ring til os på 36 16 36 16.');
+    });
   });
 }
+
+// Hamburger menu
+(function(){
+  var toggle = document.getElementById('navToggle');
+  var nav = document.getElementById('mainNav');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if (!nav.contains(e.target) && !toggle.contains(e.target)){
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
 </script>
 
 <!-- COOKIE BANNER -->
