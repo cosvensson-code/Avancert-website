@@ -115,6 +115,32 @@ Alle redaktørgemninger laver et commit i GitHub med beskeden `Redaktør: Navn �
 
 ---
 
+## Oprydning i images/
+
+Når en redaktør vælger et nyt billede i editoren, uploader systemet filen til repoet med det samme — også selvom redaktøren aldrig trykker **Gem**. Over tid kan der derfor hobe sig ubrugte billedfiler op i `images/`-mappen.
+
+**Symptom:** Filer med tidsstempel i navnet (`thomas-1786438497950.jpg` o.l.) er altid upload-rester.
+
+**Sådan rydder du op:**
+
+1. Klon repoet lokalt og åbn en terminal i rodmappen.
+2. Find alle billedfiler, der *ikke* er refereret i nogen fil:
+   ```bash
+   for f in images/*; do
+     grep -rl "$(basename $f)" . --include="*.html" --include="*.js" --include="*.md" | grep -q . || echo "UBRUGT: $f"
+   done
+   ```
+3. Gennemgå listen og slet de filer, du er sikker på er ubrugte:
+   ```bash
+   git rm images/filnavn.jpg
+   git commit -m "Ryd op: slet ubrugte billedfiler"
+   git push
+   ```
+
+Husk: `banedanmark.webp` og alle andre aktive logoer og portræt­billeder **må ikke slettes**, selvom de muligvis ikke nævnes i selve HTML-koden (de kan bruges via editoren).
+
+---
+
 ## Sikkerhed
 
 - Adgangskoder gemmes aldrig i koden — kun bcrypt-hashes i Vercel env vars
