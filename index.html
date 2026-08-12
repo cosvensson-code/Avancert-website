@@ -1929,6 +1929,11 @@ main, section, header, footer {
   display: inline-flex;
   align-items: center;
   gap: .45rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
   font-size: 1rem;
   font-weight: 700;
   color: rgba(255,255,255,0.8);
@@ -2854,7 +2859,7 @@ body.av-edit #av-popup-store{
 <p class="eyebrow" data-editable data-key="om-eyebrow">Om Avancert</p>
 <div class="about-grid">
 <article class="about-card">
-<h2 data-editable data-key="om-h2">Uvildige, fordi vi ikke laver andet</h2><p data-editable data-key="om-p1">Hos AVANCERT møder du erfarne auditorer med praktisk forståelse for virksomheder, drift og ledelsessystemer. Vi arbejder med tæt dialog og en effektiv proces fra start til slut.</p><p data-editable data-key="om-p2">AVANCERT arbejder udelukkende med certificering og tilbyder hverken rådgivning eller undervisning. Det sikrer en uvildig og troværdig certificeringsproces.</p>
+<h2 data-editable data-key="om-h2">Uvildige, fordi vi ikke laver andet</h2><p data-editable data-key="om-p1">Hos AVANCERT møder I auditorer, der selv har arbejdet med drift og ledelsessystemer — ikke kun med standarderne. Certificering er vores eneste forretning; vi laver hverken rådgivning eller undervisning. Det arbejder vi for, at I kan mærke i dialogen, i processen og i den rapport, I ender med.</p><p data-editable data-key="om-p2"></p>
 <div class="usp-rows">
 <div class="usp-row">
 <span aria-hidden="true" class="usp-row-icon">
@@ -2862,7 +2867,7 @@ body.av-edit #av-popup-store{
 </span>
 <div class="usp-row-content">
 <h3 data-editable data-key="usp1-h3">Rene linjer</h3>
-<p data-editable data-key="usp1-p">Vi auditerer — det er alt, vi gør. Vi rådgiver aldrig, konsulterer aldrig og har ingen bindinger. Det giver jer en 100% uvildig certificering, hver gang.</p>
+<p data-editable data-key="usp1-p">Ingen bindinger, ingen dobbeltroller, ingen skjulte agendaer. Bare en vurdering, I trygt kan henvise til over for kunder og myndigheder.</p>
 </div>
 </div>
 <div class="usp-row">
@@ -2871,7 +2876,7 @@ body.av-edit #av-popup-store{
 </span>
 <div class="usp-row-content">
 <h3 data-editable data-key="usp2-h3">Familieejet og uafhængigt</h3>
-<p data-editable data-key="usp2-p">Avancert er en familievirksomhed uden eksterne investorer. Det giver os friheden til at prioritere faglighed, uvildighed og en ærlig dialog.</p>
+<p data-editable data-key="usp2-p">AVANCERT er en familievirksomhed uden eksterne investorer. Vi har ingen kvartalsmål, der skal nås, og ingen sælger, der skal have flere auditdage ud af jer. Vi bruger den tid, opgaven kræver — hverken mere eller mindre.</p>
 </div>
 </div>
 <div class="usp-row">
@@ -2880,7 +2885,7 @@ body.av-edit #av-popup-store{
 </span>
 <div class="usp-row-content">
 <h3 data-editable data-key="usp3-h3">Praktisk tilgang</h3>
-<p data-editable data-key="usp3-p">Vi tror på, at en god audit starter med god dialog. Vi lytter, tilpasser og gennemfører altid certificeringen med respekt for jeres virksomhed og hverdag.</p>
+<p data-editable data-key="usp3-p">En god audit starter med dialog. Vi lytter, tilpasser og gennemfører certificeringen med respekt for jeres virksomhed og hverdag.</p>
 </div>
 </div>
 <div class="usp-row">
@@ -2888,8 +2893,8 @@ body.av-edit #av-popup-store{
 <svg fill="none" viewbox="0 0 20 20"><path d="M3 10.5L8 15L17 5.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg>
 </span>
 <div class="usp-row-content">
-<h3 data-editable data-key="usp4-h3">Ingen ekstra gebyrer ved mindre afvigelser</h3>
-<p data-editable data-key="usp4-p">Mindre afvigelser er en del af processen, og ikke noget vi opkræver ekstra for.</p>
+<h3 data-editable data-key="usp4-h3">Ingen gebyr for småting</h3>
+<p data-editable data-key="usp4-p">De mindste afvigelser ser vi som en del af processen, og ikke noget vi opkræver ekstra for.</p>
 </div>
 </div>
 </div>
@@ -3183,10 +3188,10 @@ body.av-edit #av-popup-store{
 </div>
 <div class="quote-callback">
 <p class="quote-callback-label">Foretrækker du at tale med en auditor direkte?</p>
-<a class="quote-callback-link" href="tel:+4536163616">
+<button class="quote-callback-link" onclick="avancertRingPopup()" type="button">
 <svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
 Ring 36 16 36 16
-</a>
+</button>
 </div>
 </section>
 <script>
