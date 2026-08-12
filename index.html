@@ -128,6 +128,7 @@
       padding: 0.6rem 1.25rem; border-radius: 999px;
       border: 1.5px solid var(--blue); color: var(--blue);
       transition: all 0.2s; white-space: nowrap;
+      background: none; cursor: pointer; font-family: inherit;
     }
     .header-cta:hover { background: var(--blue); color: #fff; }
 
@@ -2671,10 +2672,10 @@ body.av-edit #av-popup-store{
 <a class="nav-mobile-phone" href="tel:+4536163616">📞 36 16 36 16</a>
 <a class="nav-mobile-cta" href="#tilbud">Få et tilbud</a>
 </nav>
-<a aria-label="Ring til os: 36 16 36 16" class="header-cta" href="tel:+4536163616">
+<button aria-label="Ring til os: 36 16 36 16" class="header-cta" onclick="avancertRingPopup()" type="button">
 <svg aria-hidden="true" class="header-cta-icon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.5 10.5 19.79 19.79 0 01.5 1.84 2 2 0 012.49 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.56a16 16 0 006.29 6.29l.87-.87a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
 <span data-editable data-key="header-cta">36 16 36 16</span>
-</a>
+</button>
 <button aria-controls="mainNav" aria-expanded="false" aria-label="Åbn menu" class="nav-toggle" id="navToggle" type="button">
 <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
 </button>
@@ -3395,7 +3396,7 @@ Ring 36 16 36 16
 <h2 data-editable data-key="cta-h2">Tag en uforpligtende snak med en erfaren auditor.</h2>
 <div class="hero-actions center">
 <a class="btn primary" href="#tilbud">Få et tilbud</a>
-<a class="btn secondary" href="tel:+4536163616">Ring 36 16 36 16</a>
+<button class="btn secondary" onclick="avancertRingPopup()" type="button">Ring 36 16 36 16</button>
 </div>
 </div>
 <!-- FOOTER -->
