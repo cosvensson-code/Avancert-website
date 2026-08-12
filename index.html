@@ -3169,7 +3169,7 @@ body.av-edit #av-popup-store{
 <div class="form-step" data-step-panel="3" hidden="">
 <div class="form-field"><label for="name">Navn</label><input id="name" name="name" required="" type="text"/></div>
 <div class="form-row">
-<div class="form-field"><label for="phone">Telefon</label><input id="phone" name="phone" type="tel"/></div>
+<div class="form-field"><label for="phone">Telefon</label><input id="phone" name="phone" required="" type="tel"/></div>
 <div class="form-field"><label for="email">Email</label><input id="email" name="email" required="" type="email"/></div>
 </div>
 <div class="form-nav">
@@ -3252,6 +3252,14 @@ Ring 36 16 36 16
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    var step3 = form.querySelector('[data-step-panel="3"]');
+    var requiredFields = step3.querySelectorAll('[required]');
+    var valid = true;
+    requiredFields.forEach(function(f){
+      if (!f.value.trim()) { valid = false; f.style.borderColor = 'var(--orange)'; }
+      else { f.style.borderColor = ''; }
+    });
+    if (!valid) return;
     var fd = new FormData(form);
     var standards = fd.getAll('standard').join(', ') || 'Ikke valgt';
     gtag('event', 'tilbud_formular_indsendt', {
