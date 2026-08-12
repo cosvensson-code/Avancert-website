@@ -4198,7 +4198,7 @@ Kontakt: thomas@engelconsulting.se</div>
     document.body.classList.remove('menu-open');
   }
   function avancertRingCall() {
-    var isMobile = navigator.maxTouchPoints > 0 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+    var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
     if (isMobile) {
       window.location.href = 'tel:+4536163616';
       return;
