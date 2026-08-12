@@ -1,5 +1,9 @@
 {
+  "redirects": [
+    { "source": "/tilbudsinfo.html", "destination": "/tilbudsinfo", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/login", "destination": "/login.html" }
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/tilbudsinfo", "destination": "/tilbudsinfo.html" }
   ]
 }

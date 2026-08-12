@@ -98,6 +98,7 @@
     background: var(--orange); color: #fff; text-decoration: none;
   }
   .btn:hover { background: #e0532e; transform: translateY(-1px); }
+  .btn:disabled { background: #a0b8c2; cursor: not-allowed; transform: none; }
   .submit-note {
     font-size: 0.78rem; color: var(--muted); margin-top: 0.85rem; line-height: 1.5;
   }
@@ -120,6 +121,9 @@
   </div>
 
   <form id="intakeForm" novalidate="">
+    <input name="_hp" type="text" style="display:none;position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+    <input name="_t" type="hidden"/>
+    <input name="formType" type="hidden" value="tilbudsinfo"/>
 
     <!-- VIRKSOMHEDSOPLYSNINGER -->
     <div class="card">
@@ -214,7 +218,7 @@
 
     <div class="submit-area">
       <button class="btn" type="submit">Send oplysninger til Avancert</button>
-      <p class="submit-note">Formularen åbner dit e-mailprogram med alle oplysningerne klar til afsendelse.<br/>Dine oplysninger behandles fortroligt og gemmes i overensstemmelse med gældende lovgivning.</p>
+      <p class="submit-note">Dine oplysninger behandles fortroligt og i overensstemmelse med gældende lovgivning.</p>
     </div>
 
   </form>
@@ -222,41 +226,138 @@
 
 <script>
 (function(){
+  var LSKEY = 'avancert_tilbudsinfo';
   var form = document.getElementById('intakeForm');
   if (!form) return;
 
+  // Sæt timestamp med det samme
+  var tField = form.querySelector('[name="_t"]');
+  if (tField) tField.value = Date.now();
+
+  // Gendan gemte felter
+  try {
+    var saved = JSON.parse(localStorage.getItem(LSKEY) || '{}');
+    form.querySelectorAll('input:not([type=checkbox]):not([type=radio]):not([type=hidden]), textarea').forEach(function(f) {
+      if (f.name && saved[f.name] !== undefined) f.value = saved[f.name];
+    });
+    var savedStds = saved._standards || [];
+    form.querySelectorAll('[name="standard"]').forEach(function(cb) {
+      cb.checked = savedStds.indexOf(cb.value) !== -1;
+    });
+    if (saved.allerede_cert) {
+      var radio = form.querySelector('[name="allerede_cert"][value="' + saved.allerede_cert + '"]');
+      if (radio) radio.checked = true;
+    }
+  } catch(e) {}
+
+  // Gem løbende i localStorage
+  function saveToLS() {
+    try {
+      var data = {};
+      form.querySelectorAll('input:not([type=checkbox]):not([type=radio]):not([type=hidden]), textarea').forEach(function(f) {
+        if (f.name) data[f.name] = f.value;
+      });
+      data._standards = [];
+      form.querySelectorAll('[name="standard"]:checked').forEach(function(cb) {
+        data._standards.push(cb.value);
+      });
+      var radioEl = form.querySelector('[name="allerede_cert"]:checked');
+      if (radioEl) data.allerede_cert = radioEl.value;
+      localStorage.setItem(LSKEY, JSON.stringify(data));
+    } catch(e) {}
+  }
+  form.addEventListener('input', saveToLS);
+  form.addEventListener('change', saveToLS);
+
+  // Fejlbesked
+  function showError() {
+    var existing = document.getElementById('ti-error');
+    if (existing) { existing.style.display = ''; return; }
+    var el = document.createElement('p');
+    el.id = 'ti-error';
+    el.style.cssText = 'color:#c0392b;background:#fdf0ef;border:1.5px solid #f5c6c0;border-radius:0.65rem;padding:1rem 1.25rem;margin-top:1rem;font-size:0.875rem;line-height:1.6;text-align:left;';
+    el.innerHTML = 'Noget gik galt. Prøv igen, eller kontakt os direkte på <a href="tel:+4536163616" style="color:inherit;font-weight:700;">36 16 36 16</a> eller <a href="mailto:info@avancert.dk" style="color:inherit;font-weight:700;">info@avancert.dk</a>.';
+    form.querySelector('.submit-area').appendChild(el);
+  }
+
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+    var btn = form.querySelector('[type="submit"]');
     var fd = new FormData(form);
-    var standards = fd.getAll('standard').join(', ') || 'Ingen markeret';
 
-    var subject = encodeURIComponent('Tilbudsinfo: ' + (fd.get('firmanavn') || ''));
-    var body = encodeURIComponent(
-      '=== VIRKSOMHEDSOPLYSNINGER ===\n' +
-      'Firmanavn: ' + (fd.get('firmanavn') || '') + '\n' +
-      'CVR. Nr.: ' + (fd.get('cvr') || '') + '\n' +
-      'Kontaktperson: ' + (fd.get('kontakt') || '') + '\n' +
-      'Telefon: ' + (fd.get('telefon') || '') + '\n' +
-      'E-mail: ' + (fd.get('email') || '') + '\n' +
-      'Adresse: ' + (fd.get('vejnavn') || '') + ', ' + (fd.get('postnr') || '') + ' ' + (fd.get('by') || '') + '\n' +
-      'Hjemmeside: ' + (fd.get('website') || '') + '\n' +
-      'Antal medarbejdere: ' + (fd.get('medarbejdere') || '') + '\n\n' +
-      '=== ØNSKEDE STANDARDER ===\n' +
-      standards + '\n' +
-      (fd.get('andre_std') ? 'Andre: ' + fd.get('andre_std') + '\n' : '') + '\n' +
-      '=== EKSTRA LOKATIONER ===\n' +
-      (fd.get('lokationer') || 'Ingen') + '\n\n' +
-      '=== NUVÆRENDE CERTIFICERING ===\n' +
-      'Allerede certificeret: ' + (fd.get('allerede_cert') || '') + '\n' +
-      'Nuværende standarder/udløb/overdragelse: ' + (fd.get('nuv_standarder') || '') + '\n' +
-      'Konsulentvirksomhed: ' + (fd.get('konsulent') || '') + '\n\n' +
-      '=== OM VIRKSOMHEDEN ===\n' +
-      'Hvad laver virksomheden:\n' + (fd.get('hvad_laver') || '') + '\n\n' +
-      'Medarbejdere fordelt på funktioner:\n' + (fd.get('funktioner') || '') + '\n\n' +
-      'Outsourcede processer:\n' + (fd.get('outsourcing') || '')
-    );
+    // Skjul evt. tidligere fejl
+    var prevErr = document.getElementById('ti-error');
+    if (prevErr) prevErr.style.display = 'none';
 
-    window.location.href = 'mailto:info@avancert.dk?subject=' + subject + '&body=' + body;
+    // Validér påkrævede felter
+    var firstInvalid = null;
+    form.querySelectorAll('[required]').forEach(function(f) {
+      if (!f.value.trim()) {
+        f.style.borderColor = 'var(--orange)';
+        if (!firstInvalid) firstInvalid = f;
+      } else {
+        f.style.borderColor = '';
+      }
+    });
+    if (firstInvalid) { firstInvalid.focus(); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Sender…';
+
+    fetch('/api/kontakt', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        formType:       'tilbudsinfo',
+        _hp:            fd.get('_hp'),
+        _t:             fd.get('_t'),
+        firmanavn:      fd.get('firmanavn'),
+        cvr:            fd.get('cvr'),
+        kontakt:        fd.get('kontakt'),
+        telefon:        fd.get('telefon'),
+        email:          fd.get('email'),
+        vejnavn:        fd.get('vejnavn'),
+        postnr:         fd.get('postnr'),
+        by:             fd.get('by'),
+        website:        fd.get('website'),
+        medarbejdere:   fd.get('medarbejdere'),
+        standards:      fd.getAll('standard').join(', '),
+        andre_std:      fd.get('andre_std'),
+        lokationer:     fd.get('lokationer'),
+        allerede_cert:  fd.get('allerede_cert'),
+        nuv_standarder: fd.get('nuv_standarder'),
+        konsulent:      fd.get('konsulent'),
+        hvad_laver:     fd.get('hvad_laver'),
+        funktioner:     fd.get('funktioner'),
+        outsourcing:    fd.get('outsourcing')
+      })
+    })
+    .then(function(r) {
+      return r.json().then(function(d) { return { ok: r.ok, d: d }; });
+    })
+    .then(function(res) {
+      if (res.ok) {
+        try { localStorage.removeItem(LSKEY); } catch(e) {}
+        var wrap = form.parentNode;
+        wrap.innerHTML =
+          '<div style="text-align:center;padding:3rem 1.5rem;">' +
+          '<div style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#e8f4f8;margin-bottom:1.25rem;">' +
+          '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#01506d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
+          '</div>' +
+          '<h2 style="color:#01506d;font-size:1.4rem;font-weight:800;margin-bottom:0.75rem;">Tak — vi har modtaget jeres oplysninger</h2>' +
+          '<p style="color:#6b7a8d;max-width:420px;margin:0 auto;line-height:1.65;">Vi gennemgår dem og vender tilbage hurtigst muligt med et konkret tilbud.<br>Har I spørgsmål, er I altid velkomne til at ringe på <strong>36 16 36 16</strong>.</p>' +
+          '</div>';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send oplysninger til Avancert';
+        showError();
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send oplysninger til Avancert';
+      showError();
+    });
   });
 })();
 </script>

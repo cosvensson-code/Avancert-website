@@ -41,7 +41,64 @@ module.exports = async (req, res) => {
   const formType = clean(b.formType);
   let subject, text, replyTo;
 
-  if (formType === 'tilbud') {
+  if (formType === 'tilbudsinfo') {
+    const firmanavn      = clean(b.firmanavn);
+    const cvr            = clean(b.cvr);
+    const kontakt        = clean(b.kontakt);
+    const telefon        = clean(b.telefon);
+    const email          = clean(b.email);
+    const vejnavn        = clean(b.vejnavn);
+    const postnr         = clean(b.postnr);
+    const by             = clean(b.by);
+    const website        = clean(b.website);
+    const medarbejdere   = clean(b.medarbejdere);
+    const standards      = clean(b.standards);
+    const andre_std      = clean(b.andre_std);
+    const lokationer     = clean(b.lokationer);
+    const allerede_cert  = clean(b.allerede_cert);
+    const nuv_standarder = clean(b.nuv_standarder);
+    const konsulent      = clean(b.konsulent);
+    const hvad_laver     = clean(b.hvad_laver);
+    const funktioner     = clean(b.funktioner);
+    const outsourcing    = clean(b.outsourcing);
+
+    if (!firmanavn && !kontakt) return res.status(400).json({ error: 'Mangler firmanavn' });
+
+    subject = `Tilbudsinfo: ${firmanavn || kontakt}`;
+    text = [
+      '=== VIRKSOMHEDSOPLYSNINGER ===',
+      `Firmanavn: ${firmanavn}`,
+      `CVR. Nr.: ${cvr}`,
+      `Kontaktperson: ${kontakt}`,
+      `Telefon: ${telefon}`,
+      `E-mail: ${email}`,
+      `Adresse: ${vejnavn}, ${postnr} ${by}`.trim().replace(/^,\s*/, ''),
+      `Hjemmeside: ${website}`,
+      `Antal medarbejdere: ${medarbejdere}`,
+      '',
+      '=== ØNSKEDE STANDARDER ===',
+      standards || 'Ingen markeret',
+      andre_std ? `Andre: ${andre_std}` : '',
+      '',
+      '=== EKSTRA LOKATIONER ===',
+      lokationer || 'Ingen',
+      '',
+      '=== NUVÆRENDE CERTIFICERING ===',
+      `Allerede certificeret: ${allerede_cert}`,
+      `Standarder/udløb/overdragelse: ${nuv_standarder}`,
+      `Konsulentvirksomhed: ${konsulent}`,
+      '',
+      '=== OM VIRKSOMHEDEN ===',
+      `Hvad laver virksomheden:\n${hvad_laver}`,
+      '',
+      `Medarbejdere fordelt på funktioner:\n${funktioner}`,
+      '',
+      `Outsourcede processer:\n${outsourcing}`,
+    ].join('\n');
+
+    if (email && isValidEmail(email)) replyTo = email;
+
+  } else if (formType === 'tilbud') {
     const company  = clean(b.company);
     const name     = clean(b.name);
     const email    = clean(b.email);
@@ -106,19 +163,25 @@ module.exports = async (req, res) => {
 
     // Kvitteringsmail til afsender
     if (replyTo) {
-      const isOffer = formType === 'tilbud';
+      const isTilbudsinfo = formType === 'tilbudsinfo';
+      const isOffer = formType === 'tilbud' || isTilbudsinfo;
+      const senderName = clean(b.name || b.kontakt);
       await send(apiKey, from, {
         from,
         to: [replyTo],
-        subject: isOffer
-          ? 'Vi har modtaget din tilbudsforespørgsel'
-          : 'Vi har modtaget din henvendelse',
+        subject: isTilbudsinfo
+          ? 'Vi har modtaget jeres virksomhedsoplysninger'
+          : isOffer
+            ? 'Vi har modtaget din tilbudsforespørgsel'
+            : 'Vi har modtaget din henvendelse',
         text: [
-          `Hej ${clean(b.name)},`,
+          `Hej ${senderName},`,
           '',
-          isOffer
-            ? 'Tak for din forespørgsel. Vi vender tilbage hurtigst muligt med et konkret tilbud.'
-            : 'Tak for din henvendelse. Vi behandler den hurtigst muligt.',
+          isTilbudsinfo
+            ? 'Tak for jeres oplysninger. Vi gennemgår dem og vender tilbage hurtigst muligt med et konkret tilbud.'
+            : isOffer
+              ? 'Tak for din forespørgsel. Vi vender tilbage hurtigst muligt med et konkret tilbud.'
+              : 'Tak for din henvendelse. Vi behandler den hurtigst muligt.',
           '',
           'Har du spørgsmål undervejs, er du altid velkommen til at ringe på 36 16 36 16.',
           '',
