@@ -443,7 +443,7 @@
 
     /* ─── PROCESS på blå baggrund ─── */
     .section-bg-blue .proces-section h2 { color: #fff; }
-    .section-bg-blue .proces-section .process-intro { color: #fff; }
+    .section-bg-blue .proces-section .process-intro { color: #fff !important; }
     .section-bg-blue .proces-section .process-num {
       background: rgba(254,106,63,0.18);
       color: var(--orange);
@@ -2764,7 +2764,7 @@ body.av-edit #av-popup-store{
 <div class="skift-boks">
 <div class="skift-boks-inner">
 <p class="eyebrow" data-editable data-key="skift-eyebrow">TÆNKER I PÅ AT SKIFTE?</p>
-<h2 class="skift-h2" data-editable data-key="skift-h2">Benytter I et andet certificeringsorgan?</h2>
+<h2 class="skift-h2" data-editable data-key="skift-h2">Benytter I allerede et andet certificeringsorgan?</h2>
 <p class="skift-brodtekst" data-editable data-key="skift-brodtekst-1">Et akkrediteret certifikat kan overdrages til et andet organ — også imellem audits.</p>
 <p class="skift-brodtekst" data-editable data-key="skift-brodtekst-2">Vi gennemgår jeres auditrapporter og certifikater, og udsteder nye certifikater uden beregning.</p>
 <button class="btn primary" onclick="avancertSkiftTilbud()" style="margin-top:1.5rem;" type="button">Få et tilbud fra os</button>
@@ -4167,10 +4167,10 @@ Kontakt: thomas@engelconsulting.se</div>
   <p id="ring-popup-title" style="font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#fe6a3f;margin-bottom:0.6rem;">Ring til os</p>
   <p style="font-size:1rem;color:#5a7a8a;line-height:1.5;margin-bottom:1.75rem;">Vælg, hvordan du vil ringe — direkte opkald eller via Teams.</p>
   <div style="display:flex;flex-direction:column;gap:0.75rem;">
-    <a href="tel:+4536163616" style="display:flex;align-items:center;gap:0.9rem;background:#01506d;color:#fff;border-radius:1rem;padding:1.1rem 1.5rem;text-decoration:none;font-weight:700;font-size:1.05rem;">
+    <button id="ring-call-btn" onclick="avancertRingCall()" type="button" style="display:flex;align-items:center;gap:0.9rem;background:#01506d;color:#fff;border-radius:1rem;padding:1.1rem 1.5rem;border:none;cursor:pointer;font-family:inherit;font-weight:700;font-size:1.05rem;width:100%;text-align:left;">
       <svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      36 16 36 16
-    </a>
+      <span id="ring-call-label">36 16 36 16</span>
+    </button>
     <a href="https://teams.microsoft.com/l/call/0/0?users=4:+4536163616" rel="noopener" target="_blank" style="display:flex;align-items:center;gap:0.9rem;background:#f5f3ee;color:#01506d;border:1.5px solid #dde5e9;border-radius:1rem;padding:1.1rem 1.5rem;text-decoration:none;font-weight:700;font-size:1.05rem;">
       <svg aria-hidden="true" fill="#5059C9" height="20" viewbox="0 0 24 24" width="20"><path d="M19.5 8.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5zM15 10.5h3l1.5 1.5v6h-1.5v-5.25H15V10.5zM9 4.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4.5 10.5A1.5 1.5 0 0 0 3 12v5.25A2.25 2.25 0 0 0 5.25 19.5h7.5A2.25 2.25 0 0 0 15 17.25V12a1.5 1.5 0 0 0-1.5-1.5H4.5z"/></svg>
       Ring via Teams
@@ -4192,8 +4192,25 @@ Kontakt: thomas@engelconsulting.se</div>
     popup.style.display = 'none';
     document.body.classList.remove('menu-open');
   }
+  function avancertRingCall() {
+    var isMobile = navigator.maxTouchPoints > 0 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = 'tel:+4536163616';
+      return;
+    }
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText('36163616').then(function() {
+        var label = document.getElementById('ring-call-label');
+        if (!label) return;
+        var orig = label.textContent;
+        label.textContent = 'Kopieret!';
+        setTimeout(function() { label.textContent = orig; }, 2000);
+      });
+    }
+  }
   window.avancertRingPopup = avancertRingPopup;
   window.avancertRingLuk = avancertRingLuk;
+  window.avancertRingCall = avancertRingCall;
   popup.addEventListener('click', function(e){ if (e.target === popup) avancertRingLuk(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !popup.hidden) avancertRingLuk(); });
 })();
