@@ -2991,7 +2991,7 @@ body.av-edit #av-popup-store{
 </article>
 </div>
 <div style="text-align:center;margin-top:3rem;">
-<button aria-controls="eks-auditorer" aria-expanded="false" class="btn secondary" id="eks-toggle" onclick="avancertToggleEks()" type="button">Se alle vores faste eksterne auditorer</button>
+<button aria-controls="eks-auditorer" aria-expanded="false" class="btn secondary" id="eks-toggle" onclick="avancertToggleEks()" type="button">Se vores faste eksterne auditorer</button>
 </div>
 <div hidden id="eks-auditorer">
 <h2 style="margin-top:2.5rem;margin-bottom:0.5rem;">Eksterne auditorer</h2>
@@ -3829,7 +3829,7 @@ function avancertToggleEks() {
   var open = !panel.hidden;
   panel.hidden = open;
   btn.setAttribute('aria-expanded', String(!open));
-  btn.textContent = open ? 'Se alle vores faste eksterne auditorer' : 'Skjul eksterne auditorer';
+  btn.textContent = open ? 'Se vores faste eksterne auditorer' : 'Skjul eksterne auditorer';
 }
 
 function avancertSkiftTilbud() {
