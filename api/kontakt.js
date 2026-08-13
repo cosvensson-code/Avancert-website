@@ -172,21 +172,21 @@ module.exports = async (req, res) => {
         subject: isTilbudsinfo
           ? 'Vi har modtaget jeres virksomhedsoplysninger'
           : isOffer
-            ? 'Vi har modtaget din tilbudsforespørgsel'
-            : 'Vi har modtaget din henvendelse',
+            ? 'Vi har modtaget jeres tilbudsforespørgsel'
+            : 'Vi har modtaget jeres henvendelse',
         text: [
           `Hej ${senderName},`,
           '',
           isTilbudsinfo
             ? 'Tak for jeres oplysninger. Vi gennemgår dem og vender tilbage hurtigst muligt med et konkret tilbud.'
             : isOffer
-              ? 'Tak for din forespørgsel. Vi vender tilbage hurtigst muligt med et konkret tilbud.'
-              : 'Tak for din henvendelse. Vi behandler den hurtigst muligt.',
+              ? 'Tak for jeres forespørgsel. Vi vender tilbage hurtigst muligt med et konkret tilbud.'
+              : 'Tak for jeres henvendelse. Vi behandler den hurtigst muligt.',
           '',
-          'Har du spørgsmål undervejs, er du altid velkommen til at ringe på 36 16 36 16.',
+          'Har I spørgsmål undervejs, er I altid velkomne til at ringe på 36 16 36 16.',
           '',
           'Med venlig hilsen',
-          'AVANCERT ApS',
+          'Avancert ApS',
           'avancert.dk | info@avancert.dk | 36 16 36 16',
         ].join('\n'),
       });
