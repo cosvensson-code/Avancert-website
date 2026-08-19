@@ -273,31 +273,6 @@
     .divider { height: 1px; background: var(--line); max-width: 1300px; margin: 0 auto; }
 
     /* ─── CERTS ─── */
-    .cert-grid {
-      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.875rem; margin-top: 2.5rem;
-    }
-    .cert-card {
-      background: #fff; border: 1.5px solid var(--line);
-      border-radius: 1.25rem; padding: 1.5rem 1.375rem;
-      min-height: 148px; display: flex; flex-direction: column; justify-content: space-between;
-      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s, background-color 0.2s;
-      cursor: pointer;
-      position: relative;
-    }
-    .cert-card:hover {
-      transform: translateY(-3px) scale(1.01);
-      box-shadow: 0 16px 44px rgba(1,80,109,0.12);
-      border-color: rgba(254,106,63,0.35);
-      background: #fffdfa;
-    }
-    .cert-icon {
-      width: 34px; height: 34px; border-radius: 999px;
-      background: var(--orange-lt);
-      display: grid; place-items: center;
-      font-size: 1.25rem; margin-bottom: .75rem;
-      border: 1px solid rgba(254,106,63,0.18);
-    }
     .cert-code { font-size: .95rem; font-weight: 800; color: var(--blue); letter-spacing: -0.02em; }
     .cert-name { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; line-height: 1.4; }
 
@@ -311,72 +286,6 @@
     }
     .about-card p { font-size: 1rem; line-height: 1.75; color: #3a5a6a; margin-bottom: 1.1rem; }
     .about-card p:last-of-type { margin-bottom: 0; }
-
-    .founder-card {
-      background: var(--blue); color: #fff;
-      border-radius: 2rem; padding: clamp(2rem, 4vw, 2.75rem);
-    }
-    .founder-tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 800; color: rgba(255,255,255,0.4); margin-bottom: 0.875rem; }
-    .founder-name { font-size: 1.65rem; font-weight: 800; letter-spacing: -0.025em; color: #fff; margin-bottom: 0.75rem; }
-    .founder-card p { font-size: 0.875rem; color: rgba(255,255,255,0.65); line-height: 1.65; }
-
-    .founder-section {
-      padding-top: clamp(2.5rem, 5vw, 4rem);
-      padding-bottom: clamp(2.5rem, 5vw, 4rem);
-    }
-    .founder-layout {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 1.25rem;
-      align-items: stretch;
-    }
-    .founder-copy {
-      background: #fff;
-      border: 1.5px solid var(--line);
-      border-radius: 2rem;
-      padding: clamp(2rem, 4vw, 3.25rem);
-      box-shadow: 0 16px 50px rgba(1,80,109,0.05);
-    }
-    .founder-copy p {
-      font-size: 1rem;
-      line-height: 1.75;
-      margin-bottom: .75rem;
-    }
-
-    .founder-stat { display: flex; align-items: center; gap: 0.875rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.12); }
-    .founder-num { font-size: 2.5rem; font-weight: 800; color: var(--orange); line-height: 1; letter-spacing: -0.04em; }
-    .founder-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.45; }
-
-    .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.6rem; margin-top: 1.75rem; }
-    .why-item {
-      background: var(--blue-lt); border: 1px solid rgba(1,80,109,0.12);
-      border-radius: 0.875rem; padding: 0.875rem 1rem;
-      font-size: 0.83rem; font-weight: 700; color: var(--blue);
-      display: flex; align-items: center; gap: 0.55rem;
-    }
-    .why-check {
-      width: 20px; height: 20px; border-radius: 50%;
-      background: var(--orange); display: grid; place-items: center; flex-shrink: 0;
-    }
-    .why-check svg { width: 10px; height: 10px; }
-
-    /* ─── TESTIMONIALS ─── */
-    .testimonials-section { padding-top: clamp(2.5rem, 5vw, 4rem); }
-    .t-band {
-      background: var(--blue); color: #fff; border-radius: 2rem;
-      padding: 3.25rem clamp(1.5rem, 5vw, 5rem); text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .t-band::before {
-      content: '\201C'; position: absolute; top: -2rem; left: clamp(1.5rem,4vw,4rem);
-      font-size: 14rem; font-weight: 800; color: rgba(255,255,255,0.05); line-height: 1; pointer-events: none;
-    }
-    #testimonialText { font-size: clamp(1.15rem, 1.6vw, 1.45rem); font-weight: 400; font-style: italic; line-height: 1.6; letter-spacing: 0; margin-bottom: 0.75rem; max-width: 720px; margin-left: auto; margin-right: auto; }
-    #testimonialMeta { font-size: 0.875rem; color: rgba(255,255,255,0.55); font-weight: 500; }
-
-    .t-dots { display: flex; justify-content: center; gap: 0.45rem; margin-top: 1.75rem; }
-    .t-dot { width: 6px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.25); transition: all 0.3s; }
-    .t-dot.active { background: var(--orange); width: 20px; }
 
     /* ─── FORM ─── */
     .tilbud-intro { margin-bottom: 2.5rem; }
@@ -740,13 +649,6 @@
       padding-top: clamp(2rem, 4vw, 3.5rem);
       padding-bottom: clamp(1rem, 2vw, 1.75rem);
     }
-    .logo-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: .75rem;
-      margin-top: 1.5rem;
-    }
-
     .faq-list {
       display: grid;
       gap: .75rem;
@@ -951,51 +853,6 @@
 
 
 
-    /* ─── PREMIUM USP CARDS ─── */
-    .usp-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .usp-card {
-      background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
-      border: 1.5px solid var(--line);
-      border-radius: 1.5rem;
-      padding: 1.35rem;
-      box-shadow: 0 12px 34px rgba(1,80,109,0.045);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .usp-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--orange), var(--blue));
-      opacity: .85;
-    }
-
-    
-
-    .usp-card h3 {
-      margin-bottom: .65rem;
-      color: var(--blue);
-      font-size: 1.08rem;
-    }
-
-    .usp-card p {
-      font-size: .9rem;
-      line-height: 1.65;
-      color: var(--muted);
-    }
-
-
-
     /* ─── TEAM FEATURED PROFILE ─── */
     .team-featured-profile {
       margin-top: 2.25rem;
@@ -1051,17 +908,6 @@
 
     .team-grid-secondary {
       margin-top: 1.25rem;
-    }
-
-
-
-    .usp-card {
-      position: relative;
-      overflow: hidden;
-    }
-.usp-card:hover
-.usp-card h3 {
-      margin-top: .2rem;
     }
 
 
@@ -1237,10 +1083,6 @@
     @media (max-width: 960px) {
       .team-featured-profile { grid-template-columns: 1fr; }
       .team-photo-featured { width: 120px; height: 120px; }
-      .team-card-featured { grid-template-columns: 1fr; }
-      .team-card-featured .team-photo-large { width: 120px; height: 120px; }
-      .usp-grid { grid-template-columns: repeat(2, 1fr); }
-      .team-card-featured { grid-column: span 1; grid-template-columns: 1fr; }
       .cert-logo-grid { grid-template-columns: repeat(3, 1fr); }
       .wordmark { min-width: 180px; padding: 1.4rem 1.75rem; }
       .nav-toggle { display: flex; }
@@ -3202,9 +3044,9 @@ Ring 36 16 36 16
 </div>
 </article>
 <article class="team-card avancert-popup-trigger" data-popup-key="Fargol Monazam" onclick="avancertPopupOpen('Fargol Monazam')" role="button" tabindex="0">
-<div class="team-photo"><img alt="Fargol Monazam – Auditor Trainee hos Avancert" loading="lazy" decoding="async" src="images/fargol.jpg" data-editable-img data-key="img-fargol"/></div>
+<div class="team-photo"><img alt="Fargol Monazam – Lead Auditor Trainee hos Avancert" loading="lazy" decoding="async" src="images/fargol.jpg" data-editable-img data-key="img-fargol"/></div>
 <h3>Fargol Monazam</h3>
-<p>Auditor Trainee i ISO 9001 og ISO 14001, samt ansvarlig for bogholderi.</p>
+<p>Lead Auditor Trainee i ISO 9001 og ISO 14001, samt ansvarlig for bogholderi.</p>
 <div class="team-links">
 <a href="mailto:fargol@avancert.dk">fargol@avancert.dk</a>
 <a aria-label="Fargols LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/fargol-monazam/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -3419,7 +3261,7 @@ Ring 36 16 36 16
 <p>Selskab for certificering</p>
 <p>Nordre Fasanvej 215<br/>2000 Frederiksberg<br/>CVR: 37695467</p>
 <p><a href="mailto:info@avancert.dk">info@avancert.dk</a><br/><button onclick="avancertRingPopup()" type="button" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;color:var(--orange);text-decoration:underline;text-underline-offset:3px;">+45 36 16 36 16</button></p>
-<p><a href="https://www.linkedin.com/company/avancert/" rel="noopener" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;">
+<p><a href="https://www.linkedin.com/company/10864181/" rel="noopener" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
 Mød os på LinkedIn</a></p>
 </div>
@@ -3611,7 +3453,7 @@ window.__AVANCERT_MODAL_DATA__ = {
   "Fargol Monazam": {
     "title": "Fargol Monazam",
     "subtitle": "Lead Auditor",
-    "body": "Fargol Monazam er Auditor Trainee i ISO 9001 og ISO 14001 samt ansvarlig for Avancerts bogholderi.\n\nMed sin kombination af teknisk auditerfaring og ansvar for den finansielle drift bidrager Fargol til både den faglige kvalitet i certificeringsprocessen og til en velfungerende og struktureret organisation.\n\nKontakt: fargol@avancert.dk · 22 80 34 31"
+    "body": "Fargol Monazam er Lead Auditor Trainee i ISO 9001 og ISO 14001 samt ansvarlig for Avancerts bogholderi.\n\nMed sin kombination af teknisk auditerfaring og ansvar for den finansielle drift bidrager Fargol til både den faglige kvalitet i certificeringsprocessen og til en velfungerende og struktureret organisation.\n\nKontakt: fargol@avancert.dk · 22 80 34 31"
   },
   "Kristian Jørgensen": {
     "title": "Kristian Jørgensen",
@@ -4059,7 +3901,7 @@ Kontakt: ida@avancert.dk</div>
 <div class="av-ps-name">Fargol Monazam</div>
 <div class="av-ps-lbl">Navn i popup</div><span class="av-ps-title" data-editable data-key="popup-fargol-title">Fargol Monazam</span>
 <div class="av-ps-lbl">Rolle</div><span class="av-ps-sub" data-editable data-key="popup-fargol-sub">Lead Auditor</span>
-<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-fargol-body" data-multiline>Fargol Monazam er Auditor Trainee i ISO 9001 og ISO 14001 samt ansvarlig for Avancerts bogholderi.
+<div class="av-ps-lbl">Profiltekst</div><div class="av-ps-body" data-editable data-key="popup-fargol-body" data-multiline>Fargol Monazam er Lead Auditor Trainee i ISO 9001 og ISO 14001 samt ansvarlig for Avancerts bogholderi.
 
 Med sin kombination af teknisk auditerfaring og ansvar for den finansielle drift bidrager Fargol til b&aring;de den faglige kvalitet i certificeringsprocessen og til en velfungerende og struktureret organisation.
 
