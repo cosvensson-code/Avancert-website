@@ -1025,7 +1025,7 @@
 
     .team-featured-label {
       color: var(--orange);
-      font-weight: 850;
+      font-weight: 900;
       font-size: .9rem;
       margin-bottom: .4rem;
     }
@@ -1219,7 +1219,7 @@
       color: var(--blue);
       border-radius: 999px;
       padding: .7rem 1rem;
-      font-weight: 850;
+      font-weight: 900;
       font-size: .88rem;
       cursor: pointer;
       transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease;
@@ -2863,8 +2863,7 @@ body.av-edit #av-popup-store{
 <p class="eyebrow" data-editable data-key="om-eyebrow">Om Avancert</p>
 <div class="about-grid">
 <article class="about-card">
-<h2 data-editable data-key="om-h2">Uvildige, fordi vi ikke laver andet</h2><p data-editable data-key="om-p1">Hos Avancert møder I auditorer, der selv har arbejdet med drift og ledelsessystemer — ikke kun med standarderne. Certificering er vores eneste forretning; vi laver hverken rådgivning eller undervisning. Det arbejder vi for, at I kan mærke i dialogen, i processen og i den rapport, I ender med.</p><p data-editable data-key="om-p2"></p>
-<div class="usp-rows">
+<h2 data-editable data-key="om-h2">Uvildige, fordi vi ikke laver andet</h2><p data-editable data-key="om-p1">Hos Avancert møder I auditorer, der selv har arbejdet med drift og ledelsessystemer — ikke kun med standarderne. Certificering er vores eneste forretning; vi laver hverken rådgivning eller undervisning. Det arbejder vi for, at I kan mærke i dialogen, i processen og i den rapport, I ender med.</p><div class="usp-rows">
 <div class="usp-row">
 <span aria-hidden="true" class="usp-row-icon">
 <svg fill="none" viewbox="0 0 20 20"><path d="M3 10.5L8 15L17 5.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg>
@@ -2924,7 +2923,7 @@ body.av-edit #av-popup-store{
 <div class="tilbud-intro">
 <p class="eyebrow" data-editable data-key="tilbud-eyebrow">Tilbud</p>
 <h2 data-editable data-key="tilbud-h2">Få et tilbud</h2>
-<p class="tilbud-intro-p" data-editable data-key="tilbud-p">Vælg de standarder I er interesserede i og fortæl os lidt om jer. Så vender vi tilbage hurtigst muligt.</p>
+<p class="tilbud-intro-p" data-editable data-key="tilbud-p">Vælg de standarder, I er interesserede i og fortæl os lidt om jer. Så vender vi tilbage hurtigst muligt.</p>
 </div>
 <div class="quote-layout">
 <div class="quote-right-col">
@@ -3105,7 +3104,7 @@ Ring 36 16 36 16
     if (!valid) return;
     var fd = new FormData(form);
     var standards = fd.getAll('standard').join(', ') || 'Ikke valgt';
-    gtag('event', 'tilbud_formular_indsendt', {
+    if (typeof gtag === 'function') gtag('event', 'tilbud_formular_indsendt', {
       'virksomhed_størrelse': fd.get('size') || '',
       'standarder': standards
     });
@@ -3176,7 +3175,7 @@ Ring 36 16 36 16
 </div>
 </article>
 <article class="team-card avancert-popup-trigger" data-popup-key="Carl-Oscar Lantz Svensson" onclick="avancertPopupOpen('Carl-Oscar Lantz Svensson')" role="button" tabindex="0">
-<div class="team-photo"><img alt="Carl-Oscar Lantz Svensson – Auditor Trainee hos Avancert" loading="lazy" decoding="async" src="images/image-15.webp" data-editable-img data-key="img-carl"/></div>
+<div class="team-photo"><img alt="Carl-Oscar Lantz Svensson – Lead Auditor Trainee hos Avancert" loading="lazy" decoding="async" src="images/image-15.webp" data-editable-img data-key="img-carl"/></div>
 <h3>Carl-Oscar Lantz Svensson</h3>
 <p>Lead Auditor Trainee i ISO 9001 og ISO/IEC 27001 samt ansvarlig for IT, AI og digital udvikling.</p>
 <div class="team-links">
@@ -3627,7 +3626,7 @@ window.__AVANCERT_MODAL_DATA__ = {
   "Ida Lantz Møller": {
     "title": "Ida Lantz Møller",
     "subtitle": "Lead Auditor Trainee",
-    "body": "Ida Lantz Møller er Auditor Trainee i ISO 9001, ISO 14001 og ISO/IEC 27001.\n\nIda har en cand.public og har ansvar for tilbud, planlægning og vores interne systemer, hvor hun sikrer høj præcision og struktur i alle opgaver. Hun har det faglige overblik på kontoret og hjælper med at sikre, at virksomheden lever op til standardernes krav.\n\nSom Auditor Trainee arbejder Ida målrettet med at anvende standarder som aktive redskaber til forbedring og kvalitetssikring.\n\nKontakt: ida@avancert.dk"
+    "body": "Ida Lantz Møller er Auditor Trainee i ISO 9001, ISO 14001 og ISO/IEC 27001.\n\nIda har en cand.public og har ansvar for tilbud, planlægning og vores interne systemer, hvor hun sikrer høj præcision og struktur i alle opgaver. Hun har det faglige overblik på kontoret og hjælper med at sikre, at virksomheden lever op til standardernes krav.\n\nSom Lead Auditor Trainee arbejder Ida målrettet med at anvende standarder som aktive redskaber til forbedring og kvalitetssikring.\n\nKontakt: ida@avancert.dk"
   },
   "Sven Beck": {
     "title": "Sven Beck",
@@ -4052,7 +4051,7 @@ Kontakt: carl@avancert.dk</div>
 
 Ida har en cand.public og har ansvar for tilbud, planl&aelig;gning og vores interne systemer, hvor hun sikrer h&oslash;j pr&aelig;cision og struktur i alle opgaver. Hun har det faglige overblik p&aring; kontoret og hj&aelig;lper med at sikre, at virksomheden lever op til standardernes krav.
 
-Som Auditor Trainee arbejder Ida m&aring;lrettet med at anvende standarder som aktive redskaber til forbedring og kvalitetssikring.
+Som Lead Auditor Trainee arbejder Ida m&aring;lrettet med at anvende standarder som aktive redskaber til forbedring og kvalitetssikring.
 
 Kontakt: ida@avancert.dk</div>
 </div>
