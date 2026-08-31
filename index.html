@@ -291,7 +291,7 @@
     .tilbud-intro { margin-bottom: 2.5rem; }
     .tilbud-intro h2 { margin-bottom: .5rem; }
     .tilbud-intro-p { max-width: 640px; font-size: 1rem; color: #3a5a6a; line-height: 1.7; }
-    .quote-layout { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; align-items: stretch; }
+    .quote-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: start; }
     .quote-left-col { display: flex; flex-direction: column; }
     .pris-kort { flex: 1; }
 
@@ -1113,7 +1113,7 @@
       .hero-panel > div { border-bottom: none; padding: 1.1rem 1rem; border-right: 1px solid rgba(255,255,255,0.12); }
       .hero-panel > div:last-child { border-right: none; }
       .cert-grid, .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .about-grid, .quote-layout, .founder-layout { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
       .quote-right-col { order: -1; }
       .pris-kort { height: auto !important; }
       .logo-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1613,6 +1613,10 @@ main, section, header, footer {
   }
 }
 
+@media (max-width: 720px) {
+  .quote-layout { grid-template-columns: 1fr !important; }
+  .quote-right-col { order: -1; }
+}
 @media (max-width: 640px) {
   .team-grid,
   .team-grid-secondary {
@@ -2705,7 +2709,7 @@ body.av-edit #av-popup-store{
 <p class="eyebrow" data-editable data-key="om-eyebrow">Om Avancert</p>
 <div class="about-grid">
 <article class="about-card">
-<h2 data-editable data-key="om-h2">Uvildige, fordi vi ikke laver andet</h2><p data-editable data-key="om-p1">Hos Avancert møder I auditorer, der selv har arbejdet med drift og ledelsessystemer — ikke kun med standarderne. Certificering er vores eneste forretning; vi laver hverken rådgivning eller undervisning. Det arbejder vi for, at I kan mærke i dialogen, i processen og i den rapport, I ender med.</p><div class="usp-rows">
+<h2 data-editable data-key="om-h2">Uvildige, for vi laver ikke andet</h2><p data-editable data-key="om-p1">Hos Avancert møder I auditorer, der selv har arbejdet med drift og ledelsessystemer — ikke kun med standarderne. Certificering er vores eneste forretning; vi laver hverken rådgivning eller undervisning. Det arbejder vi for, at I kan mærke i dialogen, i processen og i den rapport, I ender med.</p><div class="usp-rows">
 <div class="usp-row">
 <span aria-hidden="true" class="usp-row-icon">
 <svg fill="none" viewbox="0 0 20 20"><path d="M3 10.5L8 15L17 5.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg>
