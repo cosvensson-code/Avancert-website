@@ -1,6 +1,8 @@
 {
   "redirects": [
-    { "source": "/tilbudsinfo.html", "destination": "/tilbudsinfo", "permanent": true }
+    { "source": "/tilbudsinfo.html", "destination": "/tilbudsinfo", "permanent": true },
+    { "source": "/moed-teamet", "destination": "/#team", "permanent": true },
+    { "source": "/moed-teamet/", "destination": "/#team", "permanent": true }
   ],
   "rewrites": [
     { "source": "/login", "destination": "/login.html" },
