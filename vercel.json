@@ -18,7 +18,15 @@
     { "source": "/om-os", "destination": "/#om", "permanent": true },
     { "source": "/om-os/", "destination": "/#om", "permanent": true },
     { "source": "/faq", "destination": "/#faq", "permanent": true },
-    { "source": "/faq/", "destination": "/#faq", "permanent": true }
+    { "source": "/faq/", "destination": "/#faq", "permanent": true },
+    { "source": "/iso-9001-kvalitet", "destination": "/#certificeringer", "permanent": true },
+    { "source": "/iso-9001-kvalitet/", "destination": "/#certificeringer", "permanent": true },
+    { "source": "/iso-45001", "destination": "/#certificeringer", "permanent": true },
+    { "source": "/iso-45001/", "destination": "/#certificeringer", "permanent": true },
+    { "source": "/iso-14001-miljoe", "destination": "/#certificeringer", "permanent": true },
+    { "source": "/iso-14001-miljoe/", "destination": "/#certificeringer", "permanent": true },
+    { "source": "/iso-27001-informationssikkerhed", "destination": "/#certificeringer", "permanent": true },
+    { "source": "/iso-27001-informationssikkerhed/", "destination": "/#certificeringer", "permanent": true }
   ],
   "rewrites": [
     { "source": "/login", "destination": "/login.html" },
