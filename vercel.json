@@ -2,7 +2,9 @@
   "redirects": [
     { "source": "/tilbudsinfo.html", "destination": "/tilbudsinfo", "permanent": true },
     { "source": "/moed-teamet", "destination": "/#team", "permanent": true },
-    { "source": "/moed-teamet/", "destination": "/#team", "permanent": true }
+    { "source": "/moed-teamet/", "destination": "/#team", "permanent": true },
+    { "source": "/ds-49001", "destination": "/#certificeringer", "permanent": true },
+    { "source": "/ds-49001/", "destination": "/#certificeringer", "permanent": true }
   ],
   "rewrites": [
     { "source": "/login", "destination": "/login.html" },
