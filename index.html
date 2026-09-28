@@ -2101,7 +2101,7 @@ main, section, header, footer {
 }
 .trust-cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin-top: 2rem;
 }
@@ -3199,8 +3199,19 @@ Ring 36 16 36 16
 <section class="section legal-section" id="tillid">
 <p class="eyebrow">Juridisk information og klager</p>
 <h2>Tillid og transparens</h2>
-<p class="section-intro" style="max-width:720px;">Som akkrediteret certificeringsorgan er vi forpligtet til at gøre vores procedurer offentligt tilgængelige. Klik på et kort for at læse mere.</p>
+<p class="section-intro" style="max-width:720px;">Vores certificeringer udføres under akkreditering, og derfor gør vi vores procedurer offentligt tilgængelige. Klik på et kort for at læse mere.</p>
 <div class="trust-cards-grid">
+<button class="trust-card" data-open-modal="processModal" type="button">
+<span aria-hidden="true" class="trust-card-icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"></path><path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+<span aria-hidden="true" class="trust-card-popup-hint">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+<h3>Certificeringsprocessen og upartiskhed</h3>
+<p>Sådan tildeles, opretholdes, suspenderes og tilbagekaldes certificering, og sådan sikrer vi upartiskhed.</p>
+<span class="trust-card-link">Læs mere →</span>
+</button>
 <button class="trust-card" data-open-modal="complaintModal" type="button">
 <span aria-hidden="true" class="trust-card-icon">
 <svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
@@ -3287,12 +3298,43 @@ Mød os på LinkedIn</a></p>
 <ul id="isoList"></ul>
 </div>
 </div>
+<div class="modal-overlay" id="processModal">
+<div aria-labelledby="processTitle" aria-modal="true" class="modal-box" role="dialog">
+<button aria-label="Luk" class="modal-close" data-close-modal="" onclick="closeAllModals()" type="button">✕</button>
+<h3 id="processTitle">Certificeringsprocessen og upartiskhed</h3>
+<p>Avancert planlægger og gennemfører audits af ledelsessystemer for virksomheder i Danmark. Certificeringsbeslutningen træffes af AAA Certification AB (A3Cert), der er akkrediteret af SWEDAC, og træffes af personer, der ikke har deltaget i den pågældende audit. A3Cert udsteder certifikatet.</p>
+<h4 style="color:var(--blue);margin-top:1.5rem;margin-bottom:.5rem;">Tildeling af certificering</h4>
+<ul>
+<li><strong>Ansøgning og tilbud:</strong> Ud fra oplysninger om organisation, lokationer, antal medarbejdere og standarder beregnes audittiden efter IAF MD 5:2023, MD 11:2023 og MD 1:2023.</li>
+<li><strong>Fase 1-audit:</strong> Gennemgang af dokumentation og vurdering af, om virksomheden er klar til fase 2.</li>
+<li><strong>Fase 2-audit:</strong> Vurdering af, om ledelsessystemet er implementeret og virker effektivt.</li>
+<li><strong>Certificeringsbeslutning:</strong> Når eventuelle større afvigelser er lukket, træffes beslutning om certificering. Certifikatet gælder i tre år.</li>
+</ul>
+<h4 style="color:var(--blue);margin-top:1.5rem;margin-bottom:.5rem;">Opretholdelse og fornyelse</h4>
+<p>Certificeringen opretholdes gennem årlige opfølgningsaudits. Før certifikatet udløber, gennemføres en recertificeringsaudit, og der træffes en ny certificeringsbeslutning.</p>
+<h4 style="color:var(--blue);margin-top:1.5rem;margin-bottom:.5rem;">Afslag, suspension, genoprettelse og tilbagekaldelse</h4>
+<ul>
+<li><strong>Afslag:</strong> Opfyldes kravene ikke, fx fordi større afvigelser ikke lukkes inden for fristen, kan certificering afslås. I får en begrundelse og kan appellere beslutningen.</li>
+<li><strong>Suspension:</strong> Certificeringen kan suspenderes, hvis kravene ikke længere opfyldes, hvis en opfølgningsaudit ikke gennemføres til tiden, eller ved manglende betaling. Under suspension må certificeringen ikke markedsføres.</li>
+<li><strong>Genoprettelse:</strong> Når årsagen til suspensionen er løst og verificeret, genoprettes certificeringen.</li>
+<li><strong>Tilbagekaldelse:</strong> Løses årsagen ikke inden for den fastsatte frist, eller ved grov misligholdelse eller konkurs, tilbagekaldes certificeringen.</li>
+</ul>
+<h4 style="color:var(--blue);margin-top:1.5rem;margin-bottom:.5rem;">Udvidelse og indskrænkning af omfang</h4>
+<p>Ønsker I at udvide certificeringens omfang, fx med nye lokationer eller aktiviteter, vurderer vi ansøgningen og gennemfører den audit, der er nødvendig. Omfanget indskrænkes, hvis dele af virksomheden ikke længere opfylder kravene.</p>
+<h4 style="color:var(--blue);margin-top:1.5rem;margin-bottom:.5rem;">Upartiskhed</h4>
+<p>Avancert udfører udelukkende certificering. Vi tilbyder ikke rådgivning, undervisning eller interne audits, og vores auditorer auditerer ikke virksomheder, de har rådgivet inden for de seneste to år. Vi vurderer løbende risici for upartiskhed, og kommercielle hensyn har ingen indflydelse på certificeringsbeslutninger.</p>
+<h4 style="color:var(--blue);margin-top:1.5rem;margin-bottom:.5rem;">Brug af certifikat og certificeringsmærke</h4>
+<p>Certificerede kunder får regler for brug af certifikat og certificeringsmærke. Mærket må ikke anvendes på produkter, produktemballage eller prøvningsrapporter.</p>
+<h4 style="color:var(--blue);margin-top:1.5rem;margin-bottom:.5rem;">Bekræft et certifikats gyldighed</h4>
+<p>Alle kan få oplyst, om et certifikat udstedt gennem Avancert er gyldigt, suspenderet eller tilbagekaldt. Kontakt os på <a href="mailto:info@avancert.dk" style="color:var(--orange);">info@avancert.dk</a> eller ring 36 16 36 16.</p>
+</div>
+</div>
 <div class="modal-overlay" id="complaintModal">
 <div aria-labelledby="complaintTitle" aria-modal="true" class="modal-box" role="dialog">
 <button aria-label="Luk" class="modal-close" data-close-modal="" onclick="closeAllModals()" type="button">✕</button>
 <h3 id="complaintTitle">Klager og appeller</h3>
 <p>Fuld uafhængighed er et grundlæggende krav for os som certificeringsorgan. Feedback, klager og appeller håndteres med respekt, grundighed og uvildighed.</p>
-<p>Ved klager og appeller undersøger vores administrerende direktør grundlaget og foreslår en passende løsning. Hvis I ikke er tilfredse med løsningen, kan sagen henvises til det rådgivende udvalg. Certifikater udstedes under akkreditering af <a href="https://www.a3cert.com" rel="noopener" target="_blank">AAA Certification AB (A3Cert)</a>, som opretholder et uafhængigt impartialitetsudvalg i overensstemmelse med ISO 17021.</p>
+<p>Ved klager og appeller undersøger vores administrerende direktør grundlaget og foreslår en passende løsning. Hvis I ikke er tilfredse med løsningen, kan sagen henvises til det rådgivende udvalg. Certifikater udstedes af <a href="https://www.a3cert.com" rel="noopener" target="_blank">AAA Certification AB (A3Cert)</a>, der er akkrediteret af SWEDAC og opretholder et uafhængigt upartiskhedsudvalg i overensstemmelse med ISO/IEC 17021-1.</p>
 <ul>
 <li><strong>Klage:</strong> ved alvorlige mangler eller forhold, I ønsker undersøgt formelt.</li>
 <li><strong>Appel:</strong> hvis I er utilfredse med en beslutning, fx certificeringsafgørelse eller suspension.</li>
