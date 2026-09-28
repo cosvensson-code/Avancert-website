@@ -327,7 +327,7 @@
     .form-note { font-size: 0.73rem; color: var(--muted); margin-top: 0.65rem; text-align: center; }
 
     /* ─── PROCESS ─── */
-    .process-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.875rem; margin-top: 2.5rem; }
+    .process-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.875rem; margin-top: 2.5rem; }
     .process-step {
       background: #fff;
       border: 1.5px solid var(--line);
@@ -1831,22 +1831,6 @@ main, section, header, footer {
   position: relative;
 }
 
-.process-grid::before {
-  content: '';
-  position: absolute;
-  top: 48px;
-  left: 8%;
-  right: 8%;
-  height: 2px;
-  background: linear-gradient(90deg,
-    var(--orange) 0%,
-    var(--orange) 25%,
-    rgba(1,80,109,0.18) 25%,
-    rgba(1,80,109,0.18) 100%);
-  z-index: 0;
-  border-radius: 2px;
-}
-
 .process-step {
   position: relative;
   z-index: 1;
@@ -1864,11 +1848,6 @@ main, section, header, footer {
   box-shadow: 0 0 0 6px var(--bg);
 }
 
-@media (max-width: 960px) {
-  .process-grid::before {
-    display: none;
-  }
-}
 
 
 .usp-rows {
@@ -2757,11 +2736,14 @@ body.av-edit #av-popup-store{
 <p class="eyebrow">Proces</p>
 <h2>Sådan foregår et typisk certificeringsforløb</h2><p class="section-intro process-intro">Certificering behøver ikke være kompliceret. Vi guider jer gennem processen med tæt dialog, klare forventninger og en auditproces, der giver mening i praksis.</p>
 <div class="process-grid">
-<article class="process-step"><div class="process-num">01</div><h3>Indledende dialog</h3><p>Vi afklarer jeres behov, standarder, organisation og tidshorisont.</p></article>
-<article class="process-step"><div class="process-num">02</div><h3>Tilbud og planlægning</h3><p>I får et tydeligt oplæg og en plan, der passer til jeres virksomhed.</p></article>
-<article class="process-step"><div class="process-num">03</div><h3>Audit</h3><p>Vi gennemfører audit professionelt, effektivt og med tydelig kommunikation.</p></article>
-<article class="process-step"><div class="process-num">04</div><h3>Certificering</h3><p>Certifikatet udstedes af vores samarbejdspartner AAA Certification AB i Sverige, som er SWEDAC-akkrediteret, når kravene er opfyldt.</p></article>
+<article class="process-step"><div class="process-num">01</div><h3>Ansøgning og tilbud</h3><p>Vi afklarer organisation, lokationer og standarder og beregner audittiden efter IAF's regler. I får ét samlet tilbud for hele det treårige forløb.</p></article>
+<article class="process-step"><div class="process-num">02</div><h3>Fase 1-audit</h3><p>Vi gennemgår jeres dokumentation og vurderer, om I er klar til fase 2.</p></article>
+<article class="process-step"><div class="process-num">03</div><h3>Fase 2-audit</h3><p>Vi vurderer, om ledelsessystemet er implementeret og virker i praksis.</p></article>
+<article class="process-step"><div class="process-num">04</div><h3>Certificeringsbeslutning</h3><p>Når eventuelle større afvigelser er lukket, træffer AAA Certification AB (SWEDAC-akkrediteret) beslutningen og udsteder certifikatet. Det gælder i tre år.</p></article>
+<article class="process-step"><div class="process-num">05</div><h3>Årlige opfølgningsaudits</h3><p>Certificeringen opretholdes med en opfølgningsaudit i år 1 og år 2.</p></article>
+<article class="process-step"><div class="process-num">06</div><h3>Recertificering</h3><p>Før certifikatet udløber, gennemføres en recertificeringsaudit, og et nyt treårigt forløb begynder.</p></article>
 </div>
+<p style="margin-top:1.75rem;"><button data-open-modal="processModal" type="button" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:800;color:#fff;text-decoration:underline;text-underline-offset:4px;">Læs om afslag, suspension, genoprettelse, tilbagekaldelse og ændring af omfang →</button></p>
 </section>
 </div>
 <!-- TILBUD -->
@@ -3302,7 +3284,7 @@ Mød os på LinkedIn</a></p>
 <div aria-labelledby="processTitle" aria-modal="true" class="modal-box" role="dialog">
 <button aria-label="Luk" class="modal-close" data-close-modal="" onclick="closeAllModals()" type="button">✕</button>
 <h3 id="processTitle">Certificeringsprocessen og upartiskhed</h3>
-<p>Avancert planlægger og gennemfører audits af ledelsessystemer for virksomheder i Danmark. Certificeringsbeslutningen træffes af AAA Certification AB (A3Cert), der er akkrediteret af SWEDAC, og træffes af personer, der ikke har deltaget i den pågældende audit. A3Cert udsteder certifikatet.</p>
+<p>Avancert planlægger og gennemfører audits af ledelsessystemer for virksomheder i Danmark, Grønland og andre lande. Certificeringsbeslutningen træffes af AAA Certification AB (A3Cert), der er akkrediteret af SWEDAC, og træffes af personer, der ikke har deltaget i den pågældende audit. A3Cert udsteder certifikatet.</p>
 <h4 style="color:var(--blue);margin-top:1.5rem;margin-bottom:.5rem;">Tildeling af certificering</h4>
 <ul>
 <li><strong>Ansøgning og tilbud:</strong> Ud fra oplysninger om organisation, lokationer, antal medarbejdere og standarder beregnes audittiden efter IAF MD 5:2023, MD 11:2023 og MD 1:2023.</li>
@@ -3322,11 +3304,12 @@ Mød os på LinkedIn</a></p>
 <h4 style="color:var(--blue);margin-top:1.5rem;margin-bottom:.5rem;">Udvidelse og indskrænkning af omfang</h4>
 <p>Ønsker I at udvide certificeringens omfang, fx med nye lokationer eller aktiviteter, vurderer vi ansøgningen og gennemfører den audit, der er nødvendig. Omfanget indskrænkes, hvis dele af virksomheden ikke længere opfylder kravene.</p>
 <h4 style="color:var(--blue);margin-top:1.5rem;margin-bottom:.5rem;">Upartiskhed</h4>
-<p>Avancert udfører udelukkende certificering. Vi tilbyder ikke rådgivning, undervisning eller interne audits, og vores auditorer auditerer ikke virksomheder, de har rådgivet inden for de seneste to år. Vi vurderer løbende risici for upartiskhed, og kommercielle hensyn har ingen indflydelse på certificeringsbeslutninger.</p>
+<p>Avancert udfører udelukkende certificering. Vi tilbyder ikke rådgivning, undervisning eller interne audits. Vi vurderer løbende risici for upartiskhed, og kommercielle hensyn har ingen indflydelse på certificeringsbeslutninger.</p>
 <h4 style="color:var(--blue);margin-top:1.5rem;margin-bottom:.5rem;">Brug af certifikat og certificeringsmærke</h4>
 <p>Certificerede kunder får regler for brug af certifikat og certificeringsmærke. Mærket må ikke anvendes på produkter, produktemballage eller prøvningsrapporter.</p>
 <h4 style="color:var(--blue);margin-top:1.5rem;margin-bottom:.5rem;">Bekræft et certifikats gyldighed</h4>
-<p>Alle kan få oplyst, om et certifikat udstedt gennem Avancert er gyldigt, suspenderet eller tilbagekaldt. Kontakt os på <a href="mailto:info@avancert.dk" style="color:var(--orange);">info@avancert.dk</a> eller ring 36 16 36 16.</p>
+<p>Gyldigheden af certifikater for ledelsessystemer kan kontrolleres i IAF's internationale database <a href="https://iaf.nu/en/certsearch/" rel="noopener" target="_blank" style="color:var(--orange);">IAF CertSearch</a> og via <a href="https://a3cert.com/om-oss/utfardade-certifikat/" rel="noopener" target="_blank" style="color:var(--orange);">A3Certs oversigt over udstedte certifikater</a>.</p>
+<p>Alle kan også få oplyst, om et certifikat udstedt gennem Avancert er gyldigt, suspenderet eller tilbagekaldt, ved at kontakte os på <a href="mailto:info@avancert.dk" style="color:var(--orange);">info@avancert.dk</a> eller ring 36 16 36 16.</p>
 </div>
 </div>
 <div class="modal-overlay" id="complaintModal">
