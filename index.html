@@ -346,22 +346,12 @@
       letter-spacing: -0.02em;
       border: 1px solid rgba(1,80,109,0.10);
     }
-    .process-step:first-child .process-num {
-      background: var(--orange-lt);
-      color: var(--orange-dk);
-      border-color: rgba(254,106,63,0.18);
-    }
     .process-step p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
 
     /* ─── PROCESS på blå baggrund ─── */
     .section-bg-blue .proces-section h2 { color: #fff; }
     .section-bg-blue .proces-section .process-intro { color: rgba(255,255,255,0.82) !important; }
     .section-bg-blue .proces-section .process-num {
-      background: rgba(254,106,63,0.18);
-      color: var(--orange);
-      border-color: rgba(254,106,63,0.28);
-    }
-    .section-bg-blue .proces-section .process-step:first-child .process-num {
       background: rgba(254,106,63,0.18);
       color: var(--orange);
       border-color: rgba(254,106,63,0.28);
@@ -1826,49 +1816,6 @@ main, section, header, footer {
   .form-nav .btn { width: 100%; }
 }
 
-/* ─── V78 PROCESS WITH CONNECTION LINE ─── */
-.process-grid {
-  position: relative;
-}
-
-.process-grid::before {
-  content: '';
-  position: absolute;
-  top: 48px;
-  left: 8%;
-  right: 8%;
-  height: 2px;
-  background: linear-gradient(90deg,
-    var(--orange) 0%,
-    var(--orange) 25%,
-    rgba(1,80,109,0.18) 25%,
-    rgba(1,80,109,0.18) 100%);
-  z-index: 0;
-  border-radius: 2px;
-}
-
-@media (max-width: 960px) {
-  .process-grid::before {
-    display: none;
-  }
-}
-
-.process-step {
-  position: relative;
-  z-index: 1;
-}
-
-.process-num {
-  position: relative;
-  z-index: 2;
-  background: var(--blue-lt) !important;
-  box-shadow: 0 0 0 6px var(--bg);
-}
-
-.process-step:first-child .process-num {
-  background: var(--orange-lt) !important;
-  box-shadow: 0 0 0 6px var(--bg);
-}
 
 
 
@@ -2758,10 +2705,10 @@ body.av-edit #av-popup-store{
 <p class="eyebrow">Proces</p>
 <h2>Sådan foregår et typisk certificeringsforløb</h2><p class="section-intro process-intro">Certificering behøver ikke være kompliceret. Vi guider jer gennem processen med tæt dialog, klare forventninger og en auditproces, der giver mening i praksis.</p>
 <div class="process-grid">
-<article class="process-step"><div class="process-num">01</div><h3>Tilbud</h3><p>Én samlet pris for hele det treårige forløb.</p></article>
-<article class="process-step"><div class="process-num">02</div><h3>Certificeringsaudit</h3><p>Vi besøger jer to gange: først dokumentationen, så praksis.</p></article>
-<article class="process-step"><div class="process-num">03</div><h3>Certifikat</h3><p>Udstedes, når kravene er opfyldt, og gælder i tre år.</p></article>
-<article class="process-step"><div class="process-num">04</div><h3>Opfølgning og fornyelse</h3><p>Et kort besøg i år 1 og år 2, derefter fornyelse.</p></article>
+<article class="process-step"><div class="process-num">01</div><h3>Tilbud</h3><p>I får én samlet pris for hele det treårige forløb.</p></article>
+<article class="process-step"><div class="process-num">02</div><h3>Certificeringsaudit</h3><p>Vi auditerer i to trin: først jeres dokumentation, derefter jeres praksis.</p></article>
+<article class="process-step"><div class="process-num">03</div><h3>Certifikat</h3><p>Når kravene er opfyldt, får I et certifikat, der gælder i tre år.</p></article>
+<article class="process-step"><div class="process-num">04</div><h3>Opfølgning og fornyelse</h3><p>Vi følger op i år 1 og år 2, og derefter fornyes certifikatet.</p></article>
 </div>
 <p style="margin-top:1.75rem;"><button data-open-modal="processModal" type="button" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:800;color:#fff;text-decoration:underline;text-underline-offset:4px;">Se hele certificeringsprocessen →</button></p>
 </section>
