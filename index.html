@@ -400,14 +400,17 @@
     .hero-panel              { animation: fadeUp 0.65s 0.45s ease both; }
     .hero-left h1 .hl {
       display: inline-block;
-      animation: hlLand 1.1s cubic-bezier(.16,1,.3,1) .45s both;
+      padding: 0 .04em .18em 0; margin-bottom: -.18em;
+      background-image: linear-gradient(90deg, var(--orange) 0 47%, rgba(254,106,63,.16) 53% 100%);
+      background-size: 220% 100%;
+      background-position: 100% 0;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: hlFill 1.2s cubic-bezier(.65,0,.35,1) .6s forwards;
     }
-    @keyframes hlLand {
-      from { opacity: 0; transform: translate3d(0, .3em, 0); }
-      to   { opacity: 1; transform: translate3d(0, 0, 0); }
-    }
+    @keyframes hlFill { to { background-position: 0 0; } }
     @media (prefers-reduced-motion: reduce) {
-      .hero-left h1 .hl { animation: none; }
+      .hero-left h1 .hl { animation: none; background-position: 0 0; }
     }
 
     
