@@ -248,7 +248,8 @@
     .hero-panel {
       background: var(--blue); color: #fff;
       border-radius: 1.75rem; padding: 2rem 1.75rem;
-      align-self: center;
+      align-self: start;
+      margin-top: clamp(.5rem, 1.05vw, 1rem);
     }
     .hero-panel > div {
       padding: 1.25rem 0;
@@ -397,6 +398,17 @@
     .hero-left .hero-copy    { animation-delay: 0.25s; }
     .hero-left .hero-actions { animation-delay: 0.35s; }
     .hero-panel              { animation: fadeUp 0.65s 0.45s ease both; }
+    .hero-left h1 .hl {
+      display: inline-block;
+      animation: hlLand 1s cubic-bezier(.2,.7,.2,1) .5s both;
+    }
+    @keyframes hlLand {
+      from { opacity: 0; transform: translateY(.18em); filter: blur(8px); letter-spacing: .01em; }
+      to   { opacity: 1; transform: none; filter: blur(0); letter-spacing: -0.04em; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-left h1 .hl { animation: none; }
+    }
 
     
     /* ─── ISO MODAL ─── */
