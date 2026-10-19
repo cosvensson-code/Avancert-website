@@ -687,13 +687,21 @@
       position: relative;
       overflow: hidden;
       border: 1px solid var(--line);
-      border-radius: 1.75rem;
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
+      border-radius: 1.5rem;
+      background: #fff;
       box-shadow: 0 18px 54px rgba(1,80,109,0.045);
-      /* Fade-mask i siderne så logoer glider blødt ind/ud */
-      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
-              mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
     }
+    .wordmark-marquee::before,
+    .wordmark-marquee::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 72px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .wordmark-marquee::before { left: 0; background: linear-gradient(90deg, #fff, rgba(255,255,255,0)); }
+    .wordmark-marquee::after { right: 0; background: linear-gradient(270deg, #fff, rgba(255,255,255,0)); }
 
     .wordmark-track {
       display: flex;
@@ -1874,9 +1882,9 @@ main, section, header, footer {
 /* ─── SKIFTE-BOKS ─── */
 .skift-boks {
   background: var(--blue);
-  border-radius: 1.25rem;
+  border-radius: 1.5rem;
   padding: 2.5rem 0;
-  margin-top: 2.25rem;
+  margin-top: 2rem;
 }
 .skift-boks-inner {
   max-width: 880px;
@@ -1932,12 +1940,11 @@ main, section, header, footer {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  margin-top: 1.5rem;
-  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  padding: 1.25rem 1.5rem;
   background: #fff;
   border: 1px solid var(--line);
-  border-left: 4px solid var(--orange);
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   font-size: 0.88rem;
   color: var(--muted);
   line-height: 1.6;
