@@ -104,7 +104,8 @@
       padding: 1rem clamp(1.25rem, 5vw, 4.5rem);
     }
 
-    .nav { display: flex; gap: 2rem; font-size: 0.875rem; font-weight: 600; color: var(--muted); }
+    .nav { display: flex; gap: clamp(1.25rem, 2.2vw, 2rem); font-size: 0.875rem; font-weight: 600; color: var(--muted); }
+    .nav a { white-space: nowrap; }
     .nav a:hover { color: var(--blue); transition: color 0.2s; }
 
     .nav-toggle {
@@ -2483,9 +2484,9 @@ body.av-edit #av-popup-store{
 <nav class="nav" id="mainNav">
 <a href="#certificeringer"><span data-editable data-key="nav-cert">Certificeringer</span></a>
 <a href="#om"><span data-editable data-key="nav-about">Om os</span></a>
-<a href="#tilbud"><span data-editable data-key="nav-offer">Få et tilbud</span></a>
 <a href="#team"><span data-editable data-key="nav-team">Team</span></a>
 <a href="#kontakt"><span data-editable data-key="nav-contact">Kontakt</span></a>
+<a href="#tilbud"><span data-editable data-key="nav-offer">Få et tilbud</span></a>
 <a class="nav-mobile-phone" href="tel:+4536163616">📞 36 16 36 16</a>
 <a class="nav-mobile-cta" href="#tilbud">Få et tilbud</a>
 </nav>
@@ -2597,8 +2598,8 @@ body.av-edit #av-popup-store{
 </div>
 <!-- CERTIFICERINGER -->
 <section class="section" id="certificeringer">
-<p class="eyebrow">Standarder</p>
-<h2>Vi certificerer inden for</h2>
+<p class="eyebrow">Certificeringer</p>
+<h2>Standarder vi certificerer</h2>
 <div class="cert-logo-grid">
 <article aria-label="Læs mere om ISO 9001" class="cert-logo-card" data-popup-key="ISO 9001" onclick="avancertPopupOpen('ISO 9001')" role="button" tabindex="0">
 <div class="cert-logo-frame"><img alt="ISO 9001 certificeringslogo" loading="lazy" src="images/cert-01-iso9001.webp"/ decoding="async"></div>
@@ -2959,8 +2960,8 @@ Ring 36 16 36 16
 </script>
 <!-- TEAM -->
 <section class="section" id="team">
-<p class="eyebrow" data-editable data-key="team-eyebrow">Mød teamet</p>
-<h2 data-editable data-key="team-h2">Her er vores dygtige team</h2>
+<p class="eyebrow" data-editable data-key="team-eyebrow">Team</p>
+<h2 data-editable data-key="team-h2">Mød teamet</h2>
 <div class="team-grid team-grid-secondary">
 <article class="team-card avancert-popup-trigger" data-popup-key="Lars Ole Møller" onclick="avancertPopupOpen('Lars Ole Møller')" role="button" tabindex="0">
 <div class="team-photo lars-team-photo"><img alt="Lars Ole Møller – Ejerleder og Lead Auditor hos Avancert" loading="lazy" decoding="async" src="images/image-11.webp" data-editable-img data-key="img-lars"/></div>
