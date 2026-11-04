@@ -443,20 +443,6 @@
     .cta-wrap .btn.secondary { border-color: rgba(255,255,255,0.3); color: #fff; }
     .cta-wrap .btn.secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
 
-    /* ─── FOOTER ─── */
-    .footer {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;
-      padding: 2.75rem clamp(1.25rem, 5vw, 4.5rem);
-      background: #fff; border-top: 1px solid var(--line);
-    }
-    .footer p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
-    .footer a { color: var(--orange); text-decoration: underline; text-underline-offset: 3px; }
-    .footer-copy {
-      font-size: 0.75rem; color: var(--muted);
-      padding: 1rem clamp(1.25rem, 5vw, 4.5rem);
-      background: #fff; border-top: 1px solid var(--line); text-align: center;
-    }
-
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -1200,7 +1186,6 @@
       .quote-right-col { order: -1; }
       .pris-kort { height: auto !important; }
       .logo-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       .usp-grid { grid-template-columns: 1fr; }
@@ -1314,119 +1299,6 @@ main, section, header, footer {
   transform: scale(1.72);
   transform-origin: center 30%;
 }
-
-.footer {
-  align-items: start;
-}
-
-.footer .legal-links,
-.footer .footer-actions,
-.footer .compliance-mini-grid {
-  justify-content: flex-end;
-  align-content: start;
-  margin-top: 0;
-}
-
-.footer .legal-links {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: .7rem;
-}
-
-.footer .text-link-button,
-.footer .compliance-mini,
-.footer button {
-  width: fit-content;
-  max-width: 100%;
-  white-space: nowrap;
-}
-
-
-@media (max-width: 760px) {
-  .footer.footer-v42 {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 1.5rem !important;
-    align-items:start !important;
-  }
-
-  .footer-v42-actions {
-    justify-self: end !important;
-    align-items: flex-end !important;
-    margin-top: 0 !important;
-  }
-
-  .footer-v42-actions .text-link-button{
-    font-size:.78rem !important;
-    padding:.7rem .9rem !important;
-  }
-
-  .footer-v42-left p{
-    font-size:.88rem !important;
-  }
-}
-
-
-
-
-/* ─── V42 CLEAN FOOTER REBUILD ─── */
-.footer.footer-v42 {
-  display: grid !important;
-  grid-template-columns: minmax(260px, 1fr) minmax(220px, auto) !important;
-  gap: clamp(2rem, 8vw, 8rem) !important;
-  align-items: start !important;
-  justify-content: space-between !important;
-  padding: 3rem max(clamp(1.25rem, 5vw, 4.5rem), calc((100% - 1300px) / 2 + clamp(1.25rem, 5vw, 4.5rem))) !important;
-  background: #fff !important;
-  border-top: 1px solid var(--line) !important;
-}
-
-.footer-v42-left {
-  max-width: 360px !important;
-}
-
-.footer-v42-left p {
-  margin-top: 1rem !important;
-  font-size: .92rem !important;
-  line-height: 1.65 !important;
-  color: var(--muted) !important;
-}
-
-.footer-v42-left a {
-  color: var(--orange) !important;
-  text-decoration: underline !important;
-  text-underline-offset: 3px !important;
-}
-
-.footer-v42-actions {
-  justify-self: end !important;
-  align-self: start !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-end !important;
-  gap: .85rem !important;
-  padding-top: .35rem !important;
-}
-
-.footer-v42-actions .text-link-button {
-  display: inline-flex !important;
-  width: auto !important;
-  white-space: nowrap !important;
-  margin: 0 !important;
-}
-
-@media (max-width: 760px) {
-  .footer.footer-v42 {
-    grid-template-columns: 1fr !important;
-    gap: 1.75rem !important;
-  }
-
-  .footer-v42-actions {
-    justify-self: start !important;
-    align-items: flex-start !important;
-  }
-}
-
 
 /* ─── V44 TEAM BIO MODALS ─── */
 .team-card,
@@ -2110,16 +1982,6 @@ main, section, header, footer {
 }
 
 /* ─── V77 TRUST CARDS (Tillid og transparens) ─── */
-.footer-nav-link {
-  font-size: .92rem !important;
-  font-weight: 700 !important;
-  color: var(--blue) !important;
-  text-decoration: none !important;
-  transition: color .2s ease !important;
-}
-.footer-nav-link:hover {
-  color: var(--orange) !important;
-}
 .trust-cards-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2384,6 +2246,40 @@ main, section, header, footer {
     .sticky-cta.visible { opacity: 1; transform: none; pointer-events: auto; }
     .sticky-cta:hover { background: var(--orange-btn-hover); }
 
+    /* ─── FOOTER ─── */
+    .site-footer {
+      background: #fff; border-top: 1px solid var(--line);
+      padding: clamp(3rem, 5vw, 4.5rem) max(clamp(1.25rem, 5vw, 4.5rem), calc((100% - 1300px) / 2 + clamp(1.25rem, 5vw, 4.5rem))) 0;
+    }
+    .site-footer-cols {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.25fr; gap: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+    .site-footer-brand p { font-size: .92rem; line-height: 1.6; color: var(--muted); margin: 1rem 0; max-width: 300px; }
+    .site-footer-linkedin { display: inline-flex; align-items: center; gap: .45rem; font-size: .92rem; font-weight: 600; color: var(--blue); }
+    .site-footer-linkedin:hover { color: var(--orange-text); }
+    .site-footer-heading { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin: 0 0 1rem; }
+    .site-footer-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .6rem; font-size: .92rem; line-height: 1.55; color: var(--muted); }
+    .site-footer-list a, .site-footer-linkbtn { color: var(--blue); }
+    .site-footer-list a:hover, .site-footer-linkbtn:hover { color: var(--orange-text); text-decoration: underline; text-underline-offset: 3px; }
+    .site-footer-linkbtn { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+    .site-footer-bottom {
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+      border-top: 1px solid var(--line); padding: 1.25rem 0 1.5rem;
+      font-size: .82rem; color: var(--muted);
+    }
+    .site-footer-bottom p { margin: 0; color: var(--muted); }
+    .site-footer-legal { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+    .site-footer-legal button { background: none; border: 0; padding: .4rem 0; font: inherit; color: var(--muted); cursor: pointer; }
+    .site-footer-legal button:hover { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+    @media (max-width: 960px) {
+      .site-footer-cols { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .site-footer-cols { grid-template-columns: 1fr; gap: 2rem; }
+      .site-footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
     /* ─── COOKIE-KORT ─── */
     .cookie-card {
       display: none;
@@ -2517,10 +2413,6 @@ cursor:pointer;
 .team-grid-secondary,
 .cert-logo-grid {
   row-gap: clamp(1.25rem, 2.4vw, 2rem);
-}
-.footer.footer-v42 {
-  padding-top: clamp(3rem, 5vw, 4.5rem);
-  padding-bottom: clamp(3rem, 5vw, 4.5rem);
 }
 @media (max-width: 720px) {
   .section {
@@ -3347,8 +3239,9 @@ Ring 36 16 36 16
 </div>
 </div>
 <!-- FOOTER -->
-<footer class="footer footer-v42" id="kontakt">
-<div class="footer-v42-left">
+<footer class="site-footer" id="kontakt">
+<div class="site-footer-cols">
+<div class="site-footer-brand">
 <a aria-label="Avancert forside" class="footer-logo" href="#top">
 <svg fill="none" style="height:34px;width:auto;display:block" viewbox="0 0 883 155" xmlns="http://www.w3.org/2000/svg">
 <path d="M159.637 96.4411L190.413 1.67334H213.536L169.951 122.801H149.571L106.123 1.67334H129.164L159.61 96.4411H159.637Z" fill="#00506D"></path>
@@ -3362,23 +3255,44 @@ Ring 36 16 36 16
 <path d="M5.62402 82.5848L18.4436 74.0883C26.9723 81.5392 31.8141 86.1088 40.9883 97.342C67.2256 64.2894 80.7686 55.2111 118 47C78.3871 63.6102 38.9055 122.221 38.778 123.726C38.6506 125.231 6.60237 82.7461 5.62402 82.5848Z" fill="#FF6A3F"></path>
 </svg>
 </a>
-<p>Selskab for certificering</p>
-<p>Nordre Fasanvej 215<br/>2000 Frederiksberg<br/>CVR: 37695467</p>
-<p><a href="mailto:info@avancert.dk">info@avancert.dk</a><br/><button onclick="avancertRingPopup()" type="button" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;color:var(--orange);text-decoration:underline;text-underline-offset:3px;">+45 36 16 36 16</button></p>
-<p><a href="https://www.linkedin.com/company/10864181/" rel="noopener" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-Mød os på LinkedIn</a></p>
+<p>Selskab for certificering. Avancert arbejder uvildigt og fokuserer udelukkende på certificeringsopgaven.</p>
+<a class="site-footer-linkedin" href="https://www.linkedin.com/company/10864181/" rel="noopener" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>Mød os på LinkedIn</a>
 </div>
-<div class="footer-v42-actions">
-<a class="footer-nav-link" href="#certificeringer">Certificeringer</a>
-<a class="footer-nav-link" href="#om">Om os</a>
-<a class="footer-nav-link" href="#team">Team</a>
-<a class="footer-nav-link" href="#tilbud">Få et tilbud</a>
-<a class="footer-nav-link" href="#tillid">Tillid og transparens</a>
+<div>
+<h3 class="site-footer-heading">Kontakt</h3>
+<ul class="site-footer-list">
+<li>Nordre Fasanvej 215<br/>2000 Frederiksberg</li>
+<li><a href="mailto:info@avancert.dk">info@avancert.dk</a></li>
+<li><button class="site-footer-linkbtn" onclick="avancertRingPopup()" type="button">+45 36 16 36 16</button></li>
+</ul>
+</div>
+<div>
+<h3 class="site-footer-heading">Sider</h3>
+<ul class="site-footer-list">
+<li><a href="#certificeringer">Certificeringer</a></li>
+<li><a href="#om">Om os</a></li>
+<li><a href="#team">Team</a></li>
+<li><a href="#tilbud">Få et tilbud</a></li>
+<li><a href="#tillid">Tillid og transparens</a></li>
+</ul>
+</div>
+<div>
+<h3 class="site-footer-heading">Akkreditering</h3>
+<ul class="site-footer-list">
+<li>Certifikater udstedes af <a href="https://www.a3cert.com/sv-SE" rel="noopener" target="_blank">AAA Certification AB</a> i Sverige, akkrediteret af SWEDAC.</li>
+<li><a href="https://www.iafcertsearch.org/" rel="noopener" target="_blank">Tjek et certifikat i IAF CertSearch</a></li>
+</ul>
+</div>
+</div>
+<div class="site-footer-bottom">
+<p>© 2026 Avancert · CVR 37695467</p>
+<nav aria-label="Juridisk" class="site-footer-legal">
+<button data-open-modal="gdprModal" type="button">GDPR</button><span aria-hidden="true">·</span>
+<button data-open-modal="termsModal" type="button">Forretningsbetingelser</button><span aria-hidden="true">·</span>
+<button onclick="document.getElementById('cookieBanner').style.display='flex'" type="button">Cookie-indstillinger</button>
+</nav>
 </div>
 </footer>
-<div class="footer-copy">Avancert arbejder uvildigt og fokuserer udelukkende på certificeringsopgaven. Certifikater udstedes af vores samarbejdspartner <a href="https://www.a3cert.com/sv-SE" rel="noopener" style="color:var(--blue);font-weight:800;text-decoration:none;" target="_blank">AAA Certification AB</a> i Sverige, akkrediteret af SWEDAC.</div>
-<div class="footer-copy">© 2026 Avancert. Alle rettigheder forbeholdes.</div>
 <div class="modal-overlay" id="isoModal">
 <div aria-labelledby="isoTitle" aria-modal="true" class="modal-box" role="dialog">
 <button aria-label="Luk" class="modal-close" data-close-modal="" onclick="closeAllModals()" type="button">✕</button>
