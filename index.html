@@ -2374,32 +2374,8 @@ cursor:pointer;
 .team-photo-placeholder{
   width:100%;height:100%;display:flex;align-items:center;justify-content:center;
   background:#e9edf0;color:#00506D;font-weight:800;font-size:1.2rem;
-  border-radius:18px;
+  border-radius:22px;
 }
-
-/* ─── TEAM: foto, rolle, standard-chips ─── */
-.team-card .team-photo {
-  width: 84px !important; height: 84px !important;
-  border-radius: 18px !important;
-}
-.team-card .team-photo img { object-fit: cover; filter: grayscale(1); }
-.team-card .team-role {
-  font-size: .9rem; color: var(--muted); line-height: 1.4;
-  margin: .1rem 0 .8rem;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.team-chips { list-style: none; display: flex; flex-wrap: wrap; gap: .35rem; margin: 0 0 1rem; padding: 0; }
-.team-chip {
-  display: inline-block; font-size: .72rem; font-weight: 600; line-height: 1.3;
-  padding: .2rem .55rem; border-radius: 999px;
-  border: 1.5px solid var(--blue); white-space: nowrap;
-}
-.team-chip.lead { background: var(--blue); color: #fff; }
-.team-chip.trainee { background: transparent; color: var(--blue); }
-.team-legend { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem .5rem; font-size: .85rem; color: var(--muted); margin: -.25rem 0 1.75rem; }
-.team-legend .team-chip.trainee { margin-left: .75rem; }
-.team-links .team-linkedin { width: 44px !important; height: 44px !important; min-width: 44px; display: inline-grid !important; place-items: center; }
-.team-links .team-linkedin svg { width: 18px !important; height: 18px !important; }
 
 /* V85 surgical polish — no structural changes */
 .section {
@@ -2967,13 +2943,11 @@ Ring 36 16 36 16
 <section class="section" id="team">
 <p class="eyebrow" data-editable data-key="team-eyebrow">Team</p>
 <h2 data-editable data-key="team-h2">Mød teamet</h2>
-<p class="team-legend"><span class="team-chip lead">ISO 9001</span> Lead Auditor <span class="team-chip trainee">ISO 9001</span> Trainee</p>
 <div class="team-grid team-grid-secondary">
 <article class="team-card avancert-popup-trigger" data-popup-key="Lars Ole Møller" onclick="avancertPopupOpen('Lars Ole Møller')" role="button" tabindex="0">
 <div class="team-photo lars-team-photo"><img alt="Lars Ole Møller – Ejerleder og Lead Auditor hos Avancert" loading="lazy" decoding="async" src="images/image-11.webp" data-editable-img data-key="img-lars"/></div>
 <h3>Lars Ole Møller</h3>
-<p class="team-role">Ejerleder</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">ISO 9001</li><li class="team-chip lead">ISO 14001</li><li class="team-chip lead">ISO 45001</li><li class="team-chip lead">ISO 13485</li><li class="team-chip lead">DS 49001</li><li class="team-chip lead">DS 21001</li><li class="team-chip lead">ISO 3834</li><li class="team-chip lead">EN 1090-1</li></ul>
+<p>Ejerleder &amp; Lead Auditor i ISO 9001, ISO 14001, ISO 45001, ISO 13485, DS 49001, DS 21001, ISO 3834 og EN 1090-1.</p>
 <div class="team-links">
 <a href="mailto:lom@avancert.dk">lom@avancert.dk</a>
 <a aria-label="Lars Oles LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/lars-ole-m%C3%B8ller-9434a41/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -2982,8 +2956,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Ida Lantz Møller" onclick="avancertPopupOpen('Ida Lantz Møller')" role="button" tabindex="0">
 <div class="team-photo ida-team-photo"><img alt="Ida Lantz Møller – Avancert" loading="lazy" decoding="async" src="images/image-17.webp" data-editable-img data-key="img-ida"/></div>
 <h3>Ida Lantz Møller</h3>
-<p class="team-role">Planlægning, salg og intern IT</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip trainee">ISO 9001</li><li class="team-chip trainee">ISO 14001</li><li class="team-chip trainee">ISO 45001</li></ul>
+<p>Lead Auditor Trainee i ISO 9001, ISO 14001 og ISO 45001, samt ansvarlig for planlægning, salg og intern IT.</p>
 <div class="team-links">
 <a href="mailto:ida@avancert.dk">ida@avancert.dk</a>
 <a aria-label="Idas LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/ida-lantz-6a6a03222/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -2992,8 +2965,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Janne Aurore Lantz Andersson" onclick="avancertPopupOpen('Janne Aurore Lantz Andersson')" role="button" tabindex="0">
 <div class="team-photo janne-team-photo"><img alt="Janne Aurore Lantz Andersson – Lead Auditor Trainee hos Avancert" loading="lazy" decoding="async" src="images/image-12.webp" data-editable-img data-key="img-janne"/></div>
 <h3>Janne Aurore Lantz Andersson</h3>
-<p class="team-role">Administration af certifikater</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip trainee">ISO 9001</li><li class="team-chip trainee">ISO 14001</li></ul>
+<p>Lead Auditor Trainee i ISO 9001 og ISO 14001, samt ansvarlig for administration af certifikater.</p>
 <div class="team-links">
 <a href="mailto:janne@avancert.dk">janne@avancert.dk</a>
 <a aria-label="Jannes LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/janne-aurore-lantz-andersson-54930a8a/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -3002,8 +2974,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Carl-Oscar Lantz Svensson" onclick="avancertPopupOpen('Carl-Oscar Lantz Svensson')" role="button" tabindex="0">
 <div class="team-photo"><img alt="Carl-Oscar Lantz Svensson – AI Specialist & Lead Auditor Trainee hos Avancert" loading="lazy" decoding="async" src="images/image-15.webp" data-editable-img data-key="img-carl"/></div>
 <h3>Carl-Oscar Lantz Svensson</h3>
-<p class="team-role">AI Specialist</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip trainee">ISO 9001</li><li class="team-chip trainee">ISO 14001</li><li class="team-chip trainee">ISO/IEC 27001</li></ul>
+<p>AI Specialist &amp; Lead Auditor Trainee i ISO 9001, ISO 14001 og ISO/IEC 27001.</p>
 <div class="team-links">
 <a href="mailto:carl@avancert.dk">carl@avancert.dk</a>
 <a aria-label="Carl-Oscars LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/carl-oscar-svensson-90739026/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -3012,8 +2983,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Signe Lantz Svensson" onclick="avancertPopupOpen('Signe Lantz Svensson')" role="button" tabindex="0">
 <div class="team-photo signe-team-photo"><img alt="Signe Lantz Svensson – ISO 9001 auditor og ISO 14001 Trainee hos Avancert" loading="lazy" decoding="async" src="images/image-14.webp" data-editable-img data-key="img-signe"/></div>
 <h3>Signe Lantz Svensson</h3>
-<p class="team-role">Marketing og HR</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">ISO 9001</li><li class="team-chip trainee">ISO 14001</li></ul>
+<p>Lead Auditor i ISO 9001 og Trainee i ISO 14001, samt ansvarlig for marketing og HR.</p>
 <div class="team-links">
 <a href="mailto:slm@avancert.dk">slm@avancert.dk</a>
 <a aria-label="Signes LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/signe-lantz-svensson-a4879043/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -3022,8 +2992,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Kristian Jørgensen" onclick="avancertPopupOpen('Kristian Jørgensen')" role="button" tabindex="0">
 <div class="team-photo kristian-team-photo"><img alt="Kristian Jørgensen – Lead Auditor hos Avancert" loading="lazy" decoding="async" src="images/image-16.webp" data-editable-img data-key="img-kristian"/></div>
 <h3>Kristian Jørgensen</h3>
-<p class="team-role">Lead Auditor</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">ISO 9001</li><li class="team-chip trainee">ISO 14001</li></ul>
+<p>Lead Auditor i ISO 9001 og Trainee i ISO 14001.</p>
 <div class="team-links">
 <a href="mailto:kristian@avancert.dk">kristian@avancert.dk</a>
 <a aria-label="Kristians LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/kristian-lund-j%C3%B8rgensen-417020322" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -3032,8 +3001,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Fargol Monazam" onclick="avancertPopupOpen('Fargol Monazam')" role="button" tabindex="0">
 <div class="team-photo"><img alt="Fargol Monazam – Lead Auditor Trainee hos Avancert" loading="lazy" decoding="async" src="images/fargol.jpg" data-editable-img data-key="img-fargol"/></div>
 <h3>Fargol Monazam</h3>
-<p class="team-role">Bogholderi</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip trainee">ISO 9001</li><li class="team-chip trainee">ISO 14001</li></ul>
+<p>Lead Auditor Trainee i ISO 9001 og ISO 14001, samt ansvarlig for bogholderi.</p>
 <div class="team-links">
 <a href="mailto:fargol@avancert.dk">fargol@avancert.dk</a>
 <a aria-label="Fargols LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/fargol-monazam/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -3042,8 +3010,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="John Kjærsgaard" onclick="avancertPopupOpen('John Kjærsgaard')" role="button" tabindex="0">
 <div class="team-photo team-photo-initials">JK</div>
 <h3>John Kjærsgaard</h3>
-<p class="team-role">Programme Manager og tilbud</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">Bilsyn</li></ul>
+<p>Programme Manager og Lead Auditor for bilsynshaller, samt ansvarlig for tilbud.</p>
 <div class="team-links">
 <a href="mailto:jk@avancert.dk">jk@avancert.dk</a>
 </div>
@@ -3051,8 +3018,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Rikke Andersson" onclick="avancertPopupOpen('Rikke Andersson')" role="button" tabindex="0">
 <div class="team-photo"><img alt="Rikke Andersson – Lead Auditor hos Avancert" loading="lazy" decoding="async" src="images/image-18.webp" data-editable-img data-key="img-rikke"/></div>
 <h3>Rikke Andersson</h3>
-<p class="team-role">Lead Auditor</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">ISO 9001</li><li class="team-chip lead">ISO 14001</li><li class="team-chip lead">ISO 45001</li><li class="team-chip lead">ISO 13485</li></ul>
+<p>Lead Auditor i ISO 9001, ISO 14001, ISO 45001 og ISO 13485.</p>
 <div class="team-links">
 <a href="mailto:ra@avancert.dk">ra@avancert.dk</a>
 <a aria-label="Rikkes LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/rikke-andersson/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -3069,8 +3035,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Sven Beck" onclick="avancertPopupOpen('Sven Beck')" role="button" tabindex="0">
 <div class="team-photo"><img alt="Sven Beck – Lead Auditor hos Avancert" loading="lazy" decoding="async" src="images/image-13.webp" data-editable-img data-key="img-sven"/></div>
 <h3>Sven Beck</h3>
-<p class="team-role">Lead Auditor</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">ISO 9001</li><li class="team-chip lead">ISO 14001</li><li class="team-chip lead">ISO 45001</li><li class="team-chip lead">DS 49001</li><li class="team-chip lead">Bilsyn</li></ul>
+<p>Lead Auditor i ISO 9001, ISO 14001, ISO 45001, DS 49001 og bilsynshaller.</p>
 <div class="team-links">
 <a href="mailto:sb@avancert.dk">sb@avancert.dk</a>
 <a aria-label="Svens LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/sven-beck-74272331/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -3079,8 +3044,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Henrik Rudolf" onclick="avancertPopupOpen('Henrik Rudolf')" role="button" tabindex="0">
 <div class="team-photo"><img alt="Henrik Rudolf – Lead Auditor hos Avancert" loading="lazy" decoding="async" src="images/henrik-rudolf.webp" data-editable-img data-key="img-henrik-r"/></div>
 <h3>Henrik Rudolf</h3>
-<p class="team-role">Lead Auditor</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">ISO 9001</li><li class="team-chip lead">ISO 14001</li><li class="team-chip lead">ISO 45001</li></ul>
+<p>Lead Auditor i ISO 9001, ISO 14001 og ISO 45001.</p>
 <div class="team-links">
 <a href="mailto:henrik@rudolf-freelance.dk" onclick="event.stopPropagation()">henrik@rudolf-freelance.dk</a>
 <a aria-label="Henrik Rudolfs LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/henrikrudolf/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -3089,8 +3053,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Henrik Olesen" onclick="avancertPopupOpen('Henrik Olesen')" role="button" tabindex="0">
 <div class="team-photo"><img alt="Henrik Olesen – Lead Auditor hos Avancert" loading="lazy" decoding="async" src="images/henrik-olesen.webp" data-editable-img data-key="img-henrik-o"/></div>
 <h3>Henrik Olesen</h3>
-<p class="team-role">Lead Auditor</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">ISO 9001</li><li class="team-chip lead">ISO 14001</li><li class="team-chip lead">ISO 45001</li></ul>
+<p>Lead Auditor i ISO 9001, ISO 14001 og ISO 45001.</p>
 <div class="team-links">
 <a href="mailto:henrik.olesen@rudolf-freelance.dk" onclick="event.stopPropagation()">henrik.olesen@rudolf-freelance.dk</a>
 <a aria-label="Henriks LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/henrik-t-olesen/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -3099,8 +3062,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Mikkel Immergut" onclick="avancertPopupOpen('Mikkel Immergut')" role="button" tabindex="0">
 <div class="team-photo"><img alt="Mikkel Immergut – Lead Auditor hos Avancert" loading="lazy" decoding="async" src="images/mikkel-immergut.webp" data-editable-img data-key="img-mikkel"/></div>
 <h3>Mikkel Immergut</h3>
-<p class="team-role">Lead Auditor</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">ISO 9001</li><li class="team-chip lead">ISO 14001</li><li class="team-chip lead">ISO 45001</li></ul>
+<p>Lead Auditor i ISO 9001, ISO 14001 og ISO 45001.</p>
 <div class="team-links">
 <a href="mailto:mikkel.immergut@rudolf-freelance.dk" onclick="event.stopPropagation()">mikkel.immergut@rudolf-freelance.dk</a>
 <a aria-label="Mikkels LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/mikkel-koldtoft-immergut-346b817b/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -3109,8 +3071,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Erik Morten Lund" onclick="avancertPopupOpen('Erik Morten Lund')" role="button" tabindex="0">
 <div class="team-photo"><div class="team-photo-placeholder">EML</div></div>
 <h3>Erik Morten Lund</h3>
-<p class="team-role">Lead Auditor</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">ISO 3834</li><li class="team-chip lead">EN 1090-1</li></ul>
+<p>Lead Auditor i ISO 3834 og EN 1090-1.</p>
 <div class="team-links">
 <a href="mailto:eml@avancert.dk" onclick="event.stopPropagation()">eml@avancert.dk</a>
 </div>
@@ -3118,8 +3079,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Preben Hansen" onclick="avancertPopupOpen('Preben Hansen')" role="button" tabindex="0">
 <div class="team-photo"><img alt="Preben Hansen – Lead Auditor hos Avancert" loading="lazy" decoding="async" src="images/preben-hansen.webp" data-editable-img data-key="img-preben"/></div>
 <h3>Preben Hansen</h3>
-<p class="team-role">Lead Auditor</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">ISO 9001</li><li class="team-chip lead">ISO 14001</li><li class="team-chip lead">ISO 45001</li></ul>
+<p>Lead Auditor i ISO 9001, ISO 14001 og ISO 45001.</p>
 <div class="team-links">
 <a href="mailto:ph@avancert.dk" onclick="event.stopPropagation()">ph@avancert.dk</a>
 <a aria-label="Prebens LinkedIn-profil" class="team-linkedin" href="https://www.linkedin.com/in/prebenhanzen/" onclick="event.stopPropagation()" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a>
@@ -3128,8 +3088,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Thomas Engelbrektsson" onclick="avancertPopupOpen('Thomas Engelbrektsson')" role="button" tabindex="0">
 <div class="team-photo"><img alt="Thomas Engelbrektsson – Lead Auditor hos Avancert" loading="lazy" decoding="async" src="images/thomas-engelbrektsson.jpg" data-editable-img data-key="img-thomas"/></div>
 <h3>Thomas Engelbrektsson</h3>
-<p class="team-role">Lead Auditor</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">ISO 9001</li><li class="team-chip lead">ISO/IEC 27001</li></ul>
+<p>Lead Auditor i ISO 9001 og ISO/IEC 27001.</p>
 <div class="team-links">
 <a href="mailto:thomas@engelconsulting.se" onclick="event.stopPropagation()">thomas@engelconsulting.se</a>
 </div>
@@ -3137,8 +3096,7 @@ Ring 36 16 36 16
 <article class="team-card avancert-popup-trigger" data-popup-key="Fredrik Högbom" onclick="avancertPopupOpen('Fredrik Högbom')" role="button" tabindex="0">
 <div class="team-photo"><img alt="Fredrik Högbom – Lead Auditor hos Avancert" loading="lazy" decoding="async" src="images/fredrik-hogbom.jpg" data-editable-img data-key="img-fredrik"/></div>
 <h3>Fredrik Högbom</h3>
-<p class="team-role">Lead Auditor</p>
-<ul aria-label="Standarder" class="team-chips"><li class="team-chip lead">ISO 9001</li><li class="team-chip lead">ISO 14001</li><li class="team-chip lead">ISO/IEC 27001</li><li class="team-chip lead">ISO 45001</li></ul>
+<p>Lead Auditor i ISO 9001, ISO 14001, ISO 27001 og ISO 45001.</p>
 <div class="team-links">
 <a href="mailto:Fredrik@puremanagement.se" onclick="event.stopPropagation()">Fredrik@puremanagement.se</a>
 </div>
