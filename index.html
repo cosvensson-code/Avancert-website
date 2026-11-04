@@ -2379,6 +2379,34 @@ main, section, header, footer {
     .sticky-cta.visible { opacity: 1; transform: none; pointer-events: auto; }
     .sticky-cta:hover { background: var(--orange-btn-hover); }
 
+    /* ─── COOKIE-KORT ─── */
+    .cookie-card {
+      display: none;
+      position: fixed; right: 24px; bottom: 24px; z-index: 10000;
+      width: 380px; max-width: calc(100vw - 48px);
+      flex-direction: column; gap: 1rem;
+      padding: 1.25rem 1.25rem 1.1rem;
+      background: #fff; color: var(--ink);
+      border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: 0 18px 48px rgba(1,80,109,.16), 0 2px 8px rgba(1,80,109,.06);
+    }
+    .cookie-card-text { margin: 0; font-size: .875rem; line-height: 1.55; color: var(--ink); }
+    .cookie-card-text a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+    .cookie-card-actions { display: flex; gap: .6rem; }
+    .cookie-btn {
+      flex: 1; min-height: 44px; padding: 0 1rem;
+      border-radius: 999px; font-family: inherit; font-size: .875rem; font-weight: 700;
+      cursor: pointer; transition: background .2s, border-color .2s;
+    }
+    .cookie-btn-outline { background: #fff; color: var(--blue); border: 1.5px solid rgba(1,80,109,.3); }
+    .cookie-btn-outline:hover { border-color: var(--blue); background: var(--blue-lt); }
+    .cookie-btn-primary { background: #01506d; color: #fff; border: 1.5px solid #01506d; }
+    .cookie-btn-primary:hover { background: var(--blue-dk); border-color: var(--blue-dk); }
+    .cookie-btn:focus-visible, .cookie-card-text a:focus-visible { outline: 3px solid rgba(1,80,109,.35); outline-offset: 2px; }
+    @media (max-width: 560px) {
+      .cookie-card { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; }
+    }
+
     @media (max-width: 640px) {
       .stat-bar { grid-template-columns: repeat(2, 1fr); }
       .stat-bar-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -3793,11 +3821,11 @@ function avancertSkiftTilbud() {
 </script>
 
 <!-- COOKIE BANNER -->
-<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0c1e28;color:#fff;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;box-shadow:0 -2px 16px rgba(0,0,0,0.2);">
-  <p style="margin:0;font-size:0.85rem;line-height:1.5;flex:1;min-width:200px;">Vi bruger cookies til at analysere trafikken og forbedre oplevelsen på siden. <a href="#tillid" style="color:#fe6a3f;text-decoration:underline;" onclick="document.getElementById('cookieBanner').style.display='none'">Læs mere</a></p>
-  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
-    <button onclick="avancertDeclineCookies()" style="background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;padding:0.5rem 1rem;border-radius:6px;cursor:pointer;font-size:0.85rem;">Kun nødvendige</button>
-    <button onclick="avancertAcceptCookies()" style="background:#fe6a3f;border:none;color:#fff;padding:0.5rem 1.25rem;border-radius:6px;cursor:pointer;font-size:0.85rem;font-weight:700;">Accepter alle</button>
+<div aria-label="Cookies" class="cookie-card" id="cookieBanner" role="dialog">
+  <p class="cookie-card-text">Vi bruger cookies til at analysere trafikken og forbedre oplevelsen på siden. <a href="#tillid" onclick="document.getElementById('cookieBanner').style.display='none'">Læs mere</a></p>
+  <div class="cookie-card-actions">
+    <button class="cookie-btn cookie-btn-outline" onclick="avancertDeclineCookies()" type="button">Kun nødvendige</button>
+    <button class="cookie-btn cookie-btn-primary" onclick="avancertAcceptCookies()" type="button">Accepter alle</button>
   </div>
 </div>
 <script>
