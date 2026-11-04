@@ -61,10 +61,14 @@
       --orange:     #fe6a3f;
       --orange-dk:  #e5532a;
       --orange-lt:  #fff1ec;
+      --orange-btn: #c8471e;
+      --orange-btn-hover: #b03d18;
+      --orange-text: #bf4419;
+      --on-blue-label: rgba(255,255,255,.75);
       --bg:         #f5f3ee;
       --surface:    #ffffff;
       --ink:        #0c1e28;
-      --muted:      #5a7a8a;
+      --muted:      #4f6f7f;
       --line:       #dde5e9;
       --sand:       #eceae3;
     }
@@ -192,7 +196,7 @@
       display: inline-flex; align-items: center; gap: 0.5rem;
       text-transform: uppercase; letter-spacing: 0.18em;
       font-size: 0.72rem; font-weight: 600;
-      color: var(--orange); margin-bottom: 1.1rem;
+      color: var(--orange-text); margin-bottom: 1.1rem;
     }
     .eyebrow::before {
       content: ''; width: 18px; height: 1.5px;
@@ -204,7 +208,7 @@
       font-weight: 800; line-height: 0.93; letter-spacing: -0.04em;
       color: var(--blue); margin-bottom: 1.75rem;
     }
-    h1 .hl { color: var(--orange); }
+    h1 .hl { color: var(--orange-dk); }
 
     h2 {
       font-size: clamp(2rem, 4vw, 3.5rem);
@@ -223,8 +227,8 @@
       border: 2px solid transparent; transition: all 0.22s; cursor: pointer;
     }
     .btn:hover { transform: translateY(-2px); }
-    .btn.primary { background: var(--orange); color: #fff; border-color: var(--orange); }
-    .btn.primary:hover { background: var(--orange-dk); border-color: var(--orange-dk); }
+    .btn.primary { background: var(--orange-btn); color: #fff; border-color: var(--orange-btn); }
+    .btn.primary:hover { background: var(--orange-btn-hover); border-color: var(--orange-btn-hover); }
     .btn.secondary { background: transparent; border-color: rgba(1,80,109,0.25); color: var(--blue); }
     .btn.secondary:hover { border-color: var(--blue); background: var(--blue-lt); }
 
@@ -270,7 +274,7 @@
       line-height: 1.05;
       margin-bottom: 0.5rem;
     }
-    .label { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.45; }
+    .label { display: block; font-size: 0.8rem; color: var(--on-blue-label); line-height: 1.45; }
 
     .divider { height: 1px; background: var(--line); max-width: 1300px; margin: 0 auto; }
 
@@ -288,7 +292,7 @@
     }
     .about-card p { font-size: 1rem; line-height: 1.75; color: #3a5a6a; margin-bottom: 1.1rem; }
     .about-card p:last-of-type { margin-bottom: 0; }
-    .about-card .eyebrow { font-size: 0.72rem; line-height: normal; color: var(--orange); margin-bottom: 1.1rem; }
+    .about-card .eyebrow { font-size: 0.72rem; line-height: normal; color: var(--orange-text); margin-bottom: 1.1rem; }
 
     /* ─── FORM ─── */
     .tilbud-intro { margin-bottom: 2.5rem; }
@@ -369,7 +373,7 @@
       text-align: center;
     }
     .cta-wrap h2 { color: #fff; max-width: 680px; margin: 0 auto 2rem; }
-    .cta-wrap .eyebrow { color: var(--orange); }
+    .cta-wrap .eyebrow { color: var(--on-blue-label); }
     .cta-wrap .eyebrow::before { background: var(--orange); }
     .cta-wrap .btn.secondary { border-color: rgba(255,255,255,0.3); color: #fff; }
     .cta-wrap .btn.secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
@@ -402,7 +406,7 @@
     .hero-left h1 .hl {
       display: inline-block;
       padding: 0 .04em .18em 0; margin-bottom: -.18em;
-      background-image: linear-gradient(90deg, var(--orange) 0 42%, rgba(254,106,63,.45) 58% 100%);
+      background-image: linear-gradient(90deg, var(--orange-dk) 0 42%, rgba(229,83,42,.45) 58% 100%);
       background-size: 220% 100%;
       background-position: 100% 0;
       -webkit-background-clip: text; background-clip: text;
@@ -1119,12 +1123,12 @@
       .nav a.nav-mobile-cta {
         margin: 0.75rem clamp(1.25rem,5vw,3rem) 0;
         padding: 0.875rem 1.5rem;
-        background: var(--orange); color: #fff !important;
+        background: var(--orange-btn); color: #fff !important;
         text-align: center; justify-content: center;
         border-radius: 999px; font-weight: 700;
         border-bottom: none; width: auto; box-sizing: border-box;
       }
-      .nav a.nav-mobile-cta:hover { background: #e55a30; }
+      .nav a.nav-mobile-cta:hover { background: var(--orange-btn-hover); }
       .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 3rem; }
       .hero-panel { display: grid; grid-template-columns: repeat(3,1fr); }
       .hero-panel > div { border-bottom: none; padding: 1.1rem 1rem; border-right: 1px solid rgba(255,255,255,0.12); }
@@ -1908,7 +1912,7 @@ main, section, header, footer {
 }
 
 .skift-boks .eyebrow {
-  color: var(--orange);
+  color: var(--on-blue-label);
   margin-bottom: 0.75rem;
 }
 
@@ -2318,8 +2322,8 @@ main, section, header, footer {
       max-width: 1300px; margin: 0 auto;
       padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 5vw, 4.5rem);
     }
-    .section-bg-blue .eyebrow { color: rgba(255,255,255,0.55); }
-    .section-bg-blue .eyebrow::before { background: rgba(255,255,255,0.35); }
+    .section-bg-blue .eyebrow { color: var(--on-blue-label); }
+    .section-bg-blue .eyebrow::before { background: var(--orange); }
     .testimonials-section h2 { color: #fff; }
     .testimonials-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
@@ -2338,12 +2342,12 @@ main, section, header, footer {
       border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: auto;
     }
     .testimonial-name { font-size: 0.875rem; font-weight: 700; color: #fff; margin-bottom: 0.15rem; }
-    .testimonial-role { font-size: 0.72rem; color: rgba(255,255,255,0.5); }
+    .testimonial-role { font-size: 0.72rem; color: var(--on-blue-label); }
 
     /* ─── STICKY CTA ─── */
     .sticky-cta {
       position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200;
-      background: var(--orange); color: #fff;
+      background: var(--orange-btn); color: #fff;
       padding: 0.875rem 1.75rem; border-radius: 999px;
       font-family: inherit; font-size: 0.95rem; font-weight: 700;
       text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem;
@@ -2352,7 +2356,7 @@ main, section, header, footer {
       transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
     }
     .sticky-cta.visible { opacity: 1; transform: none; pointer-events: auto; }
-    .sticky-cta:hover { background: var(--orange-dk); }
+    .sticky-cta:hover { background: var(--orange-btn-hover); }
 
     @media (max-width: 640px) {
       .stat-bar { grid-template-columns: repeat(2, 1fr); }
@@ -4048,7 +4052,7 @@ Kontakt: Fredrik@puremanagement.se</div>
   <button aria-label="Luk" onclick="avancertRingLuk()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;color:#5a7a8a;padding:0.25rem;" type="button">
     <svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewbox="0 0 24 24" width="20"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
   </button>
-  <p id="ring-popup-title" style="font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#fe6a3f;margin-bottom:0.6rem;">Ring til os</p>
+  <p id="ring-popup-title" style="font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--orange-text);margin-bottom:0.6rem;">Ring til os</p>
   <p style="font-size:1rem;color:#5a7a8a;line-height:1.5;margin-bottom:1.75rem;">Vælg, hvordan I vil ringe — direkte opkald eller via Teams.</p>
   <div style="display:flex;flex-direction:column;gap:0.75rem;">
     <button id="ring-call-btn" onclick="avancertRingCall()" type="button" style="display:flex;align-items:center;gap:0.9rem;background:#01506d;color:#fff;border-radius:1rem;padding:1.1rem 1.5rem;border:none;cursor:pointer;font-family:inherit;font-weight:700;font-size:1.05rem;width:100%;text-align:left;">
