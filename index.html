@@ -2144,15 +2144,6 @@ main, section, header, footer {
   gap: .5rem;
 }
 
-.trust-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--orange), var(--blue));
-  opacity: .9;
-}
-
 .trust-card:hover {
   transform: translateY(-4px);
   border-color: rgba(254,106,63,.32);
@@ -2193,8 +2184,8 @@ main, section, header, footer {
 .trust-card-link {
   margin-top: auto;
   font-size: .85rem;
-  font-weight: 800;
-  color: var(--orange);
+  font-weight: 700;
+  color: var(--orange-text);
   letter-spacing: -0.01em;
   transition: transform .22s ease;
 }
@@ -2203,32 +2194,6 @@ main, section, header, footer {
   transform: translateX(3px);
 }
 
-.trust-card-popup-hint {
-  position: absolute;
-  top: 1.1rem;
-  right: 1.1rem;
-  width: 28px;
-  height: 28px;
-  display: inline-grid;
-  place-items: center;
-  border-radius: 8px;
-  background: var(--blue-lt);
-  color: var(--blue);
-  transition: background .22s ease, color .22s ease, transform .22s ease;
-  z-index: 1;
-}
-
-.trust-card-popup-hint svg {
-  width: 13px;
-  height: 13px;
-  display: block;
-}
-
-.trust-card:hover .trust-card-popup-hint {
-  background: var(--orange);
-  color: #fff;
-  transform: rotate(-8deg) scale(1.05);
-}
 
 @media (max-width: 900px) {
   .trust-cards-grid { grid-template-columns: 1fr; }
@@ -3341,9 +3306,6 @@ Ring 36 16 36 16
 <span aria-hidden="true" class="trust-card-icon">
 <svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"></path><path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </span>
-<span aria-hidden="true" class="trust-card-popup-hint">
-<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</span>
 <h3>Certificeringsprocessen og upartiskhed</h3>
 <p>Sådan tildeles, opretholdes, suspenderes og tilbagekaldes certificering, og sådan sikrer vi upartiskhed.</p>
 <span class="trust-card-link">Læs mere →</span>
@@ -3351,9 +3313,6 @@ Ring 36 16 36 16
 <button class="trust-card" data-open-modal="complaintModal" type="button">
 <span aria-hidden="true" class="trust-card-icon">
 <svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</span>
-<span aria-hidden="true" class="trust-card-popup-hint">
-<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </span>
 <h3>Klager og appeller</h3>
 <p>Procedurer for klager, appeller og utilfredshed. Send en henvendelse direkte via formularen.</p>
@@ -3363,9 +3322,6 @@ Ring 36 16 36 16
 <span aria-hidden="true" class="trust-card-icon">
 <svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </span>
-<span aria-hidden="true" class="trust-card-popup-hint">
-<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</span>
 <h3>GDPR og databeskyttelse</h3>
 <p>Sådan behandler vi personoplysninger fra kunder, partnere og hjemmesidens brugere.</p>
 <span class="trust-card-link">Læs mere →</span>
@@ -3373,9 +3329,6 @@ Ring 36 16 36 16
 <button class="trust-card" data-open-modal="termsModal" type="button">
 <span aria-hidden="true" class="trust-card-icon">
 <svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</span>
-<span aria-hidden="true" class="trust-card-popup-hint">
-<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </span>
 <h3>Forretningsbetingelser</h3>
 <p>Generelle vilkår og betingelser for certificering af ledelsessystemer og processer.</p>
