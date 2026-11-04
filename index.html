@@ -410,8 +410,24 @@
       animation: hlFill .5s cubic-bezier(.4,0,.2,1) .35s forwards;
     }
     @keyframes hlFill { to { background-position: 0 0; } }
+    @property --ring { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+    .hero-left h1 .hl { position: relative; }
+    .hero-left h1 .hl::after {
+      content: '';
+      position: absolute;
+      width: .46em; height: .46em;
+      right: -.063em; bottom: .073em;
+      border: .026em solid var(--orange);
+      border-radius: 50%;
+      pointer-events: none;
+      -webkit-mask: conic-gradient(#000 var(--ring), transparent 0);
+              mask: conic-gradient(#000 var(--ring), transparent 0);
+      animation: ringDraw .6s cubic-bezier(.4,0,.2,1) .8s both;
+    }
+    @keyframes ringDraw { from { --ring: 0deg; } to { --ring: 360deg; } }
     @media (prefers-reduced-motion: reduce) {
       .hero-left h1 .hl { animation: none; background-position: 0 0; }
+      .hero-left h1 .hl::after { animation: none; --ring: 360deg; }
     }
 
     
