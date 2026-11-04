@@ -407,25 +407,11 @@
       background-position: 100% 0;
       -webkit-background-clip: text; background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: hlFill .5s cubic-bezier(.4,0,.2,1) .35s forwards;
+      animation: hlFill .3s cubic-bezier(.4,0,.2,1) .35s forwards;
     }
     @keyframes hlFill { to { background-position: 0 0; } }
-    .hero-left h1 .hl { position: relative; }
-    .hero-left h1 .hl::after {
-      content: '';
-      position: absolute;
-      width: .225em; height: .195em;
-      right: .041em; bottom: .218em;
-      border-radius: 50%;
-      background: var(--orange);
-      pointer-events: none;
-      transform: scale(0);
-      animation: dotPop .4s cubic-bezier(.34,1.56,.64,1) .75s forwards;
-    }
-    @keyframes dotPop { to { transform: scale(1); } }
     @media (prefers-reduced-motion: reduce) {
       .hero-left h1 .hl { animation: none; background-position: 0 0; }
-      .hero-left h1 .hl::after { animation: none; transform: scale(1); }
     }
 
     
