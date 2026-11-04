@@ -401,6 +401,13 @@
       width: calc(100% + 2rem - 16px); height: 2px;
       background: rgba(255,255,255,.22);
     }
+    .tl-step:last-child::after {
+      content: ''; position: absolute; top: 1px; left: 16px;
+      width: calc(100% - 16px); height: 14px;
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='14' viewBox='0 0 9 14'%3E%3Cpath d='M1.5 1.5 7 7l-5.5 5.5' fill='none' stroke='rgba(255,255,255,0.45)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right center / 9px 14px no-repeat,
+        linear-gradient(90deg, rgba(255,255,255,.22), rgba(255,255,255,.45)) left center / calc(100% - 3px) 2px no-repeat;
+    }
     .tl-chip {
       display: block; margin-bottom: .4rem;
       color: var(--on-blue-label); font-size: .8rem; font-weight: 500;
@@ -412,6 +419,12 @@
       .tl-step { padding-top: 0; padding-left: 2.25rem; }
       .tl-step:not(:last-child)::after {
         top: 16px; left: 7px; width: 2px; height: calc(100% + 2rem - 16px);
+      }
+      .tl-step:last-child::after {
+        top: 16px; left: 1px; width: 14px; height: calc(100% - 4px);
+        background:
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1.5 1.5 7 7l5.5-5.5' fill='none' stroke='rgba(255,255,255,0.45)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center bottom / 14px 9px no-repeat,
+          linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.45)) center top / 2px calc(100% - 3px) no-repeat;
       }
     }
 
