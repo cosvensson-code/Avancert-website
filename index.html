@@ -2011,46 +2011,17 @@ main, section, header, footer {
   margin-bottom: 0;
 }
 
-/* ─── TRUST STRIP (info-boks under marquee) ─── */
-.trust-strip {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-top: 1rem;
-  padding: 1.25rem 1.5rem;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 1.5rem;
-  font-size: 0.88rem;
-  color: var(--muted);
-  line-height: 1.6;
+/* ─── AKKREDITERING (tre kolonner under marquee) ─── */
+.akk-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem;
+  margin-top: 1.75rem;
 }
-
-.trust-strip-icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  color: var(--orange);
-  margin-top: 0.1em;
-}
-
-.trust-strip a {
-  color: var(--blue);
-  text-decoration: underline;
-  text-decoration-color: rgba(1,80,109,0.25);
-  text-underline-offset: 3px;
-  transition: text-decoration-color .2s ease;
-}
-
-.trust-strip a:hover {
-  text-decoration-color: var(--orange);
-}
-
-@media (max-width: 560px) {
-  .trust-strip {
-    font-size: 0.82rem;
-    padding: 0.875rem 1rem;
-  }
+.akk-item { display: flex; gap: .85rem; align-items: flex-start; }
+.akk-icon { flex-shrink: 0; width: 22px; height: 22px; color: var(--orange-dk); margin-top: .1rem; }
+.akk-title { font-size: 1rem; font-weight: 700; color: var(--blue); margin: 0 0 .2rem; }
+.akk-text { font-size: .9rem; line-height: 1.55; color: var(--muted); margin: 0; }
+@media (max-width: 760px) {
+  .akk-grid { grid-template-columns: 1fr; gap: 1.25rem; }
 }
 
 .usp-rows {
@@ -2681,12 +2652,22 @@ body.av-edit #av-popup-store{
 <a aria-hidden="true" class="wordmark" href="https://www.grenaahavn.dk" rel="noopener" tabindex="-1" target="_blank"><img alt="" loading="lazy" src="images/grenaa-havn.webp" style="--h:30px" decoding="async"></a>
 </div>
 </div>
-<div aria-label="Akkrediteringsinformation" class="trust-strip" role="complementary">
-<svg aria-hidden="true" class="trust-strip-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24">
-<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-<path d="m9 12 2 2 4-4"></path>
-</svg>
-<span data-editable data-key="akkreditering-tekst">Certifikaterne udstedes gennem vores partner AAA Certification AB, akkrediteret af SWEDAC. Både SWEDAC og DANAK er medlemmer af Global Accreditation Cooperation (tidligere IAF) — derfor er certifikaterne internationalt gyldige, og derfor kan et forløb overdrages mellem organer. Avancert er i gang med at søge om egen akkreditering hos DANAK.</span>
+<div aria-label="Akkrediteringsinformation" class="akk-grid" role="complementary">
+<div class="akk-item">
+<svg aria-hidden="true" class="akk-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+<div><h3 class="akk-title" data-editable data-key="akk-1-title">Akkrediteret af SWEDAC</h3>
+<p class="akk-text" data-editable data-key="akk-1-text">Certifikaterne udstedes af vores partner AAA Certification AB, som er akkrediteret af SWEDAC.</p></div>
+</div>
+<div class="akk-item">
+<svg aria-hidden="true" class="akk-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+<div><h3 class="akk-title" data-editable data-key="akk-2-title">Gyldige i hele verden</h3>
+<p class="akk-text" data-editable data-key="akk-2-text">SWEDAC er medlem af Global Accreditation Cooperation (tidligere IAF), så certifikaterne anerkendes internationalt.</p></div>
+</div>
+<div class="akk-item">
+<svg aria-hidden="true" class="akk-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+<div><h3 class="akk-title" data-editable data-key="akk-3-title">DANAK-akkreditering på vej</h3>
+<p class="akk-text" data-editable data-key="akk-3-text">Avancert er i gang med at søge om egen akkreditering hos DANAK.</p></div>
+</div>
 </div>
 <div class="skift-boks">
 <div class="skift-boks-inner">
